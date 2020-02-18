@@ -1,0 +1,202 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="0dp"
+        android:paddingBottom="30dp">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="300dp">
+
+                <ImageView
+                    android:id="@+id/cover"
+                    android:layout_width="match_parent"
+                    android:layout_height="300dp"
+                    android:scaleType="fitXY"
+                    android:src="@drawable/bg_home_2" />
+
+                <EditText
+                    android:id="@+id/txt_usia"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginTop="15dp"
+                    android:layout_marginRight="20dp"
+                    android:background="@drawable/rounded_edittext_no_border"
+                    android:drawableRight="@drawable/search_icon"
+                    android:ellipsize="start"
+                    android:hint="Cari tujuan liburan kamu!"
+                    android:inputType="number"
+                    android:paddingLeft="20dp"
+                    android:paddingRight="20dp"
+
+                    android:singleLine="true"
+                    android:textColor="#00FFFFFF" />
+            </FrameLayout>
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="200dp"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginTop="30dp"
+                    android:layout_marginRight="20dp"
+                    android:background="@drawable/rounded_image_view"
+                    android:scaleType="fitXY"
+                    android:src="@drawable/yogyakarta_2" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="50dp"
+                    android:layout_marginTop="60dp"
+                    android:text="20 Maret 2020"
+                    android:textColor="@android:color/white"
+                    android:textSize="15sp"
+                    app:fontFamily="@font/roboto_light" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="50dp"
+                    android:layout_marginTop="75dp"
+                    android:text="Yogyakarta"
+                    android:textColor="@android:color/white"
+                    android:textSize="18sp"
+                    app:fontFamily="@font/allerta" />
+
+                <Button
+                    android:layout_width="120dp"
+                    android:layout_height="30dp"
+                    android:layout_marginLeft="50dp"
+                    android:layout_marginTop="170dp"
+                    android:background="@drawable/rounded_button"
+                    android:text="Detail"
+                    android:textAllCaps="false"
+                    android:textColor="@android:color/white" />
+
+
+            </FrameLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="30dp"
+                android:text="Rencana Kamu"
+                android:textSize="20sp"
+                app:fontFamily="@font/allerta"
+                android:textColor="@android:color/black"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                >
+                <FrameLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+                    <ImageView
+                        android:layout_width="150dp"
+                        android:layout_height="150dp"
+                        android:layout_marginLeft="20dp"
+                        android:layout_marginTop="10dp"
+                        android:scaleType="fitXY"
+                        android:src="@drawable/jakarta_2" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="40dp"
+                        android:layout_marginTop="75dp"
+                        android:text="JAKARTA"
+                        android:textSize="23sp"
+                        android:textAlignment="center"
+                        android:textColor="@android:color/white"
+                        app:fontFamily="@font/allerta" />
+
+                </FrameLayout>
+
+                <FrameLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+                    <ImageView
+                        android:layout_width="150dp"
+                        android:layout_height="150dp"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginTop="10dp"
+                        android:scaleType="fitXY"
+                        android:src="@drawable/bali_2" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="53dp"
+                        android:layout_marginTop="75dp"
+                        android:text="BALI"
+                        android:textSize="23sp"
+                        android:textAlignment="center"
+                        android:textColor="@android:color/white"
+                        app:fontFamily="@font/allerta" />
+
+                </FrameLayout>
+                <FrameLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+                    <ImageView
+                        android:layout_width="150dp"
+                        android:layout_height="150dp"
+                        android:layout_marginLeft="20dp"
+                        android:layout_marginTop="10dp"
+                        android:scaleType="fitXY"
+                        android:src="@drawable/bandung_2" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="35dp"
+                        android:layout_marginTop="55dp"
+                        android:text="BANDUNG"
+                        android:textSize="15sp"
+                        android:textAlignment="center"
+                        android:textColor="@android:color/white"
+                        app:fontFamily="@font/allerta" />
+
+                </FrameLayout>
+            </LinearLayout>
+
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginLeft="20dp"
+                android:layout_gravity="bottom"
+                android:textColor="@android:color/white"
+                android:background="#95cefc"
+                android:text="Rencana Baru"
+                android:textAllCaps="false"
+                android:layout_marginBottom="29dp"
+                android:layout_alignParentBottom="true"
+                android:textSize="20sp"
+                android:drawableLeft="@drawable/add"
+                android:paddingLeft="40dp"
+                android:paddingRight="40dp"
+                />
+
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>

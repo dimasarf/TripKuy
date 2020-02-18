@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <ImageView
+            android:layout_width="210dp"
+            android:layout_height="300dp"
+            android:src="@drawable/gender_male"
+            android:background="#95cefc"
+            />
+
+        <ImageView
+            android:layout_width="202dp"
+            android:layout_height="match_parent"
+            android:background="#95cefc"
+            android:src="@drawable/gender_female" />
+    </LinearLayout>
+
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="Beritahu Kami Jenis Kelamin Anda"
+        android:textAlignment="center"
+        android:textColor="@android:color/black"
+        android:textSize="30sp"
+        app:fontFamily="@font/allerta" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="Supaya kami dapat memberi rekomendasi optimal!"
+        android:textAlignment="center"
+        android:textColor="@android:color/black"
+        android:textSize="15sp"
+        app:fontFamily="@font/allerta" />
+
+    <RadioGroup
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <RadioButton
+            android:layout_width="match_parent"
+            android:layout_height="35dp"
+            android:layout_marginTop="15dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginLeft="20dp"
+            android:background="@drawable/circleradiobutton"
+            android:button="@android:color/transparent"
+            android:textAlignment="center"
+            android:textColor="@android:color/white"
+            android:text="Laki - Laki"/>
+        <RadioButton
+            android:layout_width="match_parent"
+            android:layout_height="35dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginLeft="20dp"
+            android:background="@drawable/circleradiobutton"
+            android:button="@android:color/transparent"
+            android:textAlignment="center"
+            android:textColor="@android:color/white"
+            android:text="Perempuan"/>
+    </RadioGroup>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dip"
+        android:layout_weight="1"
+        android:gravity="center|bottom"
+        android:orientation="vertical" >
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="20dp"
+            android:layout_marginLeft="20dp"
+            android:layout_gravity="bottom"
+            android:textColor="#95cefc"
+            android:background="@android:color/white"
+            android:text="Sebelumnya"
+            android:layout_marginBottom="20dp"
+
+            />
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="20dp"
+            android:layout_marginLeft="20dp"
+            android:layout_gravity="bottom"
+            android:textColor="@android:color/white"
+            android:background="#95cefc"
+            android:text="Selanjutnya"
+            android:layout_marginBottom="20dp"
+
+            />
+
+    </LinearLayout>
+
+
+</LinearLayout>
