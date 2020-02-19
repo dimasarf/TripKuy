@@ -1,0 +1,655 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".RecommendationActivity">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingBottom="40dp">
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginRight="20dp"
+                app:cardBackgroundColor="#1D3364"
+                app:cardCornerRadius="10dp">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="20dp">
+
+                    <TextView
+                        android:id="@+id/lbl_tempat"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="20dp"
+                        android:layout_marginTop="20dp"
+                        android:text="Destinasi"
+                        android:textColor="@android:color/white"
+                        android:textSize="15sp" />
+
+                    <TextView
+                        android:id="@+id/txt_tempat"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/lbl_tempat"
+                        android:layout_marginLeft="20dp"
+                        android:layout_marginTop="5dp"
+                        android:text="Yogyakarta"
+                        android:textColor="#F7B640"
+                        android:textSize="20sp" />
+
+                    <TextView
+                        android:id="@+id/lbl_durasi"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/txt_tempat"
+                        android:layout_marginLeft="20dp"
+                        android:layout_marginTop="20dp"
+                        android:text="Durasi"
+                        android:textColor="@android:color/white"
+                        android:textSize="15sp" />
+
+                    <TextView
+                        android:id="@+id/txt_durasi"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/lbl_durasi"
+                        android:layout_marginLeft="20dp"
+                        android:layout_marginTop="5dp"
+                        android:text="5 Hari"
+                        android:textColor="#F7B640"
+                        android:textSize="20sp" />
+
+
+
+                    <ImageView
+                        android:layout_width="120dp"
+                        android:layout_height="70dp"
+                        android:layout_alignParentEnd="true"
+                        android:layout_alignParentRight="true"
+                        android:layout_marginTop="35dp"
+                        app:srcCompat="@drawable/ic_location" />
+
+
+                </RelativeLayout>
+
+            </androidx.cardview.widget.CardView>
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                app:cardBackgroundColor="#F7B640"
+                app:cardCornerRadius="10dp">
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingBottom="20dp">
+
+                    <TextView
+                        android:id="@+id/lbl_tanggal_awal"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="20dp"
+                        android:layout_marginTop="20dp"
+                        android:text="Tanggal Mulai"
+                        android:textColor="@android:color/white"
+                        android:textSize="15sp" />
+
+                    <TextView
+                        android:id="@+id/txt_tanggal_mulai"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/lbl_tanggal_awal"
+                        android:layout_marginLeft="20dp"
+                        android:layout_marginTop="5dp"
+                        android:text="20 Maret 2019"
+                        android:textColor="@android:color/black"
+                        android:textSize="18sp" />
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_toRightOf="@id/txt_tanggal_mulai"
+                        android:layout_toLeftOf="@id/lbl_tanggal_akhir"
+                        android:layout_marginRight="20dp"
+                        android:layout_below="@id/lbl_tanggal_awal"
+                        app:srcCompat="@drawable/ic_keyboard_arrow_right"/>
+
+
+                    <TextView
+                        android:id="@+id/lbl_tanggal_akhir"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:layout_marginTop="20dp"
+                        android:layout_marginRight="20dp"
+                        android:text="Tanggal Akhir"
+                        android:textColor="@android:color/white"
+                        android:textSize="15sp" />
+
+                    <TextView
+                        android:id="@+id/txt_tanggal_akhir"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/lbl_tanggal_awal"
+                        android:layout_alignParentRight="true"
+                        android:layout_marginLeft="20dp"
+                        android:layout_marginTop="5dp"
+                        android:layout_marginRight="20dp"
+                        android:text="25 Maret 2019"
+                        android:textColor="@android:color/black"
+                        android:textSize="18sp" />
+
+                </RelativeLayout>
+
+            </androidx.cardview.widget.CardView>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="170dp"
+                    android:layout_height="250dp"
+                    android:layout_margin="15dp"
+                    android:clipToPadding="true"
+                    app:cardCornerRadius="20dp">
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        >
+
+                        <FrameLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent">
+                            <ImageView
+                                android:id="@+id/sportsImage"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:scaleType="fitXY"
+                                android:adjustViewBounds="true"
+                                android:src="@drawable/parangtritis" />
+                            <RelativeLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent">
+
+                                <TextView
+                                    android:id="@+id/tempat_1"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginLeft="10dp"
+                                    android:layout_marginTop="145dp"
+                                    android:text="Pantai Parangtritis"
+                                    android:textColor="@android:color/white"
+                                    android:textSize="16sp" />
+
+                                <ImageView
+                                    android:id="@+id/tanggal_1"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_below="@+id/tempat_1"
+                                    android:layout_marginLeft="10dp"
+                                    android:layout_marginTop="10dp"
+                                    android:drawablePadding="20dp"
+                                    android:textSize="16sp"
+                                    app:srcCompat="@drawable/ic_star_white" />
+
+                                <ImageView
+                                    android:id="@+id/star_2"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_below="@+id/tempat_1"
+                                    android:layout_marginLeft="0dp"
+                                    android:layout_marginTop="10dp"
+                                    android:layout_toRightOf="@+id/tanggal_1"
+                                    android:drawablePadding="20dp"
+                                    android:textSize="16sp"
+                                    app:srcCompat="@drawable/ic_star_white" />
+
+                                <ImageView
+                                    android:id="@+id/star_3"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_below="@+id/tempat_1"
+                                    android:layout_marginLeft="0dp"
+                                    android:layout_marginTop="10dp"
+                                    android:layout_toRightOf="@+id/star_2"
+                                    android:drawablePadding="20dp"
+                                    android:textSize="16sp"
+                                    app:srcCompat="@drawable/ic_star_white" />
+
+                                <ImageView
+                                    android:id="@+id/star_4"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_below="@+id/tempat_1"
+                                    android:layout_marginLeft="0dp"
+                                    android:layout_marginTop="10dp"
+                                    android:layout_toRightOf="@+id/star_3"
+                                    android:drawablePadding="20dp"
+                                    android:textSize="16sp"
+                                    app:srcCompat="@drawable/ic_star_white" />
+
+                                <ImageView
+                                    android:id="@+id/star_5"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_below="@+id/tempat_1"
+                                    android:layout_marginLeft="0dp"
+                                    android:layout_marginTop="10dp"
+                                    android:layout_toRightOf="@+id/star_4"
+                                    android:drawablePadding="20dp"
+                                    android:textSize="16sp"
+                                    app:srcCompat="@drawable/ic_star_border_white" />
+
+                                <TextView
+                                    android:id="@+id/txt_jarak"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_below="@id/star_2"
+                                    android:layout_marginLeft="10dp"
+                                    android:layout_marginTop="10dp"
+                                    android:drawableLeft="@drawable/ic_location"
+                                    android:drawablePadding="10dp"
+                                    android:text="5.0 KM"
+                                    android:textColor="@android:color/white"/>
+
+                            </RelativeLayout>
+                        </FrameLayout>
+                    </RelativeLayout>
+
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="170dp"
+                    android:layout_height="250dp"
+                    android:layout_marginTop="15dp"
+                    android:layout_marginBottom="15dp"
+                    android:layout_marginLeft="0dp"
+                    android:layout_marginRight="5dp"
+                    android:clipToPadding="true"
+                    app:cardCornerRadius="20dp">
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        >
+
+                        <FrameLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent">
+                            <ImageView
+                                android:id="@+id/sportsImage_2"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:scaleType="fitXY"
+                                android:adjustViewBounds="true"
+                                android:src="@drawable/prambanan" />
+                            <RelativeLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent">
+
+                                <TextView
+                                    android:id="@+id/tempat_2"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginLeft="10dp"
+                                    android:layout_marginTop="145dp"
+                                    android:text="Candi Prambanan"
+                                    android:textColor="@android:color/white"
+                                    android:textSize="16sp" />
+
+                                <ImageView
+                                    android:id="@+id/tanggal_2_1"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_below="@+id/tempat_2"
+                                    android:layout_marginLeft="10dp"
+                                    android:layout_marginTop="10dp"
+                                    android:drawablePadding="20dp"
+                                    android:textSize="16sp"
+                                    app:srcCompat="@drawable/ic_star_white" />
+
+                                <ImageView
+                                    android:id="@+id/star_2_2"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_below="@+id/tempat_2"
+                                    android:layout_marginLeft="0dp"
+                                    android:layout_marginTop="10dp"
+                                    android:layout_toRightOf="@+id/tanggal_2_1"
+                                    android:drawablePadding="20dp"
+                                    android:textSize="16sp"
+                                    app:srcCompat="@drawable/ic_star_white" />
+
+                                <ImageView
+                                    android:id="@+id/star_2_3"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_below="@+id/tempat_2"
+                                    android:layout_marginLeft="0dp"
+                                    android:layout_marginTop="10dp"
+                                    android:layout_toRightOf="@+id/star_2_2"
+                                    android:drawablePadding="20dp"
+                                    android:textSize="16sp"
+                                    app:srcCompat="@drawable/ic_star_white" />
+
+                                <ImageView
+                                    android:id="@+id/star_2_4"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_below="@+id/tempat_2"
+                                    android:layout_marginLeft="0dp"
+                                    android:layout_marginTop="10dp"
+                                    android:layout_toRightOf="@+id/star_2_3"
+                                    android:drawablePadding="20dp"
+                                    android:textSize="16sp"
+                                    app:srcCompat="@drawable/ic_star_white" />
+
+                                <ImageView
+                                    android:id="@+id/star_2_5"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_below="@+id/tempat_2"
+                                    android:layout_marginLeft="0dp"
+                                    android:layout_marginTop="10dp"
+                                    android:layout_toRightOf="@+id/star_2_4"
+                                    android:drawablePadding="20dp"
+                                    android:textSize="16sp"
+                                    app:srcCompat="@drawable/ic_star_border_white" />
+
+                                <TextView
+                                    android:id="@+id/txt_jarak_2"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_below="@id/star_2_2"
+                                    android:layout_marginLeft="10dp"
+                                    android:layout_marginTop="10dp"
+                                    android:drawableLeft="@drawable/ic_location"
+                                    android:drawablePadding="10dp"
+                                    android:text="15.0 KM"
+                                    android:textColor="@android:color/white"/>
+
+                            </RelativeLayout>
+                        </FrameLayout>
+                    </RelativeLayout>
+
+
+                </androidx.cardview.widget.CardView>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="170dp"
+                    android:layout_height="250dp"
+                    android:layout_margin="15dp"
+                    android:clipToPadding="true"
+                    app:cardCornerRadius="20dp">
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        >
+
+                        <FrameLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent">
+                            <ImageView
+                                android:id="@+id/sportsImage_3"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:scaleType="fitXY"
+                                android:adjustViewBounds="true"
+                                android:src="@drawable/malioboro_2" />
+                            <RelativeLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent">
+
+                                <TextView
+                                    android:id="@+id/tempat_3"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginLeft="10dp"
+                                    android:layout_marginTop="145dp"
+                                    android:text="Malioboro"
+                                    android:textColor="@android:color/white"
+                                    android:textSize="16sp" />
+
+                                <ImageView
+                                    android:id="@+id/tanggal_3_1"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_below="@+id/tempat_3"
+                                    android:layout_marginLeft="10dp"
+                                    android:layout_marginTop="10dp"
+                                    android:drawablePadding="20dp"
+                                    android:textSize="16sp"
+                                    app:srcCompat="@drawable/ic_star_white" />
+
+                                <ImageView
+                                    android:id="@+id/star_3_2"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_below="@+id/tempat_3"
+                                    android:layout_marginLeft="0dp"
+                                    android:layout_marginTop="10dp"
+                                    android:layout_toRightOf="@+id/tanggal_3_1"
+                                    android:drawablePadding="20dp"
+                                    android:textSize="16sp"
+                                    app:srcCompat="@drawable/ic_star_white" />
+
+                                <ImageView
+                                    android:id="@+id/star_3_3"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_below="@+id/tempat_3"
+                                    android:layout_marginLeft="0dp"
+                                    android:layout_marginTop="10dp"
+                                    android:layout_toRightOf="@+id/star_3_2"
+                                    android:drawablePadding="20dp"
+                                    android:textSize="16sp"
+                                    app:srcCompat="@drawable/ic_star_white" />
+
+                                <ImageView
+                                    android:id="@+id/star_3_4"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_below="@+id/tempat_3"
+                                    android:layout_marginLeft="0dp"
+                                    android:layout_marginTop="10dp"
+                                    android:layout_toRightOf="@+id/star_3_3"
+                                    android:drawablePadding="20dp"
+                                    android:textSize="16sp"
+                                    app:srcCompat="@drawable/ic_star_white" />
+
+                                <ImageView
+                                    android:id="@+id/star_3_5"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_below="@+id/tempat_3"
+                                    android:layout_marginLeft="0dp"
+                                    android:layout_marginTop="10dp"
+                                    android:layout_toRightOf="@+id/star_3_4"
+                                    android:drawablePadding="20dp"
+                                    android:textSize="16sp"
+                                    app:srcCompat="@drawable/ic_star_border_white" />
+
+                                <TextView
+                                    android:id="@+id/txt_jarak_3"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_below="@id/star_3_2"
+                                    android:layout_marginLeft="10dp"
+                                    android:layout_marginTop="10dp"
+                                    android:drawableLeft="@drawable/ic_location"
+                                    android:drawablePadding="10dp"
+                                    android:text="5.0 KM"
+                                    android:textColor="@android:color/white"/>
+
+                            </RelativeLayout>
+                        </FrameLayout>
+                    </RelativeLayout>
+
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="170dp"
+                    android:layout_height="250dp"
+                    android:layout_marginTop="15dp"
+                    android:layout_marginBottom="15dp"
+                    android:layout_marginLeft="0dp"
+                    android:layout_marginRight="5dp"
+                    android:clipToPadding="true"
+                    app:cardCornerRadius="20dp">
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        >
+
+                        <FrameLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent">
+                            <ImageView
+                                android:id="@+id/sportsImage_4"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:scaleType="fitXY"
+                                android:adjustViewBounds="true"
+                                android:src="@drawable/monjali" />
+                            <RelativeLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent">
+
+                                <TextView
+                                    android:id="@+id/tempat_4"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginLeft="10dp"
+                                    android:layout_marginTop="145dp"
+                                    android:text="Monjali"
+                                    android:textColor="@android:color/white"
+                                    android:textSize="16sp" />
+
+                                <ImageView
+                                    android:id="@+id/tanggal_4_1"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_below="@+id/tempat_4"
+                                    android:layout_marginLeft="10dp"
+                                    android:layout_marginTop="10dp"
+                                    android:drawablePadding="20dp"
+                                    android:textSize="16sp"
+                                    app:srcCompat="@drawable/ic_star_white" />
+
+                                <ImageView
+                                    android:id="@+id/star_4_2"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_below="@+id/tempat_4"
+                                    android:layout_marginLeft="0dp"
+                                    android:layout_marginTop="10dp"
+                                    android:layout_toRightOf="@+id/tanggal_4_1"
+                                    android:drawablePadding="20dp"
+                                    android:textSize="16sp"
+                                    app:srcCompat="@drawable/ic_star_white" />
+
+                                <ImageView
+                                    android:id="@+id/star_4_3"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_below="@+id/tempat_4"
+                                    android:layout_marginLeft="0dp"
+                                    android:layout_marginTop="10dp"
+                                    android:layout_toRightOf="@+id/star_4_2"
+                                    android:drawablePadding="20dp"
+                                    android:textSize="16sp"
+                                    app:srcCompat="@drawable/ic_star_white" />
+
+                                <ImageView
+                                    android:id="@+id/star_4_4"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_below="@+id/tempat_4"
+                                    android:layout_marginLeft="0dp"
+                                    android:layout_marginTop="10dp"
+                                    android:layout_toRightOf="@+id/star_4_3"
+                                    android:drawablePadding="20dp"
+                                    android:textSize="16sp"
+                                    app:srcCompat="@drawable/ic_star_white" />
+
+                                <ImageView
+                                    android:id="@+id/star_4_5"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_below="@+id/tempat_4"
+                                    android:layout_marginLeft="0dp"
+                                    android:layout_marginTop="10dp"
+                                    android:layout_toRightOf="@+id/star_4_4"
+                                    android:drawablePadding="20dp"
+                                    android:textSize="16sp"
+                                    app:srcCompat="@drawable/ic_star_border_white" />
+
+                                <TextView
+                                    android:id="@+id/txt_jarak_4"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_below="@id/star_4_2"
+                                    android:layout_marginLeft="10dp"
+                                    android:layout_marginTop="10dp"
+                                    android:drawableLeft="@drawable/ic_location"
+                                    android:drawablePadding="10dp"
+                                    android:text="15.0 KM"
+                                    android:textColor="@android:color/white"/>
+
+                            </RelativeLayout>
+                        </FrameLayout>
+                    </RelativeLayout>
+
+
+                </androidx.cardview.widget.CardView>
+
+            </LinearLayout>
+
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_gravity="bottom"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginBottom="29dp"
+                android:background="#1D3364"
+                android:baselineAligned="false"
+                android:drawableRight="@drawable/ic_arrow_forward_black_24dp"
+                android:paddingLeft="40dp"
+                android:paddingRight="40dp"
+                android:text="Selanjutnya"
+                android:textAllCaps="false"
+                android:textColor="#F7B640"
+                android:textSize="20sp" />
+
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>

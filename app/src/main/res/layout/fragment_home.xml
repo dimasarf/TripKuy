@@ -10,6 +10,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="0dp"
         android:paddingBottom="30dp">
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -84,10 +85,10 @@
                     android:layout_height="30dp"
                     android:layout_marginLeft="50dp"
                     android:layout_marginTop="170dp"
-                    android:background="@drawable/rounded_button"
+                    android:background="#1D3364"
                     android:text="Detail"
                     android:textAllCaps="false"
-                    android:textColor="@android:color/white" />
+                    android:textColor="#F7B640" />
 
 
             </FrameLayout>
@@ -98,18 +99,19 @@
                 android:layout_marginLeft="20dp"
                 android:layout_marginTop="30dp"
                 android:text="Rencana Kamu"
+                android:textColor="@android:color/black"
                 android:textSize="20sp"
-                app:fontFamily="@font/allerta"
-                android:textColor="@android:color/black"/>
+                app:fontFamily="@font/allerta" />
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                >
+                android:orientation="horizontal">
+
                 <FrameLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content">
+
                     <ImageView
                         android:layout_width="150dp"
                         android:layout_height="150dp"
@@ -117,15 +119,16 @@
                         android:layout_marginTop="10dp"
                         android:scaleType="fitXY"
                         android:src="@drawable/jakarta_2" />
+
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="40dp"
                         android:layout_marginTop="75dp"
                         android:text="JAKARTA"
-                        android:textSize="23sp"
                         android:textAlignment="center"
                         android:textColor="@android:color/white"
+                        android:textSize="23sp"
                         app:fontFamily="@font/allerta" />
 
                 </FrameLayout>
@@ -133,6 +136,7 @@
                 <FrameLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content">
+
                     <ImageView
                         android:layout_width="150dp"
                         android:layout_height="150dp"
@@ -140,21 +144,24 @@
                         android:layout_marginTop="10dp"
                         android:scaleType="fitXY"
                         android:src="@drawable/bali_2" />
+
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="53dp"
                         android:layout_marginTop="75dp"
                         android:text="BALI"
-                        android:textSize="23sp"
                         android:textAlignment="center"
                         android:textColor="@android:color/white"
+                        android:textSize="23sp"
                         app:fontFamily="@font/allerta" />
 
                 </FrameLayout>
+
                 <FrameLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content">
+
                     <ImageView
                         android:layout_width="150dp"
                         android:layout_height="150dp"
@@ -162,15 +169,16 @@
                         android:layout_marginTop="10dp"
                         android:scaleType="fitXY"
                         android:src="@drawable/bandung_2" />
+
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="35dp"
                         android:layout_marginTop="55dp"
                         android:text="BANDUNG"
-                        android:textSize="15sp"
                         android:textAlignment="center"
                         android:textColor="@android:color/white"
+                        android:textSize="15sp"
                         app:fontFamily="@font/allerta" />
 
                 </FrameLayout>
@@ -180,21 +188,21 @@
             <Button
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_gravity="bottom"
+                android:layout_marginLeft="20dp"
                 android:layout_marginTop="20dp"
                 android:layout_marginRight="20dp"
-                android:layout_marginLeft="20dp"
-                android:layout_gravity="bottom"
-                android:textColor="@android:color/white"
-                android:background="#95cefc"
-                android:text="Rencana Baru"
-                android:textAllCaps="false"
                 android:layout_marginBottom="29dp"
-                android:layout_alignParentBottom="true"
-                android:textSize="20sp"
-                android:drawableLeft="@drawable/add"
+                android:background="#1D3364"
+                android:baselineAligned="false"
+                android:drawableLeft="@drawable/ic_add_2"
                 android:paddingLeft="40dp"
                 android:paddingRight="40dp"
-                />
+                android:text="Rencana Baru"
+                android:textAllCaps="false"
+                android:textColor="#F7B640"
+                android:textSize="20sp" />
 
         </LinearLayout>
     </ScrollView>
