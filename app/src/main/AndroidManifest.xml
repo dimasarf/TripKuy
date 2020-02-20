@@ -10,7 +10,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".NewTripActivity"
+            android:name=".DetailTempatWisataActivity"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -18,15 +18,25 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="AIzaSyDuHtyd06Ghf-z9UGoC6GOMBcctUwupVuI" />
+
+        <activity
+            android:name=".DetailTripActivity"
+            android:theme="@style/AppTheme.NoActionBar">
+        </activity>
+        <activity
+            android:name=".NewTripActivity"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
         <activity
             android:name=".RecommendationActivity"
-            android:theme="@style/AppTheme.NoActionBar">
-
-        </activity>
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".Dashboard"
             android:label="@string/title_activity_dashboard"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".Pendaftaran"
             android:label="@string/title_activity_pendaftaran"
