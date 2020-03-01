@@ -184,6 +184,7 @@
                                 android:layout_height="match_parent"
                                 android:scaleType="fitXY"
                                 android:adjustViewBounds="true"
+                                android:onClick="getDetailDestination"
                                 android:src="@drawable/parangtritis" />
                             <RelativeLayout
                                 android:layout_width="match_parent"

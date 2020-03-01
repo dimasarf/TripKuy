@@ -1,6 +1,7 @@
 package com.example.tripkuy.registration;
 
 import android.content.Context;
+import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 
@@ -9,8 +10,12 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 
+import com.example.tripkuy.Dashboard;
+import com.example.tripkuy.Pendaftaran;
 import com.example.tripkuy.R;
+import com.example.tripkuy.interfaces.MoveFragmentListener;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -25,6 +30,9 @@ public class PickDestinationFragment extends Fragment {
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
+    MoveFragmentListener listener;
+
+    private Button btn_selesai,btnPrev;
 
     // TODO: Rename and change types of parameters
     private String mParam1;
@@ -67,7 +75,24 @@ public class PickDestinationFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_pick_destination, container, false);
+        final View rootView = inflater.inflate(R.layout.fragment_pick_destination, container, false);
+        btn_selesai = (Button) rootView.findViewById(R.id.btn_selesai);
+        btnPrev = (Button) rootView.findViewById(R.id.btn_prev);
+        btn_selesai.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View arg0) {
+                Intent intent = new Intent(getActivity(), Dashboard.class);
+                startActivity(intent);
+            }
+        });
+        btnPrev.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                listener.move(1);
+            }
+        });
+        return rootView;
     }
 
     // TODO: Rename method, update argument and hook method into UI event
@@ -82,9 +107,13 @@ public class PickDestinationFragment extends Fragment {
         super.onAttach(context);
         if (context instanceof OnFragmentInteractionListener) {
             mListener = (OnFragmentInteractionListener) context;
-        } else {
-//            throw new RuntimeException(context.toString()
-//                    + " must implement OnFragmentInteractionListener");
+        }
+        else if (context instanceof MoveFragmentListener) {
+            listener = (MoveFragmentListener) context;
+        }
+        else {
+            throw new RuntimeException(context.toString()
+                    + " must implement OnFragmentInteractionListener");
         }
     }
 

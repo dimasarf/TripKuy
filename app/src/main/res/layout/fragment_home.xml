@@ -9,7 +9,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="0dp"
-        android:paddingBottom="30dp">
+        android:paddingBottom="40dp">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -52,10 +52,10 @@
 
                 <ImageView
                     android:layout_width="match_parent"
-                    android:layout_height="200dp"
-                    android:layout_marginLeft="20dp"
+                    android:layout_height="300dp"
+                    android:layout_marginLeft="10dp"
                     android:layout_marginTop="30dp"
-                    android:layout_marginRight="20dp"
+                    android:layout_marginRight="10dp"
                     android:background="@drawable/rounded_image_view"
                     android:scaleType="fitXY"
                     android:src="@drawable/yogyakarta_2" />
@@ -67,7 +67,7 @@
                     android:layout_marginTop="60dp"
                     android:text="20 Maret 2020"
                     android:textColor="@android:color/white"
-                    android:textSize="15sp"
+                    android:textSize="18sp"
                     app:fontFamily="@font/roboto_light" />
 
                 <TextView
@@ -77,14 +77,14 @@
                     android:layout_marginTop="75dp"
                     android:text="Yogyakarta"
                     android:textColor="@android:color/white"
-                    android:textSize="18sp"
+                    android:textSize="25sp"
                     app:fontFamily="@font/allerta" />
 
                 <Button
                     android:layout_width="120dp"
                     android:layout_height="30dp"
                     android:layout_marginLeft="50dp"
-                    android:layout_marginTop="170dp"
+                    android:layout_marginTop="250dp"
                     android:background="#1D3364"
                     android:text="Detail"
                     android:textAllCaps="false"
@@ -113,8 +113,8 @@
                     android:layout_height="wrap_content">
 
                     <ImageView
-                        android:layout_width="150dp"
-                        android:layout_height="150dp"
+                        android:layout_width="120dp"
+                        android:layout_height="120dp"
                         android:layout_marginLeft="20dp"
                         android:layout_marginTop="10dp"
                         android:scaleType="fitXY"
@@ -124,11 +124,11 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="40dp"
-                        android:layout_marginTop="75dp"
+                        android:layout_marginTop="65dp"
                         android:text="JAKARTA"
                         android:textAlignment="center"
                         android:textColor="@android:color/white"
-                        android:textSize="23sp"
+                        android:textSize="15sp"
                         app:fontFamily="@font/allerta" />
 
                 </FrameLayout>
@@ -138,8 +138,8 @@
                     android:layout_height="wrap_content">
 
                     <ImageView
-                        android:layout_width="150dp"
-                        android:layout_height="150dp"
+                        android:layout_width="120dp"
+                        android:layout_height="120dp"
                         android:layout_marginLeft="10dp"
                         android:layout_marginTop="10dp"
                         android:scaleType="fitXY"
@@ -148,8 +148,8 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="53dp"
-                        android:layout_marginTop="75dp"
+                        android:layout_marginLeft="40dp"
+                        android:layout_marginTop="65dp"
                         android:text="BALI"
                         android:textAlignment="center"
                         android:textColor="@android:color/white"
@@ -163,9 +163,9 @@
                     android:layout_height="wrap_content">
 
                     <ImageView
-                        android:layout_width="150dp"
-                        android:layout_height="150dp"
-                        android:layout_marginLeft="20dp"
+                        android:layout_width="120dp"
+                        android:layout_height="120dp"
+                        android:layout_marginLeft="10dp"
                         android:layout_marginTop="10dp"
                         android:scaleType="fitXY"
                         android:src="@drawable/bandung_2" />
@@ -173,8 +173,8 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="35dp"
-                        android:layout_marginTop="55dp"
+                        android:layout_marginLeft="40dp"
+                        android:layout_marginTop="65dp"
                         android:text="BANDUNG"
                         android:textAlignment="center"
                         android:textColor="@android:color/white"
@@ -186,6 +186,7 @@
 
 
             <Button
+                android:id="@+id/btn_trip_baru"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_alignParentBottom="true"

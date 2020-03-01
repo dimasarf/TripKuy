@@ -9,8 +9,10 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 
 import com.example.tripkuy.R;
+import com.example.tripkuy.interfaces.MoveFragmentListener;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -31,6 +33,8 @@ public class GenderFragment extends Fragment {
     private String mParam2;
 
     private OnFragmentInteractionListener mListener;
+    Button btnNext, btnPrev;
+    MoveFragmentListener listener;
 
     public GenderFragment() {
         // Required empty public constructor
@@ -67,7 +71,22 @@ public class GenderFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_gender, container, false);
+        View root = inflater.inflate(R.layout.fragment_gender, container, false);
+        btnNext = root.findViewById(R.id.btn_next);
+        btnPrev = root.findViewById(R.id.btn_prev);
+        btnNext.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                listener.move(2);
+            }
+        });
+        btnPrev.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                listener.move(0);
+            }
+        });
+        return root;
     }
 
     // TODO: Rename method, update argument and hook method into UI event
@@ -82,9 +101,13 @@ public class GenderFragment extends Fragment {
         super.onAttach(context);
         if (context instanceof OnFragmentInteractionListener) {
             mListener = (OnFragmentInteractionListener) context;
-        } else {
-//            throw new RuntimeException(context.toString()
-//                    + " must implement OnFragmentInteractionListener");
+        }
+        else if (context instanceof MoveFragmentListener) {
+            listener = (MoveFragmentListener) context;
+        }
+        else {
+            throw new RuntimeException(context.toString()
+                    + " must implement OnFragmentInteractionListener");
         }
     }
 

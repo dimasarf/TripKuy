@@ -1,15 +1,18 @@
 package com.example.tripkuy.registration;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProviders;
 
 import com.example.tripkuy.R;
+import com.example.tripkuy.interfaces.MoveFragmentListener;
 import com.example.tripkuy.ui.main.PageViewModel;
 
 /**
@@ -18,8 +21,10 @@ import com.example.tripkuy.ui.main.PageViewModel;
 public class UsiaFragment extends Fragment {
 
     private static final String ARG_SECTION_NUMBER = "section_number";
+    MoveFragmentListener listener;
 
     private PageViewModel pageViewModel;
+    Button btnNext;
 
     public static UsiaFragment newInstance(int index) {
         UsiaFragment fragment = new UsiaFragment();
@@ -28,6 +33,17 @@ public class UsiaFragment extends Fragment {
         fragment.setArguments(bundle);
         return fragment;
     }
+
+    @Override
+    public void onAttach(@NonNull Context context) {
+        super.onAttach(context);
+        if (context instanceof MoveFragmentListener) {
+            listener = (MoveFragmentListener) context;
+        } else {
+            throw new RuntimeException(context.toString() + "Must implement listener sign up data");
+        }
+    }
+
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -45,6 +61,13 @@ public class UsiaFragment extends Fragment {
             @NonNull LayoutInflater inflater, ViewGroup container,
             Bundle savedInstanceState) {
         View root = inflater.inflate(R.layout.fragment_usia, container, false);
+        btnNext = root.findViewById(R.id.btn_next);
+        btnNext.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                listener.move(1);
+            }
+        });
         return root;
     }
 }
