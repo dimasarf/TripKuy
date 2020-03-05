@@ -11,11 +11,13 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.Toast;
 
 import com.example.tripkuy.Dashboard;
 import com.example.tripkuy.Pendaftaran;
 import com.example.tripkuy.R;
 import com.example.tripkuy.interfaces.MoveFragmentListener;
+import com.example.tripkuy.models.Pengguna;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -37,6 +39,7 @@ public class PickDestinationFragment extends Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
+    Pengguna pengguna;
 
     private OnFragmentInteractionListener mListener;
 
@@ -82,8 +85,10 @@ public class PickDestinationFragment extends Fragment {
 
             @Override
             public void onClick(View arg0) {
-                Intent intent = new Intent(getActivity(), Dashboard.class);
-                startActivity(intent);
+                Toast.makeText(getActivity(),
+                        String.valueOf(pengguna.getNama()), Toast.LENGTH_SHORT).show();
+//                Intent intent = new Intent(getActivity(), Dashboard.class);
+//                startActivity(intent);
             }
         });
         btnPrev.setOnClickListener(new View.OnClickListener() {
@@ -115,6 +120,10 @@ public class PickDestinationFragment extends Fragment {
             throw new RuntimeException(context.toString()
                     + " must implement OnFragmentInteractionListener");
         }
+    }
+
+    public void retrieve_pengguna(Pengguna _pengguna){
+        pengguna = _pengguna;
     }
 
     @Override

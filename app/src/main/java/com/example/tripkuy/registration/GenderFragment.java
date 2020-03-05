@@ -10,9 +10,15 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
+import android.widget.Toast;
 
 import com.example.tripkuy.R;
+import com.example.tripkuy.interfaces.AgeListener;
+import com.example.tripkuy.interfaces.FragmentGenderListener;
 import com.example.tripkuy.interfaces.MoveFragmentListener;
+import com.example.tripkuy.models.Pengguna;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -34,21 +40,20 @@ public class GenderFragment extends Fragment {
 
     private OnFragmentInteractionListener mListener;
     Button btnNext, btnPrev;
-    MoveFragmentListener listener;
+    private RadioGroup radioGroup_gender;
+    private RadioButton radioButton;
+
+    MoveFragmentListener movementListener;
+    FragmentGenderListener genderListener;
+    Pengguna pengguna;
+
+
+
+
 
     public GenderFragment() {
         // Required empty public constructor
     }
-
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment GenderFragment.
-     */
-    // TODO: Rename and change types and number of parameters
     public static GenderFragment newInstance(String param1, String param2) {
         GenderFragment fragment = new GenderFragment();
         Bundle args = new Bundle();
@@ -72,18 +77,37 @@ public class GenderFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View root = inflater.inflate(R.layout.fragment_gender, container, false);
+        pengguna = new Pengguna();
         btnNext = root.findViewById(R.id.btn_next);
         btnPrev = root.findViewById(R.id.btn_prev);
+        radioGroup_gender = root.findViewById(R.id.radio_group_gender);
+        final String[] jenis_kelamin = {""};
+        radioGroup_gender.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener()
+        {
+            public void onCheckedChanged(RadioGroup group, int checkedId) {
+                // checkedId is the RadioButton selected
+
+                switch(checkedId) {
+                    case R.id.radio_laki:
+                        jenis_kelamin[0] = "Laki-Laki";
+                        break;
+                    case R.id.radio_perempuan:
+                        jenis_kelamin[0] = "Perempuan";
+                        break;
+                }
+            }
+        });
         btnNext.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                listener.move(2);
+                genderListener.onFragmentGenderListener(jenis_kelamin[0]);
+                movementListener.move(2);
             }
         });
         btnPrev.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                listener.move(0);
+                movementListener.move(0);
             }
         });
         return root;
@@ -103,7 +127,8 @@ public class GenderFragment extends Fragment {
             mListener = (OnFragmentInteractionListener) context;
         }
         else if (context instanceof MoveFragmentListener) {
-            listener = (MoveFragmentListener) context;
+            genderListener = (FragmentGenderListener) context;
+            movementListener = (MoveFragmentListener) context;
         }
         else {
             throw new RuntimeException(context.toString()
@@ -116,6 +141,8 @@ public class GenderFragment extends Fragment {
         super.onDetach();
         mListener = null;
     }
+
+
 
     /**
      * This interface must be implemented by activities that contain this

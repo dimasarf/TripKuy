@@ -45,9 +45,11 @@
         app:fontFamily="@font/allerta" />
 
     <RadioGroup
+        android:id="@+id/radio_group_gender"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
         <RadioButton
+            android:id="@+id/radio_laki"
             android:layout_width="match_parent"
             android:layout_height="45dp"
             android:layout_marginTop="15dp"
@@ -59,6 +61,7 @@
             android:textColor="#F7B640"
             android:text="Laki - Laki"/>
         <RadioButton
+            android:id="@+id/radio_perempuan"
             android:layout_width="match_parent"
             android:layout_height="45dp"
             android:layout_marginTop="10dp"
