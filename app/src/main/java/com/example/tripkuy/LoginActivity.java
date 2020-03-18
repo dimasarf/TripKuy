@@ -63,7 +63,7 @@ public class LoginActivity extends AppCompatActivity {
         // the GoogleSignInAccount will be non-null.
         GoogleSignInAccount account = GoogleSignIn.getLastSignedInAccount(this);
         if (account != null) {
-//            startActivity(new Intent(LoginActivity.this, Dashboard.class));
+            startActivity(new Intent(LoginActivity.this, Dashboard.class));
         }
         super.onStart();
     }

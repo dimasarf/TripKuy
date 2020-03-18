@@ -4,16 +4,12 @@ import android.os.Bundle;
 import android.view.MenuItem;
 
 import com.example.tripkuy.trips.TripsFragment;
-import com.example.tripkuy.ui.home.HomeFragment;
+import com.example.tripkuy.home.HomeFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
-import androidx.navigation.NavController;
-import androidx.navigation.Navigation;
-import androidx.navigation.ui.AppBarConfiguration;
-import androidx.navigation.ui.NavigationUI;
 
 public class Dashboard extends AppCompatActivity {
 

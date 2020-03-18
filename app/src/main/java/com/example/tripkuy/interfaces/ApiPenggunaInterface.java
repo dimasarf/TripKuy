@@ -14,14 +14,12 @@ public interface ApiPenggunaInterface {
 
     @FormUrlEncoded
     @POST("save_pengguna.php")
-    Call<Pengguna> saveNote(
-            @Field("title") String title,
-            @Field("note") String note,
-            @Field("color") int color
+    Call<Pengguna> savePengguna(
+            @Field("nama") String nama,
+            @Field("usia") int usia,
+            @Field("email") String email,
+            @Field("gender") String gender
     );
-
-    @GET("notes.php")
-    Call<List<Pengguna>> getNotes();
 
     @FormUrlEncoded
     @POST("update.php")

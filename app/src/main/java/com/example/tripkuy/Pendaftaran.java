@@ -4,6 +4,7 @@ import android.app.FragmentManager;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Toast;
 
 import androidx.viewpager.widget.ViewPager;
 import androidx.appcompat.app.AppCompatActivity;
@@ -34,7 +35,7 @@ public class Pendaftaran extends AppCompatActivity implements MoveFragmentListen
         pengguna = new Pengguna();
         pengguna.setNama(nama);
         pengguna.setEmail(email);
-        pengguna.setId_google(id_google);
+
         TabLayout tabs = findViewById(R.id.tabs);
         tabs.setVisibility(View.GONE);
         tabs.setupWithViewPager(viewPager);
@@ -51,13 +52,15 @@ public class Pendaftaran extends AppCompatActivity implements MoveFragmentListen
         viewPager.setCurrentItem(position);
     }
 
+
+
     @Override
     public void ageListener(int age) {
-        pengguna.setUmur(age);
+        pengguna.setUsia(age);
     }
 
     @Override
     public void onFragmentGenderListener(String gender) {
-        pengguna.setJenis_kelamin(gender);
+        pengguna.setGender(gender);
     }
 }

@@ -1,25 +1,23 @@
 package com.example.tripkuy.models;
 
+import com.google.gson.annotations.Expose;
+import com.google.gson.annotations.SerializedName;
+
 public class Pengguna {
-    private String nama, email, jenis_kelamin, id_google;
-    private int umur;
+    @Expose
+    @SerializedName("nama") private String nama;
+    @Expose
+    @SerializedName("usia") private int usia;
+    @Expose
+    @SerializedName("email") private String email;
+    @Expose
+    @SerializedName("gender") private String gender;
+    @Expose
+    @SerializedName("success") private Boolean success;
+    @Expose
+    @SerializedName("message") private String message;
 
     public Pengguna() {
-    }
-
-    public String getId_google() {
-        return id_google;
-    }
-
-    public void setId_google(String id_google) {
-        this.id_google = id_google;
-    }
-
-    public Pengguna(String nama, String email, String jenis_kelamin, int umur) {
-        this.nama = nama;
-        this.email = email;
-        this.jenis_kelamin = jenis_kelamin;
-        this.umur = umur;
     }
 
     public String getNama() {
@@ -30,6 +28,14 @@ public class Pengguna {
         this.nama = nama;
     }
 
+    public int getUsia() {
+        return usia;
+    }
+
+    public void setUsia(int usia) {
+        this.usia = usia;
+    }
+
     public String getEmail() {
         return email;
     }
@@ -38,19 +44,17 @@ public class Pengguna {
         this.email = email;
     }
 
-    public String getJenis_kelamin() {
-        return jenis_kelamin;
+    public String getGender() {
+        return gender;
     }
 
-    public void setJenis_kelamin(String jenis_kelamin) {
-        this.jenis_kelamin = jenis_kelamin;
+    public void setGender(String gender) {
+        this.gender = gender;
     }
-
-    public int getUmur() {
-        return umur;
+    public Boolean getSuccess() {
+        return success;
     }
-
-    public void setUmur(int umur) {
-        this.umur = umur;
+    public String getMessage() {
+        return message;
     }
 }
