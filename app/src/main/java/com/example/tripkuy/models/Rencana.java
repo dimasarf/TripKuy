@@ -5,13 +5,19 @@ import com.google.gson.annotations.SerializedName;
 
 public class Rencana {
     @Expose
-    @SerializedName("id_pengguna") private int nama;
+    @SerializedName("id_pengguna") private int id_pengguna;
     @Expose
     @SerializedName("tempat") private String tempat;
     @Expose
     @SerializedName("tanggal_mulai") private String tanggal_mulai;
     @Expose
     @SerializedName("tanggal_akhir") private String tanggal_akhir;
+    @Expose
+    @SerializedName("nama") private String nama;
+    @Expose
+    @SerializedName("kota") private String kota;
+    @Expose
+    @SerializedName("drawable") private String drawable;
     @Expose
     @SerializedName("success") private Boolean success;
     @Expose
@@ -20,12 +26,24 @@ public class Rencana {
     public Rencana() {
     }
 
+    public int getId_pengguna() {
+        return id_pengguna;
+    }
+
+    public String getDrawable() {
+        return drawable;
+    }
+
+    public String getKota() {
+        return kota;
+    }
+
     public int getNama() {
-        return nama;
+        return id_pengguna;
     }
 
     public void setNama(int nama) {
-        this.nama = nama;
+        this.id_pengguna = nama;
     }
 
     public String getTempat() {

@@ -68,8 +68,6 @@ public class RecommendationActivity extends AppCompatActivity implements TempatW
 
 
 
-
-
     }
 
     public void getDetailDestination(View view) {
@@ -77,7 +75,6 @@ public class RecommendationActivity extends AppCompatActivity implements TempatW
         String personEmail = account.getEmail();
         AddRencana addRencana = new AddRencana(this, selectedTempatWisatas,personEmail, mTanggalMulai.getText().toString(), mTanggalAkhir.getText().toString());
         addRencana.execute();
-        Log.d("KONTOL",personEmail);
     }
 
     @Override
@@ -87,7 +84,9 @@ public class RecommendationActivity extends AppCompatActivity implements TempatW
         for (TempatWisata item : tempatWisatas) {
             int resId = getResId(item.getDrawable(), R.drawable.class);
             recommendationItems.add(new RecommendationItem(resId, item.getNama(), "5 K.M"));
+            Log.d("KONTOLLLL", item.getNama());
         }
+
         mRecyclerView = findViewById(R.id.recycler_recomendation);
         mRecyclerView.setHasFixedSize(true);
         mLayoutManager = new LinearLayoutManager(this);
