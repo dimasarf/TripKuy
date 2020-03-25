@@ -34,13 +34,20 @@ import java.util.List;
 public class RecommendationActivity extends AppCompatActivity implements TempatWisataView  {
     String durasi, tgl_awal, tgl_akhir, kegiatan, partner;
     TextView mDurasi, mTanggalMulai, mTanggalAkhir;
+
     private RecyclerView mRecyclerView;
     private RecommendationAdapter mAdapter;
     private RecyclerView.LayoutManager mLayoutManager;
+
     TempatWisataHandler tempatWisataHandler;
     List<TempatWisata> tempatWisatas;
     ArrayList<TempatWisata> selectedTempatWisatas = new ArrayList<>();
     ArrayList<RecommendationItem> recommendationItems;
+
+    public static final String TGLAWAL = "TGLAWAL";
+    public static final String TGLAKHIR = "TGLAKHIR";
+    public static final String EMAIL = "EMAIL";
+    public static final String SELECTEDTEMPATWISATA = "TEMPATPILIHAN";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -73,18 +80,21 @@ public class RecommendationActivity extends AppCompatActivity implements TempatW
     public void getDetailDestination(View view) {
         GoogleSignInAccount account = GoogleSignIn.getLastSignedInAccount(this);
         String personEmail = account.getEmail();
-        AddRencana addRencana = new AddRencana(this, selectedTempatWisatas,personEmail, mTanggalMulai.getText().toString(), mTanggalAkhir.getText().toString());
-        addRencana.execute();
+        Intent intent = new Intent(this, TripIteneraryActivity.class);
+        intent.putExtra(TGLAWAL, mTanggalMulai.getText().toString());
+        intent.putExtra(TGLAKHIR, mTanggalAkhir.getText().toString());
+        intent.putExtra(EMAIL, personEmail);
+        intent.putParcelableArrayListExtra(SELECTEDTEMPATWISATA, selectedTempatWisatas);
+        startActivity(intent);
     }
 
     @Override
-    public void onGetResult(List<TempatWisata> tempatWisatas) {
+    public void onGetResult(final List<TempatWisata> tempatWisatas) {
         this.tempatWisatas = tempatWisatas;
         recommendationItems = new ArrayList<>();
         for (TempatWisata item : tempatWisatas) {
             int resId = getResId(item.getDrawable(), R.drawable.class);
-            recommendationItems.add(new RecommendationItem(resId, item.getNama(), "5 K.M"));
-            Log.d("KONTOLLLL", item.getNama());
+            recommendationItems.add(new RecommendationItem(resId, item.getNama(), "5 K.M", item.getDrawable()));
         }
 
         mRecyclerView = findViewById(R.id.recycler_recomendation);
@@ -103,7 +113,7 @@ public class RecommendationActivity extends AppCompatActivity implements TempatW
 
             @Override
             public void onSelect(int position) {
-                selectedTempatWisatas.add(new TempatWisata(recommendationItems.get(position).getName()));
+                selectedTempatWisatas.add(new TempatWisata(recommendationItems.get(position).getName(), recommendationItems.get(position).getImageString()));
                 Log.d("TEST",recommendationItems.get(position).getName());
             }
         });
