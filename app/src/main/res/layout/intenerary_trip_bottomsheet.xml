@@ -65,6 +65,7 @@
                             android:paddingBottom="40dp">
 
                             <TextView
+                                android:id="@+id/hari"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_gravity="center"
@@ -74,11 +75,22 @@
                                 android:textSize="20sp" />
 
                             <TextView
-                                android:id="@+id/tanggal"
+                                android:id="@+id/waktu"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_gravity="center"
-                                android:drawableLeft="@drawable/ic_date"
+                                android:drawableLeft="@drawable/ic_access_time_grey24dp"
+                                android:drawablePadding="10dp"
+                                android:hint="20 Maret 2020 - 25 Maret 2020"
+                                android:textColor="@android:color/black"
+                                android:textSize="15sp" />
+
+                            <TextView
+                                android:id="@+id/jarak"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:drawableLeft="@drawable/ic_my_location_grey2_24dp"
                                 android:drawablePadding="10dp"
                                 android:hint="20 Maret 2020 - 25 Maret 2020"
                                 android:textColor="@android:color/black"
@@ -109,15 +121,7 @@
 
 
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="20dp"
-                        android:layout_marginTop="5dp"
-                        android:text="Hari Pertama"
-                        android:textColor="@android:color/black"
-                        android:textSize="20sp"
-                        app:fontFamily="@font/allerta" />
+
 
                     <androidx.recyclerview.widget.RecyclerView
                         android:id="@+id/recycler_detail_trips"

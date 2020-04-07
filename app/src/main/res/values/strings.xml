@@ -151,4 +151,5 @@
     <string name="dummy_location_address">Jl. Asia Afrika no. 14, Bandung</string>
     <string name="summary_trip_info">Ringkasan Informasi Perjalanan</string>
     <string name="textview_origin_place">Lokasi Menginap</string>
+    <string name="title_activity_trip_summary">TripSummaryActivity</string>
 </resources>

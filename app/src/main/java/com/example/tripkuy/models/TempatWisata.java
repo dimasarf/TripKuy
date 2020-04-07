@@ -11,11 +11,17 @@ public class TempatWisata implements Parcelable {
     @SerializedName("nama") private String nama;
     @Expose
     @SerializedName("drawable") private String drawable;
+    @Expose
+    @SerializedName("latitude") private String latitude;
+    @Expose
+    @SerializedName("longitude") private String longitude;
     private int image;
 
     public TempatWisata(Parcel in) {
         nama = in.readString();
         drawable = in.readString();
+        latitude = in.readString();
+        longitude = in.readString();
     }
 
     public String getNama() {
@@ -24,6 +30,14 @@ public class TempatWisata implements Parcelable {
 
     public String getDrawable() {
         return drawable;
+    }
+
+    public String getLatitude() {
+        return latitude;
+    }
+
+    public String getLongitude() {
+        return longitude;
     }
 
     public TempatWisata(String nama) {
@@ -40,6 +54,13 @@ public class TempatWisata implements Parcelable {
         this.drawable = drawable;
     }
 
+    public TempatWisata(String nama, String drawable, String latitude, String longitude) {
+        this.nama = nama;
+        this.drawable = drawable;
+        this.latitude = latitude;
+        this.longitude = longitude;
+    }
+
     public int getImage() {
         return image;
     }
@@ -53,6 +74,8 @@ public class TempatWisata implements Parcelable {
     public void writeToParcel(Parcel parcel, int i) {
         parcel.writeString(nama);
         parcel.writeString(drawable);
+        parcel.writeString(latitude);
+        parcel.writeString(longitude);
     }
 
     public static final Parcelable.Creator<TempatWisata> CREATOR = new Parcelable.Creator<TempatWisata>() {

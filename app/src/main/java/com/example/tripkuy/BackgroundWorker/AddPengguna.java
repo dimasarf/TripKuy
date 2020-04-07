@@ -55,6 +55,7 @@ public class AddPengguna extends AsyncTask<Void, Void, Void> {
                 progressDialog.dismiss();
                 if(response.isSuccessful() && response.body() != null){
                     Boolean success = response.body().getSuccess();
+
                     if(success){
                         String inserted_id = response.body().getMessage();
                         AddPreferensi addPreferensi = new AddPreferensi(context, listPreferensi, inserted_id);

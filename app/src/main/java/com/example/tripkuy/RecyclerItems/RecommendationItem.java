@@ -3,6 +3,8 @@ package com.example.tripkuy.RecyclerItems;
 public class RecommendationItem {
     private int image;
     private String name, jarak, imageString;
+    private String latitude;
+    private String longitude;
 
     public RecommendationItem(int image, String name, String jarak) {
         this.image = image;
@@ -15,6 +17,23 @@ public class RecommendationItem {
         this.name = name;
         this.jarak = jarak;
         this.imageString = imageString;
+    }
+
+    public RecommendationItem(int resId, String nama, String s, String drawable, String latitude, String longitude) {
+        this.image = resId;
+        this.name = nama;
+        this.jarak = s;
+        this.imageString = drawable;
+        this.latitude = latitude;
+        this.longitude = longitude;
+    }
+
+    public String getLatitude() {
+        return latitude;
+    }
+
+    public String getLongitude() {
+        return longitude;
     }
 
     public int getImage() {

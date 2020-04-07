@@ -23,10 +23,28 @@
                 android:layout_marginRight="20dp"
                 app:cardBackgroundColor="#F7B640"
                 app:cardCornerRadius="10dp">
+
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"
+                        android:background="@android:color/white"/>
+                    <fragment android:id="@+id/autocomplete_fragment"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:name="com.google.android.libraries.places.widget.AutocompleteSupportFragment"
+
+                        />
+                </FrameLayout>
+
                 <RelativeLayout
+                    android:layout_marginTop="40dp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:paddingBottom="20dp">
+
 
                     <TextView
                         android:id="@+id/lbl_tanggal_awal"

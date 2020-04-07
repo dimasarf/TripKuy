@@ -13,6 +13,7 @@ import com.example.tripkuy.BackgroundWorker.AddRencana;
 import com.example.tripkuy.RecyclerAdapter.DetailTripsAdapter;
 import com.example.tripkuy.RecyclerAdapter.RecommendationAdapter;
 import com.example.tripkuy.RecyclerItems.DetailTripItem;
+import com.example.tripkuy.interfaces.OnTaskReadyCallback;
 import com.example.tripkuy.models.TempatWisata;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
@@ -23,7 +24,7 @@ import com.google.android.gms.maps.model.LatLng;
 import java.lang.reflect.Field;
 import java.util.ArrayList;
 
-public class DetailTripActivity extends AppCompatActivity implements OnMapReadyCallback {
+public class DetailTripActivity extends AppCompatActivity implements OnMapReadyCallback, OnTaskReadyCallback {
     String tgl_awal, tgl_akhir, email;
     ArrayList<TempatWisata> selectedTempatWisatas = new ArrayList<>();
     private MapView mapView;
@@ -137,5 +138,10 @@ public class DetailTripActivity extends AppCompatActivity implements OnMapReadyC
         gmap.setMinZoomPreference(12);
         LatLng ny = new LatLng(40.7143528, -74.0059731);
         gmap.moveCamera(CameraUpdateFactory.newLatLng(ny));
+    }
+
+    @Override
+    public void onTaskDone(Object... values) {
+
     }
 }
