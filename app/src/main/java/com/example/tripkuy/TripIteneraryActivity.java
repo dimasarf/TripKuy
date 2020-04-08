@@ -101,7 +101,7 @@ public class TripIteneraryActivity extends FragmentActivity implements OnMapRead
         map.addMarker(new
                 MarkerOptions().position(
                         new LatLng(penginapanLat, penginapanLong))
-                .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_GREEN))
+                .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_BLUE))
         );
         for (TempatWisata tempatWisata: selectedTempatWisatas) {
             Log.d("KOORDINAT", tempatWisata.getLatitude() + " - "+ tempatWisata.getLongitude());
@@ -118,7 +118,7 @@ public class TripIteneraryActivity extends FragmentActivity implements OnMapRead
         mRecyclerView = findViewById(R.id.recycler_detail_trips);
         mRecyclerView.setHasFixedSize(false);
         mLayoutManager = new LinearLayoutManager(this);
-        mAdapter = new DetailTripsAdapter(detailTripItems);
+        mAdapter = new DetailTripsAdapter(detailTripItems, this);
         mRecyclerView.setLayoutManager(mLayoutManager);
         mRecyclerView.setAdapter(mAdapter);
     }

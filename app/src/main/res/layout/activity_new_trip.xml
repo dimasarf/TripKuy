@@ -129,132 +129,94 @@
                         android:textColor="@android:color/white"
                         android:textSize="15sp" />
 
-                    <androidx.cardview.widget.CardView
-                        android:id="@+id/card_keluarga"
+                    <RadioGroup
+                        android:id="@+id/radio_group_pengunjung"
                         android:layout_below="@+id/lbl_tempat"
-                        android:layout_width="160dp"
-                        android:layout_height="40dp"
-                        android:layout_marginLeft="15dp"
-                        android:layout_marginTop="5dp"
-                        android:layout_marginRight="5dp"
-                        android:clipToPadding="true"
-                        android:background="#f5f5f5"
-                        app:cardCornerRadius="10dp">
-                        <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+                        <RadioButton
+                            android:id="@+id/keluarga"
+                            android:onClick="checkBoxPartnerOnClicked"
                             android:layout_width="match_parent"
-                            android:layout_height="match_parent">
-
-                            <CheckBox
-                                android:id="@+id/keluarga"
-                                android:onClick="checkBoxPartnerOnClicked"
-                                android:layout_width="match_parent"
-                                android:layout_height="match_parent"
-                                android:background="@drawable/checkboxstyle_2"
-                                android:text="Keluarga"
-                                android:gravity="center"
-                                android:button="@android:color/transparent"
-                                android:paddingLeft="5dp"
-                                android:textColor="#F7B640"
-                                android:textSize="15sp" />
-                        </RelativeLayout>
-
-                    </androidx.cardview.widget.CardView>
-
-
-
-                    <androidx.cardview.widget.CardView
-                        android:id="@+id/card_teman"
-                        android:layout_below="@+id/lbl_tempat"
-                        android:layout_toRightOf="@id/card_keluarga"
-                        android:layout_width="160dp"
-                        android:layout_height="40dp"
-                        android:layout_marginTop="5dp"
-                        android:layout_marginRight="5dp"
-                        android:clipToPadding="true"
-                        android:background="#f5f5f5"
-                        app:cardCornerRadius="10dp">
-                        <RelativeLayout
+                            android:layout_height="40dp"
+                            android:background="@drawable/circleradiobutton2"
+                            android:text="Keluarga"
+                            android:layout_marginLeft="50dp"
+                            android:layout_marginRight="50dp"
+                            android:gravity="center"
+                            android:button="@android:color/transparent"
+                            android:paddingLeft="5dp"
+                            android:textColor="#F7B640"
+                            android:textSize="15sp" />
+                        <RadioButton
+                            android:id="@+id/teman"
+                            android:layout_toRightOf="@+id/keluarga"
                             android:layout_width="match_parent"
-                            android:layout_height="match_parent">
-
-                            <CheckBox
-                                android:id="@+id/teman"
-                                android:layout_width="match_parent"
-                                android:layout_height="match_parent"
-                                android:onClick="checkBoxPartnerOnClicked"
-                                android:background="@drawable/checkboxstyle_2"
-                                android:text="Teman"
-                                android:gravity="center"
-                                android:button="@android:color/transparent"
-                                android:paddingLeft="5dp"
-                                android:textColor="#F7B640"
-                                android:textSize="15sp" />
-                        </RelativeLayout>
-
-                    </androidx.cardview.widget.CardView>
-
-                    <androidx.cardview.widget.CardView
-                        android:id="@+id/card_pasangan"
-                        android:layout_below="@+id/card_keluarga"
-                        android:layout_marginLeft="15dp"
-                        android:layout_width="160dp"
-                        android:layout_height="40dp"
-                        android:layout_marginTop="5dp"
-                        android:clipToPadding="true"
-                        android:background="#f5f5f5"
-                        app:cardCornerRadius="10dp">
-                        <RelativeLayout
+                            android:layout_height="40dp"
+                            android:onClick="checkBoxPartnerOnClicked"
+                            android:background="@drawable/circleradiobutton2"
+                            android:layout_marginTop="5dp"
+                            android:layout_marginLeft="50dp"
+                            android:layout_marginRight="50dp"
+                            android:text="Teman"
+                            android:gravity="center"
+                            android:button="@android:color/transparent"
+                            android:paddingLeft="5dp"
+                            android:textColor="#F7B640"
+                            android:textSize="15sp" />
+                        <RadioButton
+                            android:id="@+id/pasangan"
+                            android:onClick="checkBoxPartnerOnClicked"
                             android:layout_width="match_parent"
-                            android:layout_height="match_parent">
-
-                            <CheckBox
-                                android:id="@+id/pasangan"
-                                android:layout_width="match_parent"
-                                android:layout_height="match_parent"
-                                android:onClick="checkBoxPartnerOnClicked"
-                                android:background="@drawable/checkboxstyle_2"
-                                android:text="Pasangan"
-                                android:gravity="center"
-                                android:button="@android:color/transparent"
-                                android:paddingLeft="5dp"
-                                android:textColor="#F7B640"
-                                android:textSize="15sp" />
-                        </RelativeLayout>
-
-                    </androidx.cardview.widget.CardView>
-
-
-
-                    <androidx.cardview.widget.CardView
-                        android:id="@+id/card_sendiri"
-                        android:layout_below="@+id/card_keluarga"
-                        android:layout_toRightOf="@id/card_pasangan"
-                        android:layout_marginLeft="5dp"
-                        android:layout_width="160dp"
-                        android:layout_height="40dp"
-                        android:layout_marginTop="5dp"
-                        android:layout_marginRight="5dp"
-                        android:clipToPadding="true"
-                        android:background="#f5f5f5"
-                        app:cardCornerRadius="10dp">
-                        <RelativeLayout
+                            android:layout_marginTop="5dp"
+                            android:layout_height="40dp"
+                            android:background="@drawable/circleradiobutton2"
+                            android:text="Pasangan"
+                            android:layout_marginLeft="50dp"
+                            android:layout_marginRight="50dp"
+                            android:gravity="center"
+                            android:button="@android:color/transparent"
+                            android:paddingLeft="5dp"
+                            android:textColor="#F7B640"
+                            android:textSize="15sp" />
+                        <RadioButton
+                            android:id="@+id/sendiri"
+                            android:layout_toRightOf="@+id/keluarga"
                             android:layout_width="match_parent"
-                            android:layout_height="match_parent">
-                            <CheckBox
-                                android:id="@+id/sendiri"
-                                android:layout_width="match_parent"
-                                android:layout_height="match_parent"
-                                android:background="@drawable/checkboxstyle_2"
-                                android:onClick="checkBoxPartnerOnClicked"
-                                android:text="Sendiri"
-                                android:gravity="center"
-                                android:button="@android:color/transparent"
-                                android:paddingLeft="5dp"
-                                android:textColor="#F7B640"
-                                android:textSize="15sp" />
-                        </RelativeLayout>
+                            android:layout_height="40dp"
+                            android:onClick="checkBoxPartnerOnClicked"
+                            android:background="@drawable/circleradiobutton2"
+                            android:layout_marginTop="5dp"
+                            android:layout_marginLeft="50dp"
+                            android:layout_marginRight="50dp"
+                            android:text="Sendiri"
+                            android:gravity="center"
+                            android:button="@android:color/transparent"
+                            android:paddingLeft="5dp"
+                            android:textColor="#F7B640"
+                            android:textSize="15sp" />
+                        <RadioButton
+                            android:id="@+id/anak"
+                            android:layout_toRightOf="@+id/keluarga"
+                            android:layout_width="match_parent"
+                            android:layout_height="40dp"
+                            android:onClick="checkBoxPartnerOnClicked"
+                            android:background="@drawable/circleradiobutton2"
+                            android:layout_marginTop="5dp"
+                            android:layout_marginLeft="50dp"
+                            android:layout_marginRight="50dp"
+                            android:text="Anak"
+                            android:gravity="center"
+                            android:button="@android:color/transparent"
+                            android:paddingLeft="5dp"
+                            android:textColor="#F7B640"
+                            android:textSize="15sp" />
 
-                    </androidx.cardview.widget.CardView>
+
+
+                    </RadioGroup>
+
+
 
 
 

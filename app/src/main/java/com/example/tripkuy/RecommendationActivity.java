@@ -37,9 +37,9 @@ import retrofit2.Call;
 import retrofit2.Callback;
 
 public class RecommendationActivity extends AppCompatActivity implements TempatWisataView {
-    String durasi, tgl_awal, tgl_akhir, kegiatan, partner, penginapan;
-    TextView mDurasi, mTanggalMulai, mTanggalAkhir;
-
+    String  tgl_awal, tgl_akhir, kegiatan, partner, penginapan;
+    TextView mDurasi, mTanggalMulai, mTanggalAkhir, mTxtPenginapan;
+    long durasi;
     private RecyclerView mRecyclerView;
     private RecommendationAdapter mAdapter;
     private RecyclerView.LayoutManager mLayoutManager;
@@ -63,7 +63,7 @@ public class RecommendationActivity extends AppCompatActivity implements TempatW
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_recommendation);
         Intent intent = getIntent();
-        durasi = intent.getStringExtra(NewTripActivity.DURASI);
+        durasi = intent.getLongExtra(NewTripActivity.DURASI, 1);
         tgl_awal = intent.getStringExtra(NewTripActivity.TGLAWAL);
         tgl_akhir = intent.getStringExtra(NewTripActivity.TGLAKHIR);
         kegiatan = intent.getStringExtra(NewTripActivity.KEGIATAN);
@@ -72,6 +72,9 @@ public class RecommendationActivity extends AppCompatActivity implements TempatW
         penginapanLat = intent.getDoubleExtra(NewTripActivity.ORIGINLAT, 0.0);
         penginapanLong = intent.getDoubleExtra(NewTripActivity.ORIGINLONG, 0.0);
         mDurasi = findViewById(R.id.txt_durasi);
+        mDurasi.setText(durasi+" Hari");
+        mTxtPenginapan = findViewById(R.id.txt_penginapan);
+        mTxtPenginapan.setText(penginapan);
         try {
             DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
             Date dateAwal = new SimpleDateFormat("dd/MM/yyyy").parse(tgl_awal);
@@ -189,7 +192,7 @@ public class RecommendationActivity extends AppCompatActivity implements TempatW
             destinations.add(new PlaceDTO(String.valueOf(i), item.getNama(), item.getNama(), new LatLongDTO(Double.valueOf(item.getLatitude()), Double.valueOf(item.getLongitude()))));
             i++;
         }
-        TripPlanDTO tripPlanDTO = new TripPlanDTO(startDate, endDate, 2, origin, "Test", destinations);
+        TripPlanDTO tripPlanDTO = new TripPlanDTO(startDate, endDate, durasi, origin, "Test", destinations);
         return  tripPlanDTO;
     }
 }

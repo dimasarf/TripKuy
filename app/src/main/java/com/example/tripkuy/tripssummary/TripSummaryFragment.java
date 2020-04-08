@@ -32,12 +32,15 @@ import com.example.tripkuy.models.TempatWisata;
 import com.example.tripkuy.models.service.ItineraryDetailsItem;
 import com.example.tripkuy.models.service.RoutesItem;
 import com.example.tripkuy.registration.GenderFragment;
+import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.MapFragment;
 import com.google.android.gms.maps.MapView;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.maps.model.PolylineOptions;
 import com.google.android.material.bottomsheet.BottomSheetBehavior;
 import com.google.maps.android.PolyUtil;
@@ -46,6 +49,7 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -56,6 +60,7 @@ public class TripSummaryFragment extends Fragment implements OnMapReadyCallback 
     public static com.example.tripkuy.models.service.Response response;
     String tgl_awal, tgl_akhir, email, penginapan;
     ArrayList<TempatWisata> selectedTempatWisatas = new ArrayList<>();
+    static String photoReference;
     GoogleMap map;
     MapView mapView;
     int day;
@@ -68,7 +73,7 @@ public class TripSummaryFragment extends Fragment implements OnMapReadyCallback 
     BottomSheetBehavior bottomSheetBehavior;
     private TextView mDurasi, mHari, mJarak;
     private static RequestQueue mQueue;
-    List<LatLng> latLngList = new ArrayList<>();
+    ItineraryDetailsItem itineraryDetail;
     View root;
 
     public static TripSummaryFragment newInstance(int day) {
@@ -90,6 +95,7 @@ public class TripSummaryFragment extends Fragment implements OnMapReadyCallback 
         bottomSheetBehavior = BottomSheetBehavior.from(layout);
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
         SupportMapFragment mapFragment = (SupportMapFragment) this.getChildFragmentManager().findFragmentById(R.id.mapFrag2);
+
         mapFragment.getMapAsync(this);
         mQueue = Volley.newRequestQueue(getContext());
         buildRecyclerView();
@@ -99,71 +105,48 @@ public class TripSummaryFragment extends Fragment implements OnMapReadyCallback 
     }
 
     private void buildRecyclerView() {
-        ItineraryDetailsItem itineraryDetail = response.data.itineraryDetails.get(day);
+        itineraryDetail = response.data.itineraryDetails.get(day);
         mDurasi.setText(itineraryDetail.totalDuration);
         mHari.setText("Hari "+itineraryDetail.day);
         mJarak.setText(itineraryDetail.totalDistance);
 
         for (final RoutesItem item: itineraryDetail.routes) {
-
-            getPhotoReference("tugu jogja", new GoogleMapAPICallback() {
-                @Override
-                public void onPhotoReferenceCallback(String photoReference) {
-                    detailTripItems.add(new DetailTripItem(item.destination.name, item.tripDistance, item.destination.photoReference));
-                    Log.d("photoRef", photoReference);
-                }
-            });
-
-
-            Log.d("PhotoTEST", "FOTO TEST"+detailTripItems.get(0).getPhotoReference());
-            Log.d("Photo", "KOSONG");
-
+            int resId = getResId("yogyakarta", R.drawable.class);
+            detailTripItems.add(new DetailTripItem(resId,item.destination.name, item.tripDistance));
         }
-//        mRecyclerView = root.findViewById(R.id.recycler_detail_trips);
-//        mRecyclerView.setHasFixedSize(false);
-//        mLayoutManager = new LinearLayoutManager(getActivity());
-//        mAdapter = new DetailTripsAdapter(detailTripItems);
-//        mRecyclerView.setLayoutManager(mLayoutManager);
-//        mRecyclerView.setAdapter(mAdapter);
+        mRecyclerView = root.findViewById(R.id.recycler_detail_trips);
+        mRecyclerView.setHasFixedSize(false);
+        mLayoutManager = new LinearLayoutManager(getActivity());
+        mAdapter = new DetailTripsAdapter(detailTripItems, getContext());
+        mRecyclerView.setLayoutManager(mLayoutManager);
+        mRecyclerView.setAdapter(mAdapter);
     }
 
     @Override
     public void onMapReady(GoogleMap googleMap) {
-
+        map = googleMap;
+        map.addMarker(new
+                MarkerOptions().position(
+                new LatLng(response.data.origin.latLong.lat, response.data.origin.latLong.longg))
+                .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_BLUE))
+        );
+        for (final RoutesItem item: itineraryDetail.routes) {
+            map.addMarker(new MarkerOptions().position(new LatLng(item.destination.latLong.lat, item.destination.latLong.longg)));
+        }
+        LatLng latlongPengingapan = new LatLng(response.data.origin.latLong.lat, response.data.origin.latLong.longg);
+        map.moveCamera(CameraUpdateFactory.newLatLngZoom(latlongPengingapan, 15));
     }
 
-    public void getPhotoReference(String lokasi, final GoogleMapAPICallback listener){
-        String url = "https://maps.googleapis.com/maps/api/place/findplacefromtext/" +
-                "json?input=Tugu%Jogja&" +
-                "inputtype=textquery&fields=photos,formatted_address,name,opening_hours,rating&locationbias=circle:2000@47.6918452,-122.2226413&key=AIzaSyA02Yz09lw6kg_WTc-IqFD2kPP4txoxqVc";
-        final String[] photoReference = {""};
-        String reference = "KONToL";
-        JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
-            @Override
-            public void onResponse(JSONObject response) {
-                try {
-                    JSONArray jsonArray = response.getJSONArray("candidates");
-                    JSONObject candidate = (JSONObject) jsonArray.get(0);
-                    JSONArray photos = (JSONArray) candidate.get("photos");
-                    JSONObject ref = (JSONObject) photos.get(0);
-                    photoReference[0] = ref.getString("photo_reference");
-                    Log.d("KONToL", "REF "+ ref.getString("photo_reference"));
-                    Log.d("jsonn", "tolol");
-                    NewTripActivity.ref = ref.getString("photo_reference");
-                    listener.onPhotoReferenceCallback(ref.getString("photo_reference"));
-                } catch (JSONException e) {
-                    e.printStackTrace();
-                }
-            }
-        }, new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
-                Log.d("MASALAH", error.getMessage());
-            }
+    public int getResId(String resName, Class<?> c) {
 
-
-        });
-        RequestQueue requestQueue = Volley.newRequestQueue(getContext());
-        requestQueue.add(request);
+        try {
+            Field idField = c.getDeclaredField(resName);
+            return idField.getInt(idField);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return -1;
+        }
     }
+
+
 }

@@ -72,7 +72,7 @@ public class DetailTripActivity extends AppCompatActivity implements OnMapReadyC
         mRecyclerView = findViewById(R.id.recycler_detail_trips);
         mRecyclerView.setHasFixedSize(false);
         mLayoutManager = new LinearLayoutManager(this);
-        mAdapter = new DetailTripsAdapter(detailTripItems);
+        mAdapter = new DetailTripsAdapter(detailTripItems, this);
         mRecyclerView.setLayoutManager(mLayoutManager);
         mRecyclerView.setAdapter(mAdapter);
     }

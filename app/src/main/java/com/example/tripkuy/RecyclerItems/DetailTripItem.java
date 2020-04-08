@@ -1,5 +1,8 @@
 package com.example.tripkuy.RecyclerItems;
 
+import com.example.tripkuy.TripIteneraryActivity;
+import com.example.tripkuy.tripssummary.TripSummaryFragment;
+
 public class DetailTripItem {
     private int image;
     private String name, jarak, photoReference;
@@ -31,4 +34,6 @@ public class DetailTripItem {
     public String getPhotoReference() {
         return photoReference;
     }
+
+
 }

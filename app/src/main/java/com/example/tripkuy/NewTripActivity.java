@@ -6,11 +6,15 @@ import android.location.Address;
 import android.location.Geocoder;
 import android.os.Build;
 import android.os.Bundle;
+import android.text.InputType;
 import android.util.Log;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.CheckBox;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.SearchView;
 import android.widget.Toast;
 
@@ -37,11 +41,14 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 public class NewTripActivity extends AppCompatActivity {
     private static final String TAG = "TGLAWAL";
@@ -54,6 +61,8 @@ public class NewTripActivity extends AppCompatActivity {
     public static final String ORIGINLAT = "ORIGINLAT";
     public static final String ORIGINLONG= "ORIGINLONG";
     public static String ref;
+    private RadioGroup radioGroup_pengunjung;
+    private RadioButton radioButton;
     double penginapanLat, penginapanLong;
     EditText tgl_mulai, tgl_akhir;
     List<CheckBox> checkBoxPartner = new ArrayList<>();
@@ -63,6 +72,7 @@ public class NewTripActivity extends AppCompatActivity {
     String kegiatan = "";
     String partner = "";
     long durasi;
+    String pengungjung = "";
     String penginapan;
     @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
@@ -72,6 +82,15 @@ public class NewTripActivity extends AppCompatActivity {
 
         tgl_mulai = findViewById(R.id.txt_tanggal_mulai);
         tgl_akhir = findViewById(R.id.txt_tanggal_akhir);
+
+        tgl_mulai.setShowSoftInputOnFocus(false);
+        tgl_mulai.setInputType(InputType.TYPE_NULL);
+        tgl_mulai.setFocusable(false);
+
+        tgl_akhir.setShowSoftInputOnFocus(false);
+        tgl_akhir.setInputType(InputType.TYPE_NULL);
+        tgl_akhir.setFocusable(false);
+
         tgl_mulai.setOnClickListener(new View.OnClickListener() {
             @RequiresApi(api = Build.VERSION_CODES.O)
             @Override
@@ -84,7 +103,7 @@ public class NewTripActivity extends AppCompatActivity {
                 DatePickerDialog dpd = new DatePickerDialog(NewTripActivity.this, new DatePickerDialog.OnDateSetListener() {
                     @Override
                     public void onDateSet(DatePicker datePicker, int i, int i1, int i2) {
-                        tgl_mulai.setText(i2 + "/" + i1 + "/" + i);
+                        tgl_mulai.setText(i2 + "/" + (i1+1) + "/" + i);
                     }
                 }, day, month, year);
                 dpd.updateDate(year, month, day);
@@ -104,7 +123,7 @@ public class NewTripActivity extends AppCompatActivity {
                 DatePickerDialog dpd = new DatePickerDialog(NewTripActivity.this, new DatePickerDialog.OnDateSetListener() {
                     @Override
                     public void onDateSet(DatePicker datePicker, int i, int i1, int i2) {
-                        tgl_akhir.setText(i2 + "/" + i1 + "/" + i);
+                        tgl_akhir.setText(i2 + "/" + (i1+1) + "/" + i);
                     }
                 }, day, month, year);
                 dpd.updateDate(year, month, day);
@@ -112,12 +131,33 @@ public class NewTripActivity extends AppCompatActivity {
             }
         });
 
+        radioGroup_pengunjung = findViewById(R.id.radio_group_pengunjung);
+        radioGroup_pengunjung.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener()
+        {
+            public void onCheckedChanged(RadioGroup group, int checkedId) {
+                // checkedId is the RadioButton selected
 
-        checkBoxPartner.add((CheckBox) findViewById(R.id.keluarga));
-        checkBoxPartner.add((CheckBox) findViewById(R.id.pasangan));
-        checkBoxPartner.add((CheckBox) findViewById(R.id.teman));
-        checkBoxPartner.add((CheckBox) findViewById(R.id.sendiri));
+                switch(checkedId) {
+                    case R.id.keluarga:
+                        pengungjung = "elder people";
+                        break;
+                    case R.id.pasangan:
+                        pengungjung = "couple";
+                        break;
+                    case R.id.teman:
+                        pengungjung = "mates";
+                        break;
+                    case R.id.sendiri:
+                        pengungjung = "solo-travel";
+                        break;
+                    case R.id.anak:
+                        pengungjung = "kids friendly";
+                        break;
+                }
 
+            }
+        });
+        Log.d("partner", "partner"+pengungjung);
         checkBoxKegiatan.add((CheckBox) findViewById(R.id.snorkeling));
         checkBoxKegiatan.add((CheckBox) findViewById(R.id.kuliner));
         checkBoxKegiatan.add((CheckBox) findViewById(R.id.petualang));
@@ -130,7 +170,7 @@ public class NewTripActivity extends AppCompatActivity {
 
         AutocompleteSupportFragment autocompleteFragment = (AutocompleteSupportFragment)
                 getSupportFragmentManager().findFragmentById(R.id.autocomplete_fragment);
-
+        autocompleteFragment.setHint("Cari lokasi penginapan anda");
         autocompleteFragment.setPlaceFields(Arrays.asList(Place.Field.ID, Place.Field.NAME, Place.Field.LAT_LNG));
 
         autocompleteFragment.setOnPlaceSelectedListener(new PlaceSelectionListener() {
@@ -155,10 +195,15 @@ public class NewTripActivity extends AppCompatActivity {
 
     }
 
-    public void searchDestination(View view) {
+    public void searchDestination(View view) throws ParseException {
         SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
+        Date dateAwal = formatter.parse(tgl_mulai.getText().toString());
+        Date dateAkhir = formatter.parse(tgl_akhir.getText().toString());
+        Log.d("Tanggal", "Mulai "+dateAwal+" Akhir "+dateAkhir);
+        long diffInMillies = Math.abs(dateAkhir.getTime() - dateAwal.getTime());
+        this.durasi = TimeUnit.DAYS.convert(diffInMillies, TimeUnit.MILLISECONDS);
+        Log.d("durasi", "durasi "+durasi);
 
-        this.durasi = 2;
         Intent intent = new Intent(this, RecommendationActivity.class);
         intent.putExtra(TGLAWAL, tgl_mulai.getText().toString());
         intent.putExtra(TGLAKHIR, tgl_akhir.getText().toString());
@@ -171,23 +216,7 @@ public class NewTripActivity extends AppCompatActivity {
     }
 
     public void checkBoxPartnerOnClicked(View view) {
-        partner = "";
-        for (CheckBox item : checkBoxPartner) {
-            if (item.isChecked()) {
-                String text = item.getText().toString();
-                partner += text + "";
-            }
-        }
-        Toast.makeText(this, this.partner, Toast.LENGTH_SHORT).show();
-        final String[] photo = {""};
-        getPhotoReference("tugu jogja", new GoogleMapAPICallback() {
-            @Override
-            public void onPhotoReferenceCallback(String photoReference) {
-                photo[0] = photoReference;
-                Log.d("photoRef", photoReference);
-            }
-        });
-        Log.d("respodd", "json tolol");
+        Toast.makeText(this, pengungjung , Toast.LENGTH_SHORT).show();
     }
 
     public void checkBoxKegiatanOnClicked(View view) {
@@ -201,39 +230,5 @@ public class NewTripActivity extends AppCompatActivity {
         Toast.makeText(this, this.kegiatan, Toast.LENGTH_SHORT).show();
     }
 
-    public void getPhotoReference(String lokasi, final GoogleMapAPICallback listener){
-        String url = "https://maps.googleapis.com/maps/api/place/findplacefromtext/" +
-                "json?input=Tugu%Jogja&" +
-                "inputtype=textquery&fields=photos,formatted_address,name,opening_hours,rating&locationbias=circle:2000@47.6918452,-122.2226413&key=AIzaSyA02Yz09lw6kg_WTc-IqFD2kPP4txoxqVc";
-        final String[] photoReference = {""};
-        String reference = "KONToL";
-        JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
-            @Override
-            public void onResponse(JSONObject response) {
-                try {
-                    JSONArray jsonArray = response.getJSONArray("candidates");
-                    JSONObject candidate = (JSONObject) jsonArray.get(0);
-                    JSONArray photos = (JSONArray) candidate.get("photos");
-                    JSONObject ref = (JSONObject) photos.get(0);
-                    photoReference[0] = ref.getString("photo_reference");
-                    Log.d("KONToL", "REF "+ ref.getString("photo_reference"));
-                    Log.d("jsonn", "tolol");
-                    NewTripActivity.ref = ref.getString("photo_reference");
-                    listener.onPhotoReferenceCallback(ref.getString("photo_reference"));
-                } catch (JSONException e) {
-                    e.printStackTrace();
-                }
-            }
-        }, new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
-                Log.d("MASALAH", error.getMessage());
-            }
-
-
-        });
-        RequestQueue requestQueue = Volley.newRequestQueue(this);
-        requestQueue.add(request);
-    }
 
 }
