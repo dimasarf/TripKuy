@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".NewTripActivity"
+    android:orientation="vertical">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#f5f5f5">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                app:cardBackgroundColor="#F7B640"
+                app:cardCornerRadius="10dp">
+
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"
+                        android:background="@android:color/white"/>
+                    <fragment android:id="@+id/autocomplete_fragment"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:name="com.google.android.libraries.places.widget.AutocompleteSupportFragment"
+
+                        />
+                </FrameLayout>
+
+                <RelativeLayout
+                    android:layout_marginTop="40dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingBottom="20dp">
+
+
+                    <TextView
+                        android:id="@+id/lbl_tanggal_awal"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="35dp"
+                        android:layout_marginTop="20dp"
+                        android:text="Tanggal Mulai"
+                        android:textColor="@android:color/white"
+                        android:textSize="15sp" />
+
+
+                    <EditText
+                        android:id="@+id/txt_tanggal_mulai"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/lbl_tanggal_awal"
+                        android:layout_marginLeft="20dp"
+                        android:layout_marginTop="5dp"
+                        android:hint="20 Maret 2019"
+                        android:textColor="@android:color/black"
+                        android:textSize="18sp" />
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_toRightOf="@id/txt_tanggal_mulai"
+                        android:layout_toLeftOf="@id/lbl_tanggal_akhir"
+                        android:layout_marginRight="20dp"
+                        android:layout_below="@id/lbl_tanggal_awal"
+                        app:srcCompat="@drawable/ic_keyboard_arrow_right"/>
+
+
+                    <TextView
+                        android:id="@+id/lbl_tanggal_akhir"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:layout_marginTop="20dp"
+                        android:layout_marginRight="35dp"
+                        android:text="Tanggal Akhir"
+                        android:textColor="@android:color/white"
+                        android:textSize="15sp" />
+
+                    <EditText
+                        android:id="@+id/txt_tanggal_akhir"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/lbl_tanggal_awal"
+                        android:layout_alignParentRight="true"
+                        android:layout_marginLeft="20dp"
+                        android:layout_marginTop="5dp"
+                        android:layout_marginRight="20dp"
+                        android:hint="25 Maret 2019"
+                        android:textColor="@android:color/black"
+                        android:textSize="18sp" />
+
+                </RelativeLayout>
+
+            </androidx.cardview.widget.CardView>
+
+
+            <Button
+                android:id="@+id/btn_next"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_gravity="bottom"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginBottom="29dp"
+                android:background="#1D3364"
+                android:baselineAligned="false"
+                android:paddingLeft="40dp"
+                android:paddingRight="40dp"
+                android:text="Selanjutnya"
+                android:textColor="#F7B640"/>
+        </LinearLayout>
+    </ScrollView>
+
+
+</LinearLayout>

@@ -1,0 +1,767 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".NewTripActivity"
+    android:orientation="vertical">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#f5f5f5">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/lbl_Kegiatan"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="20dp"
+                android:text="Rencana Liburan Kamu?"
+                android:textColor="#1D3364"
+                android:textSize="20sp" />
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:paddingBottom="20dp"
+                app:cardBackgroundColor="@android:color/white"
+                app:cardCornerRadius="10dp">
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingBottom="20dp"
+                    >
+
+                    <androidx.cardview.widget.CardView
+                        android:id="@+id/card_mendaki"
+                        android:layout_width="100dp"
+                        android:layout_height="40dp"
+                        android:layout_marginLeft="15dp"
+                        android:layout_marginTop="5dp"
+                        android:layout_marginRight="5dp"
+                        android:clipToPadding="true"
+                        android:background="#f5f5f5"
+                        app:cardCornerRadius="10dp">
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent">
+
+                            <CheckBox
+                                android:id="@+id/mendaki"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:background="@drawable/checkboxstyle_2"
+                                android:text="mendaki"
+                                android:onClick="checkBoxKegiatanOnClicked"
+                                android:gravity="center"
+                                android:button="@android:color/transparent"
+                                android:paddingLeft="5dp"
+                                android:textColor="#F7B640"
+                                android:textSize="15sp" />
+                        </RelativeLayout>
+
+                    </androidx.cardview.widget.CardView>
+                    <androidx.cardview.widget.CardView
+                        android:id="@+id/card_berenang"
+                        android:layout_toRightOf="@+id/card_mendaki"
+                        android:layout_width="100dp"
+                        android:layout_height="40dp"
+                        android:layout_marginTop="5dp"
+                        android:layout_marginRight="5dp"
+                        android:clipToPadding="true"
+                        android:background="#f5f5f5"
+                        app:cardCornerRadius="10dp">
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent">
+
+                            <CheckBox
+                                android:id="@+id/berenang"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:background="@drawable/checkboxstyle_2"
+                                android:text="berenang"
+                                android:onClick="checkBoxKegiatanOnClicked"
+                                android:gravity="center"
+                                android:button="@android:color/transparent"
+                                android:paddingLeft="5dp"
+                                android:textColor="#F7B640"
+                                android:textSize="15sp" />
+                        </RelativeLayout>
+
+                    </androidx.cardview.widget.CardView>
+                    <androidx.cardview.widget.CardView
+                        android:id="@+id/card_goa"
+                        android:layout_toRightOf="@id/card_berenang"
+                        android:layout_width="100dp"
+                        android:layout_height="40dp"
+                        android:layout_marginTop="5dp"
+                        android:layout_marginRight="5dp"
+                        android:clipToPadding="true"
+                        android:background="#f5f5f5"
+                        app:cardCornerRadius="10dp">
+                        <RelativeLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent">
+
+                            <CheckBox
+                                android:id="@+id/goa"
+                                android:layout_width="wrap_content"
+                                android:layout_height="match_parent"
+                                android:background="@drawable/checkboxstyle_2"
+                                android:text="menelusuri goa"
+                                android:onClick="checkBoxKegiatanOnClicked"
+                                android:gravity="center"
+                                android:button="@android:color/transparent"
+                                android:paddingLeft="5dp"
+                                android:textColor="#F7B640"
+                                android:textSize="15sp" />
+                        </RelativeLayout>
+
+                    </androidx.cardview.widget.CardView>
+
+                    <androidx.cardview.widget.CardView
+                        android:id="@+id/card_jogging"
+                        android:layout_below="@+id/card_mendaki"
+                        android:layout_marginLeft="15dp"
+                        android:layout_width="100dp"
+                        android:layout_height="40dp"
+                        android:layout_marginTop="5dp"
+                        android:layout_marginRight="5dp"
+                        android:clipToPadding="true"
+                        android:background="#f5f5f5"
+                        android:layout_marginBottom="10dp"
+                        app:cardCornerRadius="10dp">
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            >
+
+                            <CheckBox
+                                android:id="@+id/jogging"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:background="@drawable/checkboxstyle_2"
+                                android:text="jogging"
+                                android:onClick="checkBoxKegiatanOnClicked"
+                                android:gravity="center"
+                                android:button="@android:color/transparent"
+                                android:paddingLeft="5dp"
+                                android:textColor="#F7B640"
+                                android:textSize="15sp" />
+                        </RelativeLayout>
+
+                    </androidx.cardview.widget.CardView>
+                    <androidx.cardview.widget.CardView
+                        android:id="@+id/card_kemah"
+                        android:layout_below="@+id/card_mendaki"
+                        android:layout_toRightOf="@id/card_jogging"
+                        android:layout_marginLeft="5dp"
+                        android:layout_width="100dp"
+                        android:layout_height="40dp"
+                        android:layout_marginTop="5dp"
+                        android:layout_marginBottom="10dp"
+                        android:layout_marginRight="5dp"
+                        android:clipToPadding="true"
+                        android:background="#f5f5f5"
+                        app:cardCornerRadius="10dp">
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent">
+                            <CheckBox
+                                android:id="@+id/kemah"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:background="@drawable/checkboxstyle_2"
+                                android:text="kemah"
+                                android:onClick="checkBoxKegiatanOnClicked"
+                                android:gravity="center"
+                                android:button="@android:color/transparent"
+                                android:paddingLeft="5dp"
+                                android:textColor="#F7B640"
+                                android:textSize="15sp" />
+                        </RelativeLayout>
+
+                    </androidx.cardview.widget.CardView>
+                    <androidx.cardview.widget.CardView
+                        android:id="@+id/card_kebun"
+                        android:layout_below="@+id/card_mendaki"
+                        android:layout_toRightOf="@id/card_kemah"
+                        android:layout_marginBottom="10dp"
+                        android:layout_marginLeft="5dp"
+                        android:layout_width="100dp"
+                        android:layout_height="40dp"
+                        android:layout_marginTop="5dp"
+                        android:layout_marginRight="5dp"
+                        android:clipToPadding="true"
+                        android:background="#f5f5f5"
+                        app:cardCornerRadius="10dp">
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent">
+                            <CheckBox
+                                android:id="@+id/kebun"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:background="@drawable/checkboxstyle_2"
+                                android:text="berkebun"
+                                android:onClick="checkBoxKegiatanOnClicked"
+                                android:gravity="center"
+                                android:button="@android:color/transparent"
+                                android:paddingLeft="5dp"
+                                android:textColor="#F7B640"
+                                android:textSize="15sp" />
+                        </RelativeLayout>
+
+                    </androidx.cardview.widget.CardView>
+
+                    <androidx.cardview.widget.CardView
+                        android:id="@+id/card_berburu"
+                        android:layout_below="@+id/card_jogging"
+                        android:layout_marginBottom="10dp"
+                        android:layout_marginLeft="5dp"
+                        android:layout_width="100dp"
+                        android:layout_height="40dp"
+                        android:layout_marginTop="5dp"
+                        android:layout_marginRight="5dp"
+                        android:clipToPadding="true"
+                        android:background="#f5f5f5"
+                        app:cardCornerRadius="10dp">
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent">
+                            <CheckBox
+                                android:id="@+id/berburu"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:background="@drawable/checkboxstyle_2"
+                                android:text="berburu hewan"
+                                android:onClick="checkBoxKegiatanOnClicked"
+                                android:gravity="center"
+                                android:button="@android:color/transparent"
+                                android:paddingLeft="5dp"
+                                android:textColor="#F7B640"
+                                android:textSize="15sp" />
+                        </RelativeLayout>
+
+                    </androidx.cardview.widget.CardView>
+                    <androidx.cardview.widget.CardView
+                        android:id="@+id/card_mancing"
+                        android:layout_below="@+id/card_jogging"
+                        android:layout_toRightOf="@id/card_berburu"
+                        android:layout_marginBottom="10dp"
+                        android:layout_marginLeft="5dp"
+                        android:layout_width="100dp"
+                        android:layout_height="40dp"
+                        android:layout_marginTop="5dp"
+                        android:layout_marginRight="5dp"
+                        android:clipToPadding="true"
+                        android:background="#f5f5f5"
+                        app:cardCornerRadius="10dp">
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent">
+                            <CheckBox
+                                android:id="@+id/mancing"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:background="@drawable/checkboxstyle_2"
+                                android:text="memancing"
+                                android:onClick="checkBoxKegiatanOnClicked"
+                                android:gravity="center"
+                                android:button="@android:color/transparent"
+                                android:paddingLeft="5dp"
+                                android:textColor="#F7B640"
+                                android:textSize="15sp" />
+                        </RelativeLayout>
+
+                    </androidx.cardview.widget.CardView>
+                    <androidx.cardview.widget.CardView
+                        android:id="@+id/card_perahu"
+                        android:layout_below="@+id/card_jogging"
+                        android:layout_toRightOf="@id/card_mancing"
+                        android:layout_marginBottom="10dp"
+                        android:layout_marginLeft="5dp"
+                        android:layout_width="100dp"
+                        android:layout_height="40dp"
+                        android:layout_marginTop="5dp"
+                        android:layout_marginRight="5dp"
+                        android:clipToPadding="true"
+                        android:background="#f5f5f5"
+                        app:cardCornerRadius="10dp">
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent">
+                            <CheckBox
+                                android:id="@+id/perahu"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:background="@drawable/checkboxstyle_2"
+                                android:text="naik perahu"
+                                android:onClick="checkBoxKegiatanOnClicked"
+                                android:gravity="center"
+                                android:button="@android:color/transparent"
+                                android:paddingLeft="5dp"
+                                android:textColor="#F7B640"
+                                android:textSize="15sp" />
+                        </RelativeLayout>
+
+                    </androidx.cardview.widget.CardView>
+
+                    <androidx.cardview.widget.CardView
+                        android:id="@+id/card_main"
+                        android:layout_below="@+id/card_berburu"
+                        android:layout_marginBottom="10dp"
+                        android:layout_marginLeft="5dp"
+                        android:layout_width="100dp"
+                        android:layout_height="40dp"
+                        android:layout_marginTop="5dp"
+                        android:layout_marginRight="5dp"
+                        android:clipToPadding="true"
+                        android:background="#f5f5f5"
+                        app:cardCornerRadius="10dp">
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent">
+                            <CheckBox
+                                android:id="@+id/main"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:background="@drawable/checkboxstyle_2"
+                                android:text="bermain"
+                                android:onClick="checkBoxKegiatanOnClicked"
+                                android:gravity="center"
+                                android:button="@android:color/transparent"
+                                android:paddingLeft="5dp"
+                                android:textColor="#F7B640"
+                                android:textSize="15sp" />
+                        </RelativeLayout>
+
+                    </androidx.cardview.widget.CardView>
+                    <androidx.cardview.widget.CardView
+                        android:id="@+id/card_keliling"
+                        android:layout_below="@+id/card_berburu"
+                        android:layout_toRightOf="@id/card_main"
+                        android:layout_marginBottom="10dp"
+                        android:layout_marginLeft="5dp"
+                        android:layout_width="100dp"
+                        android:layout_height="40dp"
+                        android:layout_marginTop="5dp"
+                        android:layout_marginRight="5dp"
+                        android:clipToPadding="true"
+                        android:background="#f5f5f5"
+                        app:cardCornerRadius="10dp">
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent">
+                            <CheckBox
+                                android:id="@+id/keliling"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:background="@drawable/checkboxstyle_2"
+                                android:text="berkeliling"
+                                android:onClick="checkBoxKegiatanOnClicked"
+                                android:gravity="center"
+                                android:button="@android:color/transparent"
+                                android:paddingLeft="5dp"
+                                android:textColor="#F7B640"
+                                android:textSize="15sp" />
+                        </RelativeLayout>
+
+                    </androidx.cardview.widget.CardView>
+                    <androidx.cardview.widget.CardView
+                        android:id="@+id/card_outsport"
+                        android:layout_below="@+id/card_berburu"
+                        android:layout_toRightOf="@id/card_keliling"
+                        android:layout_marginBottom="10dp"
+                        android:layout_marginLeft="5dp"
+                        android:layout_width="100dp"
+                        android:layout_height="40dp"
+                        android:layout_marginTop="5dp"
+                        android:layout_marginRight="5dp"
+                        android:clipToPadding="true"
+                        android:background="#f5f5f5"
+                        app:cardCornerRadius="10dp">
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent">
+                            <CheckBox
+                                android:id="@+id/outsport"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:background="@drawable/checkboxstyle_2"
+                                android:text="outdoor sports"
+                                android:onClick="checkBoxKegiatanOnClicked"
+                                android:gravity="center"
+                                android:button="@android:color/transparent"
+                                android:paddingLeft="5dp"
+                                android:textColor="#F7B640"
+                                android:textSize="15sp" />
+                        </RelativeLayout>
+
+                    </androidx.cardview.widget.CardView>
+
+                    <androidx.cardview.widget.CardView
+                        android:id="@+id/card_rekreasi"
+                        android:layout_below="@+id/card_main"
+                        android:layout_marginBottom="10dp"
+                        android:layout_marginLeft="5dp"
+                        android:layout_width="100dp"
+                        android:layout_height="40dp"
+                        android:layout_marginTop="5dp"
+                        android:layout_marginRight="5dp"
+                        android:clipToPadding="true"
+                        android:background="#f5f5f5"
+                        app:cardCornerRadius="10dp">
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent">
+                            <CheckBox
+                                android:id="@+id/rekreasi"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:background="@drawable/checkboxstyle_2"
+                                android:text="rekreasi"
+                                android:onClick="checkBoxKegiatanOnClicked"
+                                android:gravity="center"
+                                android:button="@android:color/transparent"
+                                android:paddingLeft="5dp"
+                                android:textColor="#F7B640"
+                                android:textSize="15sp" />
+                        </RelativeLayout>
+
+                    </androidx.cardview.widget.CardView>
+                    <androidx.cardview.widget.CardView
+                        android:id="@+id/card_trekking"
+                        android:layout_below="@+id/card_main"
+                        android:layout_toRightOf="@id/card_rekreasi"
+                        android:layout_marginBottom="10dp"
+                        android:layout_marginLeft="5dp"
+                        android:layout_width="100dp"
+                        android:layout_height="40dp"
+                        android:layout_marginTop="5dp"
+                        android:layout_marginRight="5dp"
+                        android:clipToPadding="true"
+                        android:background="#f5f5f5"
+                        app:cardCornerRadius="10dp">
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent">
+                            <CheckBox
+                                android:id="@+id/trekking"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:background="@drawable/checkboxstyle_2"
+                                android:text="trekking"
+                                android:onClick="checkBoxKegiatanOnClicked"
+                                android:gravity="center"
+                                android:button="@android:color/transparent"
+                                android:paddingLeft="5dp"
+                                android:textColor="#F7B640"
+                                android:textSize="15sp" />
+                        </RelativeLayout>
+
+                    </androidx.cardview.widget.CardView>
+                    <androidx.cardview.widget.CardView
+                        android:id="@+id/card_seni"
+                        android:layout_below="@+id/card_main"
+                        android:layout_toRightOf="@id/card_keliling"
+                        android:layout_marginBottom="10dp"
+                        android:layout_marginLeft="5dp"
+                        android:layout_width="100dp"
+                        android:layout_height="40dp"
+                        android:layout_marginTop="5dp"
+                        android:layout_marginRight="5dp"
+                        android:clipToPadding="true"
+                        android:background="#f5f5f5"
+                        app:cardCornerRadius="10dp">
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent">
+                            <CheckBox
+                                android:id="@+id/seni"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:background="@drawable/checkboxstyle_2"
+                                android:text="belajar seni"
+                                android:onClick="checkBoxKegiatanOnClicked"
+                                android:gravity="center"
+                                android:button="@android:color/transparent"
+                                android:paddingLeft="5dp"
+                                android:textColor="#F7B640"
+                                android:textSize="15sp" />
+                        </RelativeLayout>
+
+                    </androidx.cardview.widget.CardView>
+
+                    <androidx.cardview.widget.CardView
+                        android:id="@+id/card_keindahan"
+                        android:layout_below="@+id/card_rekreasi"
+                        android:layout_marginBottom="10dp"
+                        android:layout_marginLeft="5dp"
+                        android:layout_width="100dp"
+                        android:layout_height="40dp"
+                        android:layout_marginTop="5dp"
+                        android:layout_marginRight="5dp"
+                        android:clipToPadding="true"
+                        android:background="#f5f5f5"
+                        app:cardCornerRadius="10dp">
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent">
+                            <CheckBox
+                                android:id="@+id/keindahan"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:background="@drawable/checkboxstyle_2"
+                                android:text="menikmati keindahan"
+                                android:onClick="checkBoxKegiatanOnClicked"
+                                android:gravity="center"
+                                android:button="@android:color/transparent"
+                                android:paddingLeft="5dp"
+                                android:textColor="#F7B640"
+                                android:textSize="15sp" />
+                        </RelativeLayout>
+
+                    </androidx.cardview.widget.CardView>
+                    <androidx.cardview.widget.CardView
+                        android:id="@+id/card_sejarah"
+                        android:layout_below="@+id/card_rekreasi"
+                        android:layout_toRightOf="@id/card_keindahan"
+                        android:layout_marginBottom="10dp"
+                        android:layout_marginLeft="5dp"
+                        android:layout_width="100dp"
+                        android:layout_height="40dp"
+                        android:layout_marginTop="5dp"
+                        android:layout_marginRight="5dp"
+                        android:clipToPadding="true"
+                        android:background="#f5f5f5"
+                        app:cardCornerRadius="10dp">
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent">
+                            <CheckBox
+                                android:id="@+id/sejarah"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:background="@drawable/checkboxstyle_2"
+                                android:text="belajar sejarah"
+                                android:onClick="checkBoxKegiatanOnClicked"
+                                android:gravity="center"
+                                android:button="@android:color/transparent"
+                                android:paddingLeft="5dp"
+                                android:textColor="#F7B640"
+                                android:textSize="15sp" />
+                        </RelativeLayout>
+
+                    </androidx.cardview.widget.CardView>
+                    <androidx.cardview.widget.CardView
+                        android:id="@+id/card_berendam"
+                        android:layout_below="@+id/card_rekreasi"
+                        android:layout_toRightOf="@id/card_sejarah"
+                        android:layout_marginBottom="10dp"
+                        android:layout_marginLeft="5dp"
+                        android:layout_width="100dp"
+                        android:layout_height="40dp"
+                        android:layout_marginTop="5dp"
+                        android:layout_marginRight="5dp"
+                        android:clipToPadding="true"
+                        android:background="#f5f5f5"
+                        app:cardCornerRadius="10dp">
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent">
+                            <CheckBox
+                                android:id="@+id/berendam"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:background="@drawable/checkboxstyle_2"
+                                android:text="berendam"
+                                android:onClick="checkBoxKegiatanOnClicked"
+                                android:gravity="center"
+                                android:button="@android:color/transparent"
+                                android:paddingLeft="5dp"
+                                android:textColor="#F7B640"
+                                android:textSize="15sp" />
+                        </RelativeLayout>
+
+                    </androidx.cardview.widget.CardView>
+
+                    <androidx.cardview.widget.CardView
+                        android:id="@+id/card_foto"
+                        android:layout_below="@+id/card_keindahan"
+                        android:layout_marginBottom="10dp"
+                        android:layout_marginLeft="5dp"
+                        android:layout_width="100dp"
+                        android:layout_height="40dp"
+                        android:layout_marginTop="5dp"
+                        android:layout_marginRight="5dp"
+                        android:clipToPadding="true"
+                        android:background="#f5f5f5"
+                        app:cardCornerRadius="10dp">
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent">
+                            <CheckBox
+                                android:id="@+id/foto"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:background="@drawable/checkboxstyle_2"
+                                android:text="berfoto"
+                                android:onClick="checkBoxKegiatanOnClicked"
+                                android:gravity="center"
+                                android:button="@android:color/transparent"
+                                android:paddingLeft="5dp"
+                                android:textColor="#F7B640"
+                                android:textSize="15sp" />
+                        </RelativeLayout>
+
+                    </androidx.cardview.widget.CardView>
+                    <androidx.cardview.widget.CardView
+                        android:id="@+id/card_makanminum"
+                        android:layout_below="@+id/card_keindahan"
+                        android:layout_toRightOf="@id/card_foto"
+                        android:layout_marginBottom="10dp"
+                        android:layout_marginLeft="5dp"
+                        android:layout_width="100dp"
+                        android:layout_height="40dp"
+                        android:layout_marginTop="5dp"
+                        android:layout_marginRight="5dp"
+                        android:clipToPadding="true"
+                        android:background="#f5f5f5"
+                        app:cardCornerRadius="10dp">
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent">
+                            <CheckBox
+                                android:id="@+id/makanminum"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:background="@drawable/checkboxstyle_2"
+                                android:text="makan dan minum"
+                                android:onClick="checkBoxKegiatanOnClicked"
+                                android:gravity="center"
+                                android:button="@android:color/transparent"
+                                android:paddingLeft="5dp"
+                                android:textColor="#F7B640"
+                                android:textSize="15sp" />
+                        </RelativeLayout>
+
+                    </androidx.cardview.widget.CardView>
+                    <androidx.cardview.widget.CardView
+                        android:id="@+id/card_santai"
+                        android:layout_below="@+id/card_keindahan"
+                        android:layout_toRightOf="@id/card_makanminum"
+                        android:layout_marginBottom="10dp"
+                        android:layout_marginLeft="5dp"
+                        android:layout_width="100dp"
+                        android:layout_height="40dp"
+                        android:layout_marginTop="5dp"
+                        android:layout_marginRight="5dp"
+                        android:clipToPadding="true"
+                        android:background="#f5f5f5"
+                        app:cardCornerRadius="10dp">
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent">
+                            <CheckBox
+                                android:id="@+id/santai"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:background="@drawable/checkboxstyle_2"
+                                android:text="bersantai"
+                                android:onClick="checkBoxKegiatanOnClicked"
+                                android:gravity="center"
+                                android:button="@android:color/transparent"
+                                android:paddingLeft="5dp"
+                                android:textColor="#F7B640"
+                                android:textSize="15sp" />
+                        </RelativeLayout>
+
+                    </androidx.cardview.widget.CardView>
+
+                    <androidx.cardview.widget.CardView
+                        android:id="@+id/card_sandi"
+                        android:layout_below="@+id/card_foto"
+                        android:layout_marginBottom="10dp"
+                        android:layout_marginLeft="5dp"
+                        android:layout_width="100dp"
+                        android:layout_height="40dp"
+                        android:layout_marginTop="5dp"
+                        android:layout_marginRight="5dp"
+                        android:clipToPadding="true"
+                        android:background="#f5f5f5"
+                        app:cardCornerRadius="10dp">
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent">
+                            <CheckBox
+                                android:id="@+id/sandi"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:background="@drawable/checkboxstyle_2"
+                                android:text="belajar sandi"
+                                android:onClick="checkBoxKegiatanOnClicked"
+                                android:gravity="center"
+                                android:button="@android:color/transparent"
+                                android:paddingLeft="5dp"
+                                android:textColor="#F7B640"
+                                android:textSize="15sp" />
+                        </RelativeLayout>
+
+                    </androidx.cardview.widget.CardView>
+
+
+
+                </RelativeLayout>
+
+            </androidx.cardview.widget.CardView>
+
+
+
+            <Button
+                android:id="@+id/btn_prev"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom"
+                android:layout_marginTop="20dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:background="@android:color/white"
+                android:text="Sebelumnya"
+                android:textColor="#F7B640"
+                />
+            <Button
+                android:id="@+id/btn_cari_trip"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:onClick="searchDestination"
+                android:layout_alignParentBottom="true"
+                android:layout_gravity="bottom"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginBottom="29dp"
+                android:background="#1D3364"
+                android:baselineAligned="false"
+                android:drawableRight="@drawable/ic_search_black_24dp"
+                android:paddingLeft="40dp"
+                android:paddingRight="40dp"
+                android:text="Cari Tempat Wisata"
+                android:textAllCaps="false"
+                android:textColor="#F7B640"
+                android:textSize="15sp" />
+        </LinearLayout>
+    </ScrollView>
+
+
+</LinearLayout>

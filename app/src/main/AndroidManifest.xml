@@ -48,6 +48,9 @@
             android:name=".NewTripActivity"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
+            android:name=".createtrip.CreateTripActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
             android:name=".RecommendationActivity"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity

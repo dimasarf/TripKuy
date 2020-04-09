@@ -13,6 +13,7 @@ import androidx.lifecycle.ViewModelProviders;
 
 import com.example.tripkuy.NewTripActivity;
 import com.example.tripkuy.R;
+import com.example.tripkuy.createtrip.CreateTripActivity;
 
 public class HomeFragment extends Fragment {
 
@@ -29,7 +30,7 @@ public class HomeFragment extends Fragment {
 
             @Override
             public void onClick(View arg0) {
-                Intent intent = new Intent(getActivity(), NewTripActivity.class);
+                Intent intent = new Intent(getActivity(), CreateTripActivity.class);
                 startActivity(intent);
             }
         });
