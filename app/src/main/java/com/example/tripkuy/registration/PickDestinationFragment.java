@@ -48,8 +48,8 @@ public class PickDestinationFragment extends Fragment {
 
     ApiPenggunaInterface apiPenggunaInterface;
     MoveFragmentListener listener;
-    List<Preferensi> preferensiList = new ArrayList<Preferensi>();
-
+    String preferensi = "";
+    List<CheckBox> items = new ArrayList<CheckBox>();
     private Button btn_selesai, btnPrev;
 
     // TODO: Rename and change types of parameters
@@ -81,16 +81,7 @@ public class PickDestinationFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         final View rootView = inflater.inflate(R.layout.fragment_pick_destination, container, false);
-        final List<CheckBox> items = new ArrayList<CheckBox>();
-        items.add((CheckBox)rootView.findViewById(R.id.pref_prambanan));
-        items.add((CheckBox)rootView.findViewById(R.id.pref_malioboro));
-        items.add((CheckBox)rootView.findViewById(R.id.pref_parangtritis));
-        items.add((CheckBox)rootView.findViewById(R.id.pref_tamansari));
-        items.add((CheckBox)rootView.findViewById(R.id.pref_tugu));
-        items.add((CheckBox)rootView.findViewById(R.id.pref_breksi));
-        items.add((CheckBox)rootView.findViewById(R.id.pref_monjali));
-        items.add((CheckBox)rootView.findViewById(R.id.pref_paralayang));
-        items.add((CheckBox)rootView.findViewById(R.id.pref_kalibiru));
+       buildCheckBoxes(rootView);
 
         btn_selesai = (Button) rootView.findViewById(R.id.btn_selesai);
         btnPrev = (Button) rootView.findViewById(R.id.btn_prev);
@@ -101,14 +92,17 @@ public class PickDestinationFragment extends Fragment {
                 for (CheckBox item : items){
                     if(item.isChecked()){
                         String text= item.getText().toString();
-                        preferensiList.add(new Preferensi(text));
+                        if(preferensi == "")
+                            preferensi += text;
+                        else
+                            preferensi += ","+text;
                     }
 
                 }
-                AddPengguna addPengguna = new AddPengguna(getActivity(), pengguna, preferensiList);
+                pengguna.setPreferensi(preferensi);
+                AddPengguna addPengguna = new AddPengguna(getActivity(), pengguna);
                 addPengguna.execute();
-                Intent intent = new Intent(getActivity(), Dashboard.class);
-                startActivity(intent);
+
             }
         });
         btnPrev.setOnClickListener(new View.OnClickListener() {
@@ -148,5 +142,20 @@ public class PickDestinationFragment extends Fragment {
     public interface OnFragmentInteractionListener {
         // TODO: Update argument type and name
         void onFragmentInteraction(Uri uri);
+    }
+
+    public void buildCheckBoxes(View rootView){
+        items.add((CheckBox)rootView.findViewById(R.id.pref_airterjun));
+        items.add((CheckBox)rootView.findViewById(R.id.pref_bukit));
+        items.add((CheckBox)rootView.findViewById(R.id.pref_goa));
+        items.add((CheckBox)rootView.findViewById(R.id.pref_gurun));
+        items.add((CheckBox)rootView.findViewById(R.id.pref_kebun));
+        items.add((CheckBox)rootView.findViewById(R.id.pref_makam));
+        items.add((CheckBox)rootView.findViewById(R.id.pref_museum));
+        items.add((CheckBox)rootView.findViewById(R.id.pref_telaga));
+        items.add((CheckBox)rootView.findViewById(R.id.pref_waduk));
+        items.add((CheckBox)rootView.findViewById(R.id.pref_waterboom));
+        items.add((CheckBox)rootView.findViewById(R.id.pref_pemandian));
+        items.add((CheckBox)rootView.findViewById(R.id.pref_zoo));
     }
 }

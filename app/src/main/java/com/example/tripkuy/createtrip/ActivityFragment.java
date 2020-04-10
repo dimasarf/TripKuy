@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -42,10 +43,11 @@ public class ActivityFragment extends Fragment {
     public static final String TGLAWAL = "TGLAWAL";
     public static final String TGLAKHIR = "TGLAKHIR";
     public static final String PARTNER = "PARTNER";
-    public static final String KEGIATAN = "TGLAKHIR";
+    public static final String KEGIATAN = "KEGIATAN";
     public static final String ORIGIN = "ORIGIN";
     public static final String ORIGINLAT = "ORIGINLAT";
     public static final String ORIGINLONG= "ORIGINLONG";
+
     List<CheckBox> checkBoxKegiatan = new ArrayList<>();
 
     // TODO: Rename and change types of parameters
@@ -116,7 +118,9 @@ public class ActivityFragment extends Fragment {
                 intent.putExtra(ORIGIN, penginapan);
                 intent.putExtra(ORIGINLAT, penginapanLat);
                 intent.putExtra(ORIGINLONG, penginapanLong);
-
+                intent.putExtra(KEGIATAN, kegiatan);
+                intent.putExtra(PARTNER, pengungjung);
+                Log.d("pengunjung", "pengunjung " +pengungjung);
                 startActivity(intent);
             }
         });

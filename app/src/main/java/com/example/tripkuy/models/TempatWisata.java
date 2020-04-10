@@ -8,13 +8,15 @@ import com.google.gson.annotations.SerializedName;
 
 public class TempatWisata implements Parcelable {
     @Expose
-    @SerializedName("nama") private String nama;
+    @SerializedName("name") private String nama;
     @Expose
     @SerializedName("drawable") private String drawable;
     @Expose
     @SerializedName("latitude") private String latitude;
     @Expose
     @SerializedName("longitude") private String longitude;
+    @Expose
+    @SerializedName("simQueryLocation") private double similarity;
     private int image;
 
     public TempatWisata(Parcel in) {
@@ -87,4 +89,8 @@ public class TempatWisata implements Parcelable {
             return new TempatWisata[size];
         }
     };
+
+    public double getSimilarity() {
+        return similarity;
+    }
 }

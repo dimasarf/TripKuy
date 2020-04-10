@@ -36,6 +36,7 @@ public class TripSummaryActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_trip_summary);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         TripSummaryFragment.response = response;
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.

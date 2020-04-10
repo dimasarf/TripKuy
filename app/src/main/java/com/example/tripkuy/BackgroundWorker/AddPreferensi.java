@@ -2,9 +2,11 @@ package com.example.tripkuy.BackgroundWorker;
 
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.widget.Toast;
 
+import com.example.tripkuy.Dashboard;
 import com.example.tripkuy.config.ApiClient;
 import com.example.tripkuy.interfaces.ApiPenggunaInterface;
 import com.example.tripkuy.interfaces.ApiPreferensiInterface;
@@ -52,6 +54,7 @@ public class AddPreferensi extends AsyncTask<Void, Void, Void> {
                             String inserted_id = response.body().getMessage();
                             Toast.makeText(context,
                                     "Pendaftaran Berhasil!",Toast.LENGTH_SHORT).show();
+                            ;
                         }
                         else {
                             Toast.makeText(context,response.body().getMessage(),

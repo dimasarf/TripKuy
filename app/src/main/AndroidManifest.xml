@@ -18,7 +18,8 @@
         android:theme="@style/AppTheme">
         <activity
             android:name=".tripssummary.TripSummaryActivity"
-            android:theme="@style/AppTheme.NoActionBar">
+            android:parentActivityName=".Dashboard"
+            >
 
         </activity>
         <!--

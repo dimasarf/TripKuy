@@ -62,6 +62,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:orientation="vertical"
+                            android:gravity="center"
                             android:paddingBottom="40dp">
 
                             <TextView
@@ -81,7 +82,7 @@
                                 android:layout_gravity="center"
                                 android:drawableLeft="@drawable/ic_access_time_grey24dp"
                                 android:drawablePadding="10dp"
-                                android:hint="20 Maret 2020 - 25 Maret 2020"
+                                android:hint="2 jam"
                                 android:textColor="@android:color/black"
                                 android:textSize="15sp" />
 
@@ -92,11 +93,12 @@
                                 android:layout_gravity="center"
                                 android:drawableLeft="@drawable/ic_my_location_grey2_24dp"
                                 android:drawablePadding="10dp"
-                                android:hint="20 Maret 2020 - 25 Maret 2020"
+                                android:hint="999 km"
                                 android:textColor="@android:color/black"
                                 android:textSize="15sp" />
 
                             <Button
+                                android:id="@+id/btn_gmaps"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:layout_alignParentBottom="true"
@@ -107,10 +109,10 @@
                                 android:background="#1D3364"
                                 android:onClick="simpanPerjalanan"
                                 android:baselineAligned="false"
-                                android:drawableRight="@drawable/ic_check"
+                                android:drawableRight="@drawable/ic_navigation_orange_24dp"
                                 android:paddingLeft="50dp"
                                 android:paddingRight="60dp"
-                                android:text="Selesaikan Perjalanan"
+                                android:text="Rute via Google Maps"
                                 android:textAllCaps="false"
                                 android:textColor="#F7B640"
                                 android:textSize="15sp" />

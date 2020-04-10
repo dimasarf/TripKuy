@@ -3,9 +3,11 @@ package com.example.tripkuy.BackgroundWorker;
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.widget.Toast;
 
+import com.example.tripkuy.Dashboard;
 import com.example.tripkuy.config.ApiClient;
 import com.example.tripkuy.interfaces.ApiPenggunaInterface;
 import com.example.tripkuy.models.Pengguna;
@@ -22,13 +24,10 @@ public class AddPengguna extends AsyncTask<Void, Void, Void> {
     Context context;
     ApiPenggunaInterface apiPenggunaInterface;
     Pengguna pengguna;
-    List<Preferensi> listPreferensi;
-
-    public AddPengguna(Context ctx, Pengguna _pengguna, List<Preferensi> preferensiList){
+    public AddPengguna(Context ctx, Pengguna _pengguna){
         context = ctx;
         pengguna = _pengguna;
         progressDialog = new ProgressDialog(ctx);
-        listPreferensi = preferensiList;
     }
 
     @Override
@@ -47,7 +46,7 @@ public class AddPengguna extends AsyncTask<Void, Void, Void> {
     @Override
     protected Void doInBackground(Void... params) {
         apiPenggunaInterface = ApiClient.getApiClient().create(ApiPenggunaInterface.class);
-        Call<Pengguna> call = apiPenggunaInterface.savePengguna(pengguna.getNama(), pengguna.getUsia(), pengguna.getEmail(), pengguna.getGender());
+        Call<Pengguna> call = apiPenggunaInterface.savePengguna(pengguna.getNama(), pengguna.getUsia(), pengguna.getEmail(), pengguna.getGender(), pengguna.getPreferensi());
 
         call.enqueue(new Callback<Pengguna>() {
             @Override
@@ -57,9 +56,10 @@ public class AddPengguna extends AsyncTask<Void, Void, Void> {
                     Boolean success = response.body().getSuccess();
 
                     if(success){
-                        String inserted_id = response.body().getMessage();
-                        AddPreferensi addPreferensi = new AddPreferensi(context, listPreferensi, inserted_id);
-                        addPreferensi.execute();
+                        Toast.makeText(context,
+                                "Pendaftaran Berhasil!",Toast.LENGTH_SHORT).show();
+                        Intent intent = new Intent(context, Dashboard.class);
+                        context.startActivity(intent);
                     }
                     else {
                         Toast.makeText(context,response.body().getMessage(),

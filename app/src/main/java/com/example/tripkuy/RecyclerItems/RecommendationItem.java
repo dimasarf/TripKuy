@@ -5,7 +5,7 @@ public class RecommendationItem {
     private String name, jarak, imageString;
     private String latitude;
     private String longitude;
-
+    double similarity;
     public RecommendationItem(int image, String name, String jarak) {
         this.image = image;
         this.name = name;
@@ -19,10 +19,10 @@ public class RecommendationItem {
         this.imageString = imageString;
     }
 
-    public RecommendationItem(int resId, String nama, String s, String drawable, String latitude, String longitude) {
+    public RecommendationItem(int resId, String nama, double similarity, String drawable, String latitude, String longitude) {
         this.image = resId;
         this.name = nama;
-        this.jarak = s;
+        this.similarity = similarity;
         this.imageString = drawable;
         this.latitude = latitude;
         this.longitude = longitude;
@@ -46,6 +46,10 @@ public class RecommendationItem {
 
     public String getJarak() {
         return jarak;
+    }
+
+    public double getSimilarity() {
+        return similarity;
     }
 
     public String getImageString() {

@@ -18,7 +18,8 @@ public interface ApiPenggunaInterface {
             @Field("nama") String nama,
             @Field("usia") int usia,
             @Field("email") String email,
-            @Field("gender") String gender
+            @Field("gender") String gender,
+            @Field("preferensi") String preferensi
     );
 
     @FormUrlEncoded

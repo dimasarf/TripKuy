@@ -73,7 +73,7 @@ public class TestPOST extends AppCompatActivity {
                     @Override
                     protected Void doInBackground(Void... params) {
                         apiPenggunaInterface = ApiClient.getApiClient().create(ApiPenggunaInterface.class);
-                        Call<Pengguna> call = apiPenggunaInterface.savePengguna("Anak Kontol", 23, "kontol_bau@gmail.com", "LAKI");
+                        Call<Pengguna> call = apiPenggunaInterface.savePengguna("Anak Kontol", 23, "kontol_bau@gmail.com", "LAKI", "kontol");
 
                         call.enqueue(new Callback<Pengguna>() {
                             @Override

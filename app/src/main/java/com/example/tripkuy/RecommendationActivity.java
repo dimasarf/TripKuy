@@ -1,12 +1,15 @@
 package com.example.tripkuy;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -21,6 +24,7 @@ import com.example.tripkuy.models.TempatWisata;
 import com.example.tripkuy.models.dto.LatLongDTO;
 import com.example.tripkuy.models.dto.PlaceDTO;
 import com.example.tripkuy.models.dto.TripPlanDTO;
+import com.example.tripkuy.models.service.RecommenderAtribut;
 import com.example.tripkuy.models.service.Response;
 import com.example.tripkuy.tripssummary.TripSummaryActivity;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
@@ -58,7 +62,9 @@ public class RecommendationActivity extends AppCompatActivity implements TempatW
     public static final String ORIGINLAT = "ORIGINLAT";
     public static final String ORIGINLONG= "ORIGINLONG";
     public static final String RESPONSE= "RESPONSE";
-
+    String pengungjung;
+    private String personEmail;
+    private ProgressDialog dialog;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -68,7 +74,7 @@ public class RecommendationActivity extends AppCompatActivity implements TempatW
         tgl_awal = intent.getStringExtra(ActivityFragment.TGLAWAL);
         tgl_akhir = intent.getStringExtra(ActivityFragment.TGLAKHIR);
         kegiatan = intent.getStringExtra(ActivityFragment.KEGIATAN);
-        partner = intent.getStringExtra(ActivityFragment.PARTNER);
+        pengungjung = intent.getStringExtra(ActivityFragment.PARTNER);
         penginapan = intent.getStringExtra(ActivityFragment.ORIGIN);
         penginapanLat = intent.getDoubleExtra(ActivityFragment.ORIGINLAT, 0.0);
         penginapanLong = intent.getDoubleExtra(ActivityFragment.ORIGINLONG, 0.0);
@@ -76,6 +82,8 @@ public class RecommendationActivity extends AppCompatActivity implements TempatW
         mDurasi.setText(durasi+" Hari");
         mTxtPenginapan = findViewById(R.id.txt_penginapan);
         mTxtPenginapan.setText(penginapan);
+        GoogleSignInAccount account = GoogleSignIn.getLastSignedInAccount(this);
+        personEmail = account.getEmail();
         try {
             DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
             Date dateAwal = new SimpleDateFormat("dd/MM/yyyy").parse(tgl_awal);
@@ -87,17 +95,20 @@ public class RecommendationActivity extends AppCompatActivity implements TempatW
         } catch (ParseException e) {
             e.printStackTrace();
         }
-        tempatWisataHandler = new TempatWisataHandler(this);
+        Log.d("pengunjung", "pengunjung " +pengungjung);
+
+        tempatWisataHandler = new TempatWisataHandler(this, new RecommenderAtribut(pengungjung, kegiatan, durasi, personEmail), this);
         tempatWisataHandler.getData();
+        dialog = new ProgressDialog(this);
     }
 
     public void getDetailDestination(View view) throws ParseException {
-        GoogleSignInAccount account = GoogleSignIn.getLastSignedInAccount(this);
-        final String personEmail = account.getEmail();
 
         final Intent intent = new Intent(this, TripSummaryActivity.class);
         apiServiceInterface = ApiServiceClient.getApiClient().create(ApiServiceInterface.class);
         Call<Response> call = apiServiceInterface.process(generatePlan());
+        dialog.setMessage("Tunggu sebentar");
+        dialog.show();
         call.enqueue(new Callback<Response>() {
             @Override
             public void onResponse(Call<Response> call, retrofit2.Response<Response> response) {
@@ -112,9 +123,16 @@ public class RecommendationActivity extends AppCompatActivity implements TempatW
                     intent.putExtra(ORIGINLONG, penginapanLong);
                     intent.putParcelableArrayListExtra(SELECTEDTEMPATWISATA, selectedTempatWisatas);
                     TripSummaryActivity.response = data;
+                    if (dialog.isShowing()) {
+                        dialog.dismiss();
+                    }
                     startActivity(intent);
                 }
                 else {
+                    if (dialog.isShowing()) {
+                        dialog.dismiss();
+                        Toast.makeText(getApplicationContext(), "Terjadi kesalahan", Toast.LENGTH_SHORT);
+                    }
                     Log.d("Response", "ISI PESAN : " + response.message());
                     Log.d("Response", "KONTOL STATUS : " + response.code());
                 }
@@ -139,13 +157,13 @@ public class RecommendationActivity extends AppCompatActivity implements TempatW
         for (TempatWisata item : tempatWisatas) {
             int resId = getResId(item.getDrawable(), R.drawable.class);
             Log.d("KOORDINAT 2", item.getLatitude() + " - " + item.getLongitude());
-            recommendationItems.add(new RecommendationItem(resId, item.getNama(), "5 K.M", item.getDrawable(), item.getLatitude(), item.getLongitude()));
+            recommendationItems.add(new RecommendationItem(resId, item.getNama(), item.getSimilarity(), item.getDrawable(), item.getLatitude(), item.getLongitude()));
         }
 
         mRecyclerView = findViewById(R.id.recycler_recomendation);
         mRecyclerView.setHasFixedSize(true);
-        mLayoutManager = new LinearLayoutManager(this);
-        mAdapter = new RecommendationAdapter(recommendationItems);
+        mLayoutManager = new GridLayoutManager(this,2);
+        mAdapter = new RecommendationAdapter(recommendationItems, this);
 
         mRecyclerView.setLayoutManager(mLayoutManager);
         mRecyclerView.setAdapter(mAdapter);

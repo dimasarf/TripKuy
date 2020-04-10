@@ -13,6 +13,8 @@ public class Pengguna {
     @Expose
     @SerializedName("gender") private String gender;
     @Expose
+    @SerializedName("preferensi") private String preferensi;
+    @Expose
     @SerializedName("success") private Boolean success;
     @Expose
     @SerializedName("message") private String message;
@@ -51,6 +53,15 @@ public class Pengguna {
     public void setGender(String gender) {
         this.gender = gender;
     }
+
+    public String getPreferensi() {
+        return preferensi;
+    }
+
+    public void setPreferensi(String preferensi) {
+        this.preferensi = preferensi;
+    }
+
     public Boolean getSuccess() {
         return success;
     }

@@ -71,7 +71,6 @@ public class DetailTripsAdapter extends RecyclerView.Adapter<DetailTripsAdapter.
                 Picasso.get().load(getPhotoURL(photoReference)).into(holder.imgTempat);
             }
         });
-//        holder.imgTempat.setImageResource(currentItem.getImage());
 
         holder.txtJarak.setText(currentItem.getJarak());
         holder.txtTempat.setText(currentItem.getName());
