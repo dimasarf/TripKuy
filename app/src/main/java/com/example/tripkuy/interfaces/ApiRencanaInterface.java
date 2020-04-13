@@ -21,7 +21,26 @@ public interface ApiRencanaInterface {
             @Field("email") String email,
             @Field("tempat") String tempat,
             @Field("tanggal_mulai") String tanggal_mulai,
-            @Field("tanggal_akhir") String tanggal_akhir
+            @Field("tanggal_akhir") String tanggal_akhir,
+            @Field("durasi") int durasi
+    );
+
+    @FormUrlEncoded
+    @POST("save_detailrencana.php")
+    Call<Rencana> saveDetailRencana(
+            @Field("idrencana") String idrencana,
+            @Field("durasi") String durasi,
+            @Field("jarak") String jarak,
+            @Field("day") int day
+    );
+
+    @FormUrlEncoded
+    @POST("save_rute.php")
+    Call<Rencana> saveRute(
+            @Field("iddetailrencana") String id_rencana,
+            @Field("tempat") String tempat,
+            @Field("jarak") String jarak,
+            @Field("durasi") String durasi
     );
 
     @GET("rencanas.php")

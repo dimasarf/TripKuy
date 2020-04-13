@@ -2,7 +2,7 @@ package com.example.tripkuy.RecyclerItems;
 
 public class RecommendationItem {
     private int image;
-    private String name, jarak, imageString;
+    private String id, name, jarak, imageString;
     private String latitude;
     private String longitude;
     double similarity;
@@ -19,13 +19,18 @@ public class RecommendationItem {
         this.imageString = imageString;
     }
 
-    public RecommendationItem(int resId, String nama, double similarity, String drawable, String latitude, String longitude) {
+    public RecommendationItem(String id, int resId, String nama, double similarity, String drawable, String latitude, String longitude) {
+        this.id = id;
         this.image = resId;
         this.name = nama;
         this.similarity = similarity;
         this.imageString = drawable;
         this.latitude = latitude;
         this.longitude = longitude;
+    }
+
+    public String getId() {
+        return id;
     }
 
     public String getLatitude() {

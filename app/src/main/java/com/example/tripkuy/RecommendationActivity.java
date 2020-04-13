@@ -1,6 +1,7 @@
 package com.example.tripkuy;
 
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -13,6 +14,7 @@ import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.tripkuy.BackgroundWorker.AddRencana;
 import com.example.tripkuy.Handler.TempatWisataHandler;
 import com.example.tripkuy.RecyclerAdapter.RecommendationAdapter;
 import com.example.tripkuy.RecyclerItems.RecommendationItem;
@@ -65,6 +67,7 @@ public class RecommendationActivity extends AppCompatActivity implements TempatW
     String pengungjung;
     private String personEmail;
     private ProgressDialog dialog;
+    Context context;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -109,6 +112,7 @@ public class RecommendationActivity extends AppCompatActivity implements TempatW
         Call<Response> call = apiServiceInterface.process(generatePlan());
         dialog.setMessage("Tunggu sebentar");
         dialog.show();
+        context = this;
         call.enqueue(new Callback<Response>() {
             @Override
             public void onResponse(Call<Response> call, retrofit2.Response<Response> response) {
@@ -123,10 +127,12 @@ public class RecommendationActivity extends AppCompatActivity implements TempatW
                     intent.putExtra(ORIGINLONG, penginapanLong);
                     intent.putParcelableArrayListExtra(SELECTEDTEMPATWISATA, selectedTempatWisatas);
                     TripSummaryActivity.response = data;
+                    AddRencana addRencana = new AddRencana(context,data.data ,personEmail, intent);
+                    addRencana.execute();
                     if (dialog.isShowing()) {
                         dialog.dismiss();
                     }
-                    startActivity(intent);
+//                    startActivity(intent);
                 }
                 else {
                     if (dialog.isShowing()) {
@@ -157,7 +163,7 @@ public class RecommendationActivity extends AppCompatActivity implements TempatW
         for (TempatWisata item : tempatWisatas) {
             int resId = getResId(item.getDrawable(), R.drawable.class);
             Log.d("KOORDINAT 2", item.getLatitude() + " - " + item.getLongitude());
-            recommendationItems.add(new RecommendationItem(resId, item.getNama(), item.getSimilarity(), item.getDrawable(), item.getLatitude(), item.getLongitude()));
+            recommendationItems.add(new RecommendationItem(item.getId(), resId, item.getNama(), item.getSimilarity(), item.getDrawable(), item.getLatitude(), item.getLongitude()));
         }
 
         mRecyclerView = findViewById(R.id.recycler_recomendation);
@@ -176,10 +182,10 @@ public class RecommendationActivity extends AppCompatActivity implements TempatW
 
             @Override
             public void onSelect(int position) {
-                selectedTempatWisatas.add(new TempatWisata(recommendationItems.get(position).getName(), recommendationItems.get(position).getImageString(),
+                selectedTempatWisatas.add(new TempatWisata(recommendationItems.get(position).getId(), recommendationItems.get(position).getName(), recommendationItems.get(position).getImageString(),
                         recommendationItems.get(position).getLatitude(), recommendationItems.get(position).getLongitude()));
                 Log.d("KOORDINAT SELECTED", recommendationItems.get(position).getLatitude() + " - " + recommendationItems.get(position).getLongitude());
-                Log.d("TEST", recommendationItems.get(position).getName());
+                Log.d("TESTID", "id tempat "+recommendationItems.get(position).getId());
             }
         });
 

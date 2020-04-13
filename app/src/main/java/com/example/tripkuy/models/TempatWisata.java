@@ -8,6 +8,8 @@ import com.google.gson.annotations.SerializedName;
 
 public class TempatWisata implements Parcelable {
     @Expose
+    @SerializedName("id") private String id;
+    @Expose
     @SerializedName("name") private String nama;
     @Expose
     @SerializedName("drawable") private String drawable;
@@ -56,7 +58,8 @@ public class TempatWisata implements Parcelable {
         this.drawable = drawable;
     }
 
-    public TempatWisata(String nama, String drawable, String latitude, String longitude) {
+    public TempatWisata(String id, String nama, String drawable, String latitude, String longitude) {
+        this.id = id;
         this.nama = nama;
         this.drawable = drawable;
         this.latitude = latitude;
@@ -78,6 +81,10 @@ public class TempatWisata implements Parcelable {
         parcel.writeString(drawable);
         parcel.writeString(latitude);
         parcel.writeString(longitude);
+    }
+
+    public String getId() {
+        return id;
     }
 
     public static final Parcelable.Creator<TempatWisata> CREATOR = new Parcelable.Creator<TempatWisata>() {
