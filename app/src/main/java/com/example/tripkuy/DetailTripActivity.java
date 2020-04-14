@@ -60,8 +60,7 @@ public class DetailTripActivity extends AppCompatActivity implements OnMapReadyC
     }
 
     public void simpanPerjalanan(View view){
-        AddRencana addRencana = new AddRencana(this, selectedTempatWisatas,email, tgl_awal, tgl_akhir);
-        addRencana.execute();
+
     }
 
     private void buildRecyclerView() {

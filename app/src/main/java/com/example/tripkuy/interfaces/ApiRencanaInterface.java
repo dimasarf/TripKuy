@@ -3,6 +3,8 @@ package com.example.tripkuy.interfaces;
 import com.example.tripkuy.models.Preferensi;
 import com.example.tripkuy.models.Rencana;
 import com.example.tripkuy.models.TempatWisata;
+import com.example.tripkuy.models.service.ItineraryDetailsItem;
+import com.example.tripkuy.models.service.RoutesItem;
 
 import java.util.List;
 
@@ -22,7 +24,10 @@ public interface ApiRencanaInterface {
             @Field("tempat") String tempat,
             @Field("tanggal_mulai") String tanggal_mulai,
             @Field("tanggal_akhir") String tanggal_akhir,
-            @Field("durasi") int durasi
+            @Field("durasi") int durasi,
+            @Field("origin") String origin,
+            @Field("originLat") double originLat,
+            @Field("originLong") double originLong
     );
 
     @FormUrlEncoded
@@ -40,11 +45,23 @@ public interface ApiRencanaInterface {
             @Field("iddetailrencana") String id_rencana,
             @Field("tempat") String tempat,
             @Field("jarak") String jarak,
-            @Field("durasi") String durasi
+            @Field("durasi") String durasi,
+            @Field("latitude") double latitude,
+            @Field("longitude") double longitude
     );
 
     @GET("rencanas.php")
     Call<List<Rencana>> getAll(
             @Query("email") String email
+    );
+
+    @GET("detailrencanas.php")
+    Call<List<ItineraryDetailsItem>> getDetailRencana(
+            @Query("id_rencana") String id_rencana
+    );
+
+    @GET("routes.php")
+    Call<List<RoutesItem>> getRoutes(
+            @Query("id_detailrencana") String id_detailrencana
     );
 }

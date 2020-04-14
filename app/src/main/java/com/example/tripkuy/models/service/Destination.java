@@ -8,4 +8,9 @@ public class Destination {
     @SerializedName("address") public String address;
     @SerializedName("latLong") public LatLong latLong;
     @SerializedName("photoReference") public String photoReference;
+
+    public Destination(String name, LatLong latLong) {
+        this.name = name;
+        this.latLong = latLong;
+    }
 }

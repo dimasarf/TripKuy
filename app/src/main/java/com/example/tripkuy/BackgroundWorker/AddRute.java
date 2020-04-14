@@ -35,7 +35,8 @@ public class AddRute extends AsyncTask<Void, Void, Void> {
     protected Void doInBackground(Void... voids) {
         apiRencanaInterface = ApiClient.getApiClient().create(ApiRencanaInterface.class);
         for (RoutesItem item: data) {
-            Call<Rencana> call = apiRencanaInterface.saveRute(idDetailRencana, item.destination.name, item.tripDistance, item.tripDuration);
+            Call<Rencana> call = apiRencanaInterface.saveRute(idDetailRencana, item.destination.name,
+                    item.tripDistance, item.tripDuration, item.destination.latLong.lat, item.destination.latLong.longg);
             call.enqueue(new Callback<Rencana>() {
                 @Override
                 public void onResponse(Call<Rencana> call, Response<Rencana> response) {

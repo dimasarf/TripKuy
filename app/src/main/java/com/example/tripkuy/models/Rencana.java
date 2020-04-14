@@ -5,9 +5,13 @@ import com.google.gson.annotations.SerializedName;
 
 public class Rencana {
     @Expose
+    @SerializedName("id") private String id;
+    @Expose
     @SerializedName("id_pengguna") private int id_pengguna;
     @Expose
     @SerializedName("tempat") private String tempat;
+    @Expose
+    @SerializedName("durasi") private int durasi;
     @Expose
     @SerializedName("tanggal_mulai") private String tanggal_mulai;
     @Expose
@@ -18,6 +22,12 @@ public class Rencana {
     @SerializedName("kota") private String kota;
     @Expose
     @SerializedName("drawable") private String drawable;
+    @Expose
+    @SerializedName("origin") private String origin;
+    @Expose
+    @SerializedName("originLat") private double originLat;
+    @Expose
+    @SerializedName("originLong") private double originLong;
     @Expose
     @SerializedName("success") private Boolean success;
     @Expose
@@ -48,6 +58,22 @@ public class Rencana {
 
     public String getTempat() {
         return tempat;
+    }
+
+    public int getDurasi() {
+        return durasi;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setDurasi(int durasi) {
+        this.durasi = durasi;
+    }
+
+    public void setKota(String kota) {
+        this.kota = kota;
     }
 
     public void setTempat(String tempat) {
@@ -84,5 +110,17 @@ public class Rencana {
 
     public void setMessage(String message) {
         this.message = message;
+    }
+
+    public String getOrigin() {
+        return origin;
+    }
+
+    public double getOriginLat() {
+        return originLat;
+    }
+
+    public double getOriginLong() {
+        return originLong;
     }
 }

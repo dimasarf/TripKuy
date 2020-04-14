@@ -127,12 +127,11 @@ public class RecommendationActivity extends AppCompatActivity implements TempatW
                     intent.putExtra(ORIGINLONG, penginapanLong);
                     intent.putParcelableArrayListExtra(SELECTEDTEMPATWISATA, selectedTempatWisatas);
                     TripSummaryActivity.response = data;
-                    AddRencana addRencana = new AddRencana(context,data.data ,personEmail, intent);
+                    AddRencana addRencana = new AddRencana(context,data.data ,personEmail, intent, penginapan, penginapanLat, penginapanLong);
                     addRencana.execute();
                     if (dialog.isShowing()) {
                         dialog.dismiss();
                     }
-//                    startActivity(intent);
                 }
                 else {
                     if (dialog.isShowing()) {

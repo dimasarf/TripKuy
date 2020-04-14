@@ -30,8 +30,10 @@ public class AddRencana extends AsyncTask<Void, Void, Void> {
     String email, tanggal_awal, tanggal_akhir;
     Intent intent;
     Data data;
+    String penginapan;
+    double penginapanLat, penginapanLong;
 
-    public AddRencana(Context context, ArrayList<TempatWisata> tempatWisatas, String email, String tanggal_awal, String tanggal_akhir) {
+    public AddRencana(Context context, ArrayList<TempatWisata> tempatWisatas, String email, String tanggal_awal) {
         this.context = context;
         this.tempatWisatas = tempatWisatas;
         this.email = email;
@@ -39,11 +41,14 @@ public class AddRencana extends AsyncTask<Void, Void, Void> {
         this.tanggal_akhir = tanggal_akhir;
     }
 
-    public AddRencana(Context context, Data data, String email, Intent intent) {
+    public AddRencana(Context context, Data data, String email, Intent intent, String penginapan, Double penginapanLat, Double penginapanLong) {
         this.context = context;
         this.data = data;
         this.email = email;
         this.intent = intent;
+        this.penginapan = penginapan;
+        this.penginapanLat = penginapanLat;
+        this.penginapanLong = penginapanLong;
     }
 
     @Override
@@ -57,7 +62,7 @@ public class AddRencana extends AsyncTask<Void, Void, Void> {
     @Override
     protected Void doInBackground(Void... params) {
         apiRencanaInterface = ApiClient.getApiClient().create(ApiRencanaInterface.class);
-        Call<Rencana> call = apiRencanaInterface.saveRencana(email, "Yogyakarta", data.startDate, data.endDate, data.duration);
+        Call<Rencana> call = apiRencanaInterface.saveRencana(email, "Yogyakarta", data.startDate, data.endDate, data.duration, penginapan, penginapanLat, penginapanLong);
 
         call.enqueue(new Callback<Rencana>() {
             @Override

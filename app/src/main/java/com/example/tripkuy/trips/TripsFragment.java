@@ -85,9 +85,9 @@ public class TripsFragment extends Fragment implements RencanaView {
     public void onGetResult(List<Rencana> rencanas) {
         this.rencanaList = rencanas;
         for (Rencana item: rencanaList) {
-            int resId = getResId(item.getDrawable(), R.drawable.class);
-
-            tripsItems.add(new TripsItem(resId, item.getKota(), item.getTanggal_mulai(), item.getTanggal_akhir()));
+            int resId = getResId("logojogja", R.drawable.class);
+            tripsItems.add(new TripsItem(resId, item.getTempat(), item.getTanggal_mulai(), item.getTanggal_akhir(),
+                    item.getId(), item.getDurasi(), item.getOrigin(), item.getOriginLat(), item.getOriginLong()));
         }
 
         mRecyclerView = root.findViewById(R.id.recycler_trip);
