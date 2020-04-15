@@ -11,6 +11,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.android.volley.Request;
@@ -19,24 +20,31 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
+import com.example.tripkuy.AddDestinationDialog;
 import com.example.tripkuy.NewTripActivity;
 import com.example.tripkuy.R;
 import com.example.tripkuy.RecyclerItems.RecommendationItem;
 import com.example.tripkuy.interfaces.GoogleMapAPICallback;
+import com.example.tripkuy.models.TempatWisata;
 import com.squareup.picasso.Picasso;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.lang.reflect.Field;
 import java.util.ArrayList;
 
-public class RecommendationAdapter extends RecyclerView.Adapter<RecommendationAdapter.RecomendationItemViewHolder> {
+public class RecommendationAdapter extends RecyclerView.Adapter<RecommendationAdapter.RecomendationItemViewHolder> implements
+        AddDestinationDialog.AddDestinationDialogListener {
 
     private ArrayList<RecommendationItem> recommendationItems;
 
     private onRecommendationItemClickListener recommendationListener;
     private Context context;
+
+
+
     public interface onRecommendationItemClickListener{
         void onItemClick(int position);
         void onSelect(int position);
@@ -89,18 +97,41 @@ public class RecommendationAdapter extends RecyclerView.Adapter<RecommendationAd
     public void onBindViewHolder(@NonNull final RecomendationItemViewHolder holder, int position) {
         RecommendationItem currentItem = recommendationItems.get(position);
 
-        getPhotoReference(recommendationItems.get(position).getName(), new GoogleMapAPICallback() {
-            @Override
-            public void onPhotoReferenceCallback(String photoReference) {
-                Log.d("PHOTOURL", "url "+getPhotoURL(photoReference));
-                Picasso.get().load(getPhotoURL(photoReference)).into(holder.imgTempat);
-            }
-        });
+        if(position == recommendationItems.size() - 1){
+            holder.imgTempat.setImageResource(currentItem.getImage());
+            holder.txtJarak.setText("");
+            holder.txtTempat.setText("");
+            holder.checkTempat.setText("");
+            holder.txtJarak.setCompoundDrawablesWithIntrinsicBounds(0, 0, 0, 0);
 
-//        holder.imgTempat.setImageResource(currentItem.getImage());
-        holder.txtJarak.setText(round(currentItem.getSimilarity(), 2) * 100+"%");
-        holder.txtTempat.setText(currentItem.getName());
-        holder.checkTempat.setText(currentItem.getName());
+            holder.checkTempat.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    AddDestinationDialog dialog = new AddDestinationDialog();
+                    dialog.show(((AppCompatActivity) context).getSupportFragmentManager(), "test");
+
+                }
+            });
+        }
+        else {
+
+            getPhotoReference(recommendationItems.get(position).getName(), new GoogleMapAPICallback() {
+                @Override
+                public void onPhotoReferenceCallback(String photoReference) {
+                    Log.d("PHOTOURL", "url "+getPhotoURL(photoReference));
+                    Picasso.get().load(getPhotoURL(photoReference)).into(holder.imgTempat);
+                }
+            });
+
+
+            holder.txtJarak.setText(round(currentItem.getSimilarity(), 2) * 100+"%");
+            holder.txtTempat.setText(currentItem.getName());
+            holder.checkTempat.setText(currentItem.getName());
+            if(recommendationItems.get(position).isSelected())
+                holder.checkTempat.setChecked(true);
+        }
+
+
 
     }
 
@@ -160,5 +191,23 @@ public class RecommendationAdapter extends RecyclerView.Adapter<RecommendationAd
         value = value * factor;
         long tmp = Math.round(value);
         return (double) tmp / factor;
+    }
+
+    @Override
+    public void onDialogListener(TempatWisata tempatWisata) {
+        recommendationItems.add(new RecommendationItem(tempatWisata.getId(), 0, tempatWisata.getNama(),0, "", tempatWisata.getLatitude(), tempatWisata.getLongitude()));
+
+
+    }
+
+    public int getResId(String resName, Class<?> c) {
+
+        try {
+            Field idField = c.getDeclaredField(resName);
+            return idField.getInt(idField);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return -1;
+        }
     }
 }

@@ -6,6 +6,7 @@ public class RecommendationItem {
     private String latitude;
     private String longitude;
     double similarity;
+    private boolean selected;
     public RecommendationItem(int image, String name, String jarak) {
         this.image = image;
         this.name = name;
@@ -59,5 +60,13 @@ public class RecommendationItem {
 
     public String getImageString() {
         return imageString;
+    }
+
+    public boolean isSelected() {
+        return selected;
+    }
+
+    public void setSelected(boolean selected) {
+        this.selected = selected;
     }
 }

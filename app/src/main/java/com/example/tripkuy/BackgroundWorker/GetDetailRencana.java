@@ -68,7 +68,7 @@ public class GetDetailRencana extends AsyncTask<Void, Void, Void> implements Det
     }
 
     @Override
-    public void getDetailRencana(final ArrayList<ItineraryDetailsItem> items) {
+    public void getDetailRencana(ArrayList<ItineraryDetailsItem> items) {
         ApiRencanaInterface apiDetailRencana = ApiClient.getApiClient().create(ApiRencanaInterface.class);
         itineraryDetailsItems = null;
         itineraryDetailsItems = items;
@@ -78,10 +78,13 @@ public class GetDetailRencana extends AsyncTask<Void, Void, Void> implements Det
             call.enqueue(new Callback<List<RoutesItem>>() {
                 @Override
                 public void onResponse(Call<List<RoutesItem>> call, Response<List<RoutesItem>> response) {
-                    List<RoutesItem> itemss = response.body();
+                    ArrayList<RoutesItem> itemss = (ArrayList<RoutesItem>) response.body();
+
                     for(int l =0; l < itemss.size(); l++ ){
-                        Log.d("tempat",itineraryDetailsItems.get(finalJ).id+" "+itemss.get(l).destinationDb );
+                        itemss.get(l).destination = new Destination(itemss.get(l).destinationDb,
+                                new LatLong(itemss.get(l).latitudeDB, itemss.get(l).longitudeDB));
                     }
+                    itineraryDetailsItems.get(finalJ).routes = itemss;
                     detailRencanaListener.getSetRoutes((ArrayList<RoutesItem>) response.body());
                 }
 
@@ -95,11 +98,6 @@ public class GetDetailRencana extends AsyncTask<Void, Void, Void> implements Det
 
     @Override
     public void getSetRoutes(ArrayList<RoutesItem> items) {
-
-        itineraryDetailsItems.get(i).routes = items;
-        for (RoutesItem item : items){
-            item.destination = new Destination(item.destinationDb, new LatLong(item.latitudeDB, item.longitudeDB));
-        }
         i++;
 
         if(i > itineraryDetailsItems.size() - 1){

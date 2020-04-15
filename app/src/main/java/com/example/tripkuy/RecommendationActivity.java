@@ -43,7 +43,8 @@ import java.util.List;
 import retrofit2.Call;
 import retrofit2.Callback;
 
-public class RecommendationActivity extends AppCompatActivity implements TempatWisataView {
+public class RecommendationActivity extends AppCompatActivity implements TempatWisataView,
+        AddDestinationDialog.AddDestinationDialogListener {
     String  tgl_awal, tgl_akhir, kegiatan, partner, penginapan;
     TextView mDurasi, mTanggalMulai, mTanggalAkhir, mTxtPenginapan;
     long durasi;
@@ -164,7 +165,8 @@ public class RecommendationActivity extends AppCompatActivity implements TempatW
             Log.d("KOORDINAT 2", item.getLatitude() + " - " + item.getLongitude());
             recommendationItems.add(new RecommendationItem(item.getId(), resId, item.getNama(), item.getSimilarity(), item.getDrawable(), item.getLatitude(), item.getLongitude()));
         }
-
+        int resId2 = getResId("ic_add_white_24dp", R.drawable.class);
+        recommendationItems.add(new RecommendationItem("2", resId2, "", 0.00, "", "", ""));
         mRecyclerView = findViewById(R.id.recycler_recomendation);
         mRecyclerView.setHasFixedSize(true);
         mLayoutManager = new GridLayoutManager(this,2);
@@ -181,6 +183,7 @@ public class RecommendationActivity extends AppCompatActivity implements TempatW
 
             @Override
             public void onSelect(int position) {
+                recommendationItems.get(position).setSelected(true);
                 selectedTempatWisatas.add(new TempatWisata(recommendationItems.get(position).getId(), recommendationItems.get(position).getName(), recommendationItems.get(position).getImageString(),
                         recommendationItems.get(position).getLatitude(), recommendationItems.get(position).getLongitude()));
                 Log.d("KOORDINAT SELECTED", recommendationItems.get(position).getLatitude() + " - " + recommendationItems.get(position).getLongitude());
@@ -218,5 +221,19 @@ public class RecommendationActivity extends AppCompatActivity implements TempatW
         }
         TripPlanDTO tripPlanDTO = new TripPlanDTO(startDate, endDate, durasi, origin, "Test", destinations);
         return  tripPlanDTO;
+    }
+
+    @Override
+    public void onDialogListener(TempatWisata tempatWisata) {
+        int posisi = recommendationItems.size() -1 ;
+        recommendationItems.remove(posisi);
+        mAdapter.notifyItemRemoved(posisi);
+        Log.d("tolol", "size "+selectedTempatWisatas.size());
+        recommendationItems.add(new RecommendationItem("2",
+                0, tempatWisata.getNama(), 0.00, "", tempatWisata.getLatitude(), tempatWisata.getLongitude()));
+        int resId2 = getResId("ic_add_white_24dp", R.drawable.class);
+        recommendationItems.add(new RecommendationItem("2", resId2, "", 0.00, "", "", ""));
+        mAdapter.notifyDataSetChanged();
+        Log.d("kontoolll", "test");
     }
 }
