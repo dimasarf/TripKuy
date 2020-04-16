@@ -157,5 +157,19 @@ public class PickDestinationFragment extends Fragment {
         items.add((CheckBox)rootView.findViewById(R.id.pref_waterboom));
         items.add((CheckBox)rootView.findViewById(R.id.pref_pemandian));
         items.add((CheckBox)rootView.findViewById(R.id.pref_zoo));
+        items.add((CheckBox)rootView.findViewById(R.id.pref_lembah));
+        items.add((CheckBox)rootView.findViewById(R.id.pref_pantai));
+        items.add((CheckBox)rootView.findViewById(R.id.pref_park));
+        items.add((CheckBox)rootView.findViewById(R.id.pref_gunung));
+        items.add((CheckBox)rootView.findViewById(R.id.pref_garden));
+        items.add((CheckBox)rootView.findViewById(R.id.pref_sungai));
+        items.add((CheckBox)rootView.findViewById(R.id.pref_monumen));
+        items.add((CheckBox)rootView.findViewById(R.id.pref_galery));
+        items.add((CheckBox)rootView.findViewById(R.id.pref_candi));
+        items.add((CheckBox)rootView.findViewById(R.id.pref_creative));
+        items.add((CheckBox)rootView.findViewById(R.id.pref_hiburan));
+        items.add((CheckBox)rootView.findViewById(R.id.pref_sains));
+        items.add((CheckBox)rootView.findViewById(R.id.pref_pasar));
+        items.add((CheckBox)rootView.findViewById(R.id.pref_desa));
     }
 }

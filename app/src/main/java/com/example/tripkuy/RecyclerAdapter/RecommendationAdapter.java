@@ -2,11 +2,14 @@ package com.example.tripkuy.RecyclerAdapter;
 
 import android.content.Context;
 import android.util.Log;
+import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.CheckBox;
+import android.widget.FrameLayout;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -34,6 +37,7 @@ import org.json.JSONObject;
 
 import java.lang.reflect.Field;
 import java.util.ArrayList;
+
 
 public class RecommendationAdapter extends RecyclerView.Adapter<RecommendationAdapter.RecomendationItemViewHolder> implements
         AddDestinationDialog.AddDestinationDialogListener {
@@ -135,13 +139,17 @@ public class RecommendationAdapter extends RecyclerView.Adapter<RecommendationAd
 
     }
 
+    public static int dpToPx(int dp, Context context) {
+        float density = context.getResources().getDisplayMetrics().density;
+        return Math.round((float) dp * density);
+    }
+
     public void getPhotoReference(String lokasi, final GoogleMapAPICallback listener){
         String url = "https://maps.googleapis.com/maps/api/place/findplacefromtext/" +
                 "json?input=" + lokasi+
                 "&inputtype=textquery&fields=photos,formatted_address,name,opening_hours,rating&locationbias=circle:2000@47.6918452,-122.2226413&" +
                 "key=AIzaSyA02Yz09lw6kg_WTc-IqFD2kPP4txoxqVc";
         final String[] photoReference = {""};
-        String reference = "KONToL";
         JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {

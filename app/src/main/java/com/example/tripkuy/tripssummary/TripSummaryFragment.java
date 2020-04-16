@@ -132,7 +132,7 @@ public class TripSummaryFragment extends Fragment implements OnMapReadyCallback 
         detailTripItems = new ArrayList<>();
         for (final RoutesItem item: itineraryDetail.routes) {
             int resId = getResId("yogyakarta", R.drawable.class);
-            detailTripItems.add(new DetailTripItem(resId,item.destination.name, item.tripDistance));
+            detailTripItems.add(new DetailTripItem(resId,item.destination.name, item.tripDistance, item.tripDuration, item.id, item.rating));
         }
         mRecyclerView = root.findViewById(R.id.recycler_detail_trips);
         mRecyclerView.setHasFixedSize(false);

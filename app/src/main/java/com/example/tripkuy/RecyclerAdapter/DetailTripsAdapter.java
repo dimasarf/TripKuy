@@ -7,7 +7,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.CheckBox;
 import android.widget.ImageView;
+import android.widget.RatingBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -18,11 +20,13 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
+import com.example.tripkuy.BackgroundWorker.UpdateRating;
 import com.example.tripkuy.DetailTripActivity;
 import com.example.tripkuy.NewTripActivity;
 import com.example.tripkuy.R;
 import com.example.tripkuy.RecyclerItems.DetailTripItem;
 import com.example.tripkuy.interfaces.GoogleMapAPICallback;
+import com.github.vipulasri.timelineview.TimelineView;
 import com.squareup.picasso.Picasso;
 
 import org.json.JSONArray;
@@ -37,13 +41,19 @@ public class DetailTripsAdapter extends RecyclerView.Adapter<DetailTripsAdapter.
     private Context context;
     public static class DetailTripsViewHolder extends RecyclerView.ViewHolder{
         public ImageView imgTempat;
-        public TextView txtTempat, txtJarak;
+        public TextView txtTempat, txtJarak, txtDurasi;
+        public TimelineView mTimelineView;
+        public RatingBar ratingBar;
 
-        public DetailTripsViewHolder(@NonNull View itemView) {
+        public DetailTripsViewHolder(@NonNull View itemView, int viewType) {
             super(itemView);
             imgTempat = itemView.findViewById(R.id.img_trip);
             txtTempat = itemView.findViewById(R.id.txt_trip_tempat);
             txtJarak = itemView.findViewById(R.id.txt_trip_jarak);
+            txtDurasi = itemView.findViewById(R.id.txt_trip_durasi);
+            ratingBar = itemView.findViewById(R.id.rating);
+            mTimelineView = (TimelineView) itemView.findViewById(R.id.timeline);
+            mTimelineView.initLine(viewType);
         }
     }
 
@@ -56,13 +66,13 @@ public class DetailTripsAdapter extends RecyclerView.Adapter<DetailTripsAdapter.
     @Override
     public DetailTripsViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.detail_trips_item, parent, false);
-        DetailTripsViewHolder detailTripsViewHolder = new DetailTripsViewHolder(v);
+        DetailTripsViewHolder detailTripsViewHolder = new DetailTripsViewHolder(v, viewType);
         return detailTripsViewHolder;
     }
 
     @Override
     public void onBindViewHolder(@NonNull final DetailTripsViewHolder holder, int position) {
-        DetailTripItem currentItem = detailTripItems.get(position);
+        final DetailTripItem currentItem = detailTripItems.get(position);
 
         getPhotoReference(detailTripItems.get(position).getName(), new GoogleMapAPICallback() {
             @Override
@@ -71,9 +81,19 @@ public class DetailTripsAdapter extends RecyclerView.Adapter<DetailTripsAdapter.
                 Picasso.get().load(getPhotoURL(photoReference)).into(holder.imgTempat);
             }
         });
+        holder.ratingBar.setRating(currentItem.getRating());
+        holder.ratingBar.setOnRatingBarChangeListener(new RatingBar.OnRatingBarChangeListener() {
+            @Override
+            public void onRatingChanged(RatingBar ratingBar, float v, boolean b) {
+                Log.d("idrute", "id "+currentItem.getId());
+                UpdateRating updateRating = new UpdateRating(currentItem.getId(), holder.ratingBar.getRating(), context);
+                updateRating.execute();
+            }
+        });
 
         holder.txtJarak.setText(currentItem.getJarak());
         holder.txtTempat.setText(currentItem.getName());
+        holder.txtDurasi.setText(currentItem.getDurasi());
     }
 
     public void getPhotoReference(String lokasi, final GoogleMapAPICallback listener){

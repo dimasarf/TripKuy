@@ -83,6 +83,7 @@ public class GetDetailRencana extends AsyncTask<Void, Void, Void> implements Det
                     for(int l =0; l < itemss.size(); l++ ){
                         itemss.get(l).destination = new Destination(itemss.get(l).destinationDb,
                                 new LatLong(itemss.get(l).latitudeDB, itemss.get(l).longitudeDB));
+                        Log.d("dist", "jarak "+itemss.get(l).tripDistance);
                     }
                     itineraryDetailsItems.get(finalJ).routes = itemss;
                     detailRencanaListener.getSetRoutes((ArrayList<RoutesItem>) response.body());

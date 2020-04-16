@@ -64,4 +64,11 @@ public interface ApiRencanaInterface {
     Call<List<RoutesItem>> getRoutes(
             @Query("id_detailrencana") String id_detailrencana
     );
+
+    @FormUrlEncoded
+    @POST("update_rating.php")
+    Call<RoutesItem> updateRating(
+            @Field("id_rute") String id_rute,
+            @Field("rating") float rating
+    );
 }

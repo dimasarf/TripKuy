@@ -5,12 +5,23 @@ import com.example.tripkuy.tripssummary.TripSummaryFragment;
 
 public class DetailTripItem {
     private int image;
-    private String name, jarak, photoReference;
+    private float rating;
+    private String name, jarak, photoReference, durasi, id;
 
-    public DetailTripItem(int image, String name, String jarak) {
+    public DetailTripItem(int image, String name, String jarak, String durasi) {
         this.image = image;
         this.name = name;
         this.jarak = jarak;
+        this.durasi = durasi;
+    }
+
+    public DetailTripItem(int image, String name, String jarak, String durasi, String id, float rating) {
+        this.image = image;
+        this.name = name;
+        this.jarak = jarak;
+        this.durasi = durasi;
+        this.id = id;
+        this.rating = rating;
     }
 
     public DetailTripItem(String name, String jarak, String photoReference) {
@@ -31,9 +42,19 @@ public class DetailTripItem {
         return jarak;
     }
 
+    public String getId() {
+        return id;
+    }
+
     public String getPhotoReference() {
         return photoReference;
     }
 
+    public String getDurasi() {
+        return durasi;
+    }
 
+    public float getRating() {
+        return rating;
+    }
 }

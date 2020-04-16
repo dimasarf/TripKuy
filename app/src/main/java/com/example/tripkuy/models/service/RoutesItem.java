@@ -1,5 +1,6 @@
 package com.example.tripkuy.models.service;
 
+import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
 public class RoutesItem {
@@ -14,5 +15,10 @@ public class RoutesItem {
     @SerializedName("latitude") public double latitudeDB;
     @SerializedName("longitude") public double longitudeDB;
     @SerializedName("destinationDb") public String destinationDb;
+    @SerializedName("rating") public float rating;
+    @Expose
+    @SerializedName("success") public Boolean success;
+    @Expose
+    @SerializedName("message") public String message;
 }
 

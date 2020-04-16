@@ -66,7 +66,7 @@ public class DetailTripActivity extends AppCompatActivity implements OnMapReadyC
     private void buildRecyclerView() {
         for (TempatWisata item: selectedTempatWisatas) {
             int resId = getResId(item.getDrawable(), R.drawable.class);
-            detailTripItems.add(new DetailTripItem(resId, item.getNama(), "5 K.M"));
+            detailTripItems.add(new DetailTripItem(resId, item.getNama(), "5 K.M",""));
         }
         mRecyclerView = findViewById(R.id.recycler_detail_trips);
         mRecyclerView.setHasFixedSize(false);
