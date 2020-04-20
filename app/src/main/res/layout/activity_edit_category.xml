@@ -1,0 +1,1292 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:paddingBottom="10dp"
+                app:cardBackgroundColor="@android:color/white"
+                app:cardCornerRadius="10dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/kategori"
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"
+                        android:drawableLeft="@drawable/ic_receipt_navy_24dp"
+                        android:text="Kategori pilihan anda :"
+                        android:layout_marginTop="10dp"
+                        android:textSize="20sp"
+                        android:gravity="left|center"
+                        android:drawablePadding="20dp"
+                        android:paddingRight="20dp"
+                        android:paddingLeft="20dp"/>
+                    <TextView
+                        android:id="@+id/kategori_pengguna"
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginBottom="15dp"
+                        android:text="Profil"
+                        android:textSize="20sp"
+                        android:gravity="left|center"
+                        android:drawablePadding="20dp"
+                        android:paddingRight="20dp"
+                        android:paddingLeft="40dp"/>
+
+
+
+                </LinearLayout>
+
+            </androidx.cardview.widget.CardView>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_marginTop="20dp"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="120dp"
+                    android:layout_height="120dp"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginTop="15dp"
+                    android:clipToPadding="true"
+                    app:cardCornerRadius="20dp">
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+
+                        <FrameLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent">
+                            <ImageView
+                                android:id="@+id/sportsImage"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:scaleType="fitXY"
+                                android:adjustViewBounds="true"
+                                android:src="@drawable/waduk" />
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:text="Waduk"
+                                android:gravity="center"
+                                android:textColor="@android:color/white"
+                                android:textSize="20sp"/>
+                            <CheckBox
+                                android:id="@+id/pref_waduk"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:background="@drawable/checkboxstyle"
+                                android:text="waduk"
+                                android:gravity="center"
+                                android:button="@android:color/transparent"
+                                android:paddingLeft="5dp"
+                                android:textColor="@android:color/transparent"
+                                android:textSize="20sp" />
+                        </FrameLayout>
+                    </RelativeLayout>
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="120dp"
+                    android:layout_height="120dp"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginTop="15dp"
+                    android:clipToPadding="true"
+                    app:cardCornerRadius="20dp">
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+
+                        <FrameLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent">
+                            <ImageView
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:scaleType="fitXY"
+                                android:adjustViewBounds="true"
+                                android:src="@drawable/bukit" />
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:text="Bukit"
+                                android:gravity="center"
+                                android:textColor="@android:color/white"
+                                android:textSize="20sp"/>
+                            <CheckBox
+                                android:id="@+id/pref_bukit"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:background="@drawable/checkboxstyle"
+                                android:text="bukit"
+                                android:gravity="center"
+                                android:button="@android:color/transparent"
+                                android:paddingLeft="5dp"
+                                android:textColor="@android:color/transparent"
+                                android:textSize="20sp" />
+                        </FrameLayout>
+                    </RelativeLayout>
+
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="120dp"
+                    android:layout_height="120dp"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginTop="15dp"
+                    android:layout_marginRight="15dp"
+                    android:clipToPadding="true"
+                    app:cardCornerRadius="20dp">
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+
+                        <FrameLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent">
+                            <ImageView
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:scaleType="fitXY"
+                                android:adjustViewBounds="true"
+                                android:src="@drawable/telaga" />
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:text="Telaga"
+                                android:gravity="center"
+                                android:textColor="@android:color/white"
+                                android:textSize="20sp"/>
+                            <CheckBox
+                                android:id="@+id/pref_telaga"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:background="@drawable/checkboxstyle"
+                                android:text="telaga"
+                                android:gravity="center"
+                                android:button="@android:color/transparent"
+                                android:paddingLeft="5dp"
+                                android:textColor="@android:color/transparent"
+                                android:textSize="20sp" />
+                        </FrameLayout>
+                    </RelativeLayout>
+
+                </androidx.cardview.widget.CardView>
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="120dp"
+                    android:layout_height="120dp"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginTop="5dp"
+                    android:clipToPadding="true"
+                    app:cardCornerRadius="20dp">
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+
+                        <FrameLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent">
+                            <ImageView
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:scaleType="fitXY"
+                                android:adjustViewBounds="true"
+                                android:src="@drawable/zoo" />
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:text="Kebun Binatang"
+                                android:gravity="center"
+                                android:textColor="@android:color/white"
+                                android:textSize="20sp"/>
+                            <CheckBox
+                                android:id="@+id/pref_zoo"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:background="@drawable/checkboxstyle"
+                                android:text="zoo"
+                                android:gravity="center"
+                                android:button="@android:color/transparent"
+                                android:paddingLeft="5dp"
+                                android:textColor="@android:color/transparent"
+                                android:textSize="20sp" />
+                        </FrameLayout>
+                    </RelativeLayout>
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="120dp"
+                    android:layout_height="120dp"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginTop="5dp"
+                    android:clipToPadding="true"
+                    app:cardCornerRadius="20dp">
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+
+                        <FrameLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent">
+                            <ImageView
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                
+                                android:scaleType="fitXY"
+                                android:adjustViewBounds="true"
+                                android:src="@drawable/museum" />
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:text="Museum"
+                                android:gravity="center"
+                                android:textColor="@android:color/white"
+                                android:textSize="20sp"/>
+                            <CheckBox
+                                android:id="@+id/pref_museum"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:background="@drawable/checkboxstyle"
+                                android:text="museum"
+                                android:gravity="center"
+                                android:button="@android:color/transparent"
+                                android:paddingLeft="5dp"
+                                android:textColor="@android:color/transparent"
+                                android:textSize="20sp" />
+                        </FrameLayout>
+                    </RelativeLayout>
+
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="120dp"
+                    android:layout_height="120dp"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginRight="15dp"
+                    android:clipToPadding="true"
+                    app:cardCornerRadius="20dp">
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+
+                        <FrameLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent">
+                            <ImageView
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:scaleType="fitXY"
+                                android:adjustViewBounds="true"
+                                android:src="@drawable/kebun" />
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:text="Kebun"
+                                android:gravity="center"
+                                android:textColor="@android:color/white"
+                                android:textSize="20sp"/>
+                            <CheckBox
+                                android:id="@+id/pref_kebun"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:background="@drawable/checkboxstyle"
+                                android:text="kebun"
+                                android:gravity="center"
+                                android:button="@android:color/transparent"
+                                android:paddingLeft="5dp"
+                                android:textColor="@android:color/transparent"
+                                android:textSize="20sp" />
+                        </FrameLayout>
+                    </RelativeLayout>
+
+                </androidx.cardview.widget.CardView>
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="120dp"
+                    android:layout_height="120dp"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginTop="5dp"
+                    android:clipToPadding="true"
+                    app:cardCornerRadius="20dp">
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+
+                        <FrameLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent">
+                            <ImageView
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:scaleType="fitXY"
+                                android:adjustViewBounds="true"
+                                android:src="@drawable/gurun" />
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:text="Gurun"
+                                android:gravity="center"
+                                android:textColor="@android:color/white"
+                                android:textSize="20sp"/>
+                            <CheckBox
+                                android:id="@+id/pref_gurun"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:background="@drawable/checkboxstyle"
+                                android:text="gurun"
+                                android:gravity="center"
+                                android:button="@android:color/transparent"
+                                android:paddingLeft="5dp"
+                                android:textColor="@android:color/transparent"
+                                android:textSize="20sp" />
+                        </FrameLayout>
+                    </RelativeLayout>
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="120dp"
+                    android:layout_height="120dp"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginTop="5dp"
+                    android:clipToPadding="true"
+                    app:cardCornerRadius="20dp">
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+
+                        <FrameLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent">
+                            <ImageView
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:scaleType="fitXY"
+                                android:adjustViewBounds="true"
+                                android:src="@drawable/pemandian" />
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:text="Pemandian"
+                                android:gravity="center"
+                                android:textColor="@android:color/white"
+                                android:textSize="20sp"/>
+                            <CheckBox
+                                android:id="@+id/pref_pemandian"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:background="@drawable/checkboxstyle"
+                                android:text="pemandian"
+                                android:gravity="center"
+                                android:button="@android:color/transparent"
+                                android:paddingLeft="5dp"
+                                android:textColor="@android:color/transparent"
+                                android:textSize="20sp" />
+                        </FrameLayout>
+                    </RelativeLayout>
+
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="120dp"
+                    android:layout_height="120dp"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginRight="15dp"
+                    android:clipToPadding="true"
+                    app:cardCornerRadius="20dp">
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+
+                        <FrameLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent">
+                            <ImageView
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:scaleType="fitXY"
+                                android:adjustViewBounds="true"
+                                android:src="@drawable/makam" />
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:text="Makam"
+                                android:gravity="center"
+                                android:textColor="@android:color/white"
+                                android:textSize="20sp"/>
+                            <CheckBox
+                                android:id="@+id/pref_makam"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:background="@drawable/checkboxstyle"
+                                android:text="makam"
+                                android:gravity="center"
+                                android:button="@android:color/transparent"
+                                android:paddingLeft="5dp"
+                                android:textColor="@android:color/transparent"
+                                android:textSize="20sp" />
+                        </FrameLayout>
+                    </RelativeLayout>
+
+                </androidx.cardview.widget.CardView>
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="120dp"
+                    android:layout_height="120dp"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginTop="5dp"
+                    android:clipToPadding="true"
+                    app:cardCornerRadius="20dp">
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+
+                        <FrameLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent">
+                            <ImageView
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:scaleType="fitXY"
+                                android:adjustViewBounds="true"
+                                android:src="@drawable/waterboom" />
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:text="Waterboom"
+                                android:gravity="center"
+                                android:textColor="@android:color/white"
+                                android:textSize="20sp"/>
+
+                            <CheckBox
+                                android:id="@+id/pref_waterboom"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:background="@drawable/checkboxstyle"
+                                android:text="waterboom"
+                                android:gravity="center"
+                                android:button="@android:color/transparent"
+                                android:paddingLeft="5dp"
+                                android:textColor="@android:color/transparent"
+                                android:textSize="20sp" />
+                        </FrameLayout>
+                    </RelativeLayout>
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="120dp"
+                    android:layout_height="120dp"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginTop="5dp"
+                    android:clipToPadding="true"
+                    app:cardCornerRadius="20dp">
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+
+                        <FrameLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent">
+                            <ImageView
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:scaleType="fitXY"
+                                android:adjustViewBounds="true"
+                                android:src="@drawable/airterjun" />
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:text="Air Terjun"
+                                android:gravity="center"
+                                android:textColor="@android:color/white"
+                                android:textSize="20sp"/>
+                            <CheckBox
+                                android:id="@+id/pref_airterjun"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:background="@drawable/checkboxstyle"
+                                android:text="air terjun"
+                                android:gravity="center"
+                                android:button="@android:color/transparent"
+                                android:paddingLeft="5dp"
+                                android:textColor="@android:color/transparent"
+                                android:textSize="20sp" />
+                        </FrameLayout>
+                    </RelativeLayout>
+
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="120dp"
+                    android:layout_height="120dp"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginRight="15dp"
+                    android:clipToPadding="true"
+                    app:cardCornerRadius="20dp">
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+
+                        <FrameLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent">
+                            <ImageView
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:scaleType="fitXY"
+                                android:adjustViewBounds="true"
+                                android:src="@drawable/goa" />
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:text="Goa"
+                                android:gravity="center"
+                                android:textColor="@android:color/white"
+                                android:textSize="20sp"/>
+                            <CheckBox
+                                android:id="@+id/pref_goa"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:background="@drawable/checkboxstyle"
+                                android:text="goa"
+                                android:gravity="center"
+                                android:button="@android:color/transparent"
+                                android:paddingLeft="5dp"
+                                android:textColor="@android:color/transparent"
+                                android:textSize="20sp" />
+                        </FrameLayout>
+                    </RelativeLayout>
+
+                </androidx.cardview.widget.CardView>
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="120dp"
+                    android:layout_height="120dp"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginTop="5dp"
+                    android:clipToPadding="true"
+                    app:cardCornerRadius="20dp">
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+
+                        <FrameLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent">
+                            <ImageView
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:scaleType="fitXY"
+                                android:adjustViewBounds="true"
+                                android:src="@drawable/lembah" />
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:text="Lembah"
+                                android:gravity="center"
+                                android:textColor="@android:color/white"
+                                android:textSize="20sp"/>
+
+                            <CheckBox
+                                android:id="@+id/pref_lembah"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:background="@drawable/checkboxstyle"
+                                android:text="lembah"
+                                android:gravity="center"
+                                android:button="@android:color/transparent"
+                                android:paddingLeft="5dp"
+                                android:textColor="@android:color/transparent"
+                                android:textSize="20sp" />
+                        </FrameLayout>
+                    </RelativeLayout>
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="120dp"
+                    android:layout_height="120dp"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginTop="5dp"
+                    android:clipToPadding="true"
+                    app:cardCornerRadius="20dp">
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+
+                        <FrameLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent">
+                            <ImageView
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:scaleType="fitXY"
+                                android:adjustViewBounds="true"
+                                android:src="@drawable/pantai" />
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:text="Pantai"
+                                android:gravity="center"
+                                android:textColor="@android:color/white"
+                                android:textSize="20sp"/>
+                            <CheckBox
+                                android:id="@+id/pref_pantai"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:background="@drawable/checkboxstyle"
+                                android:text="pantai"
+                                android:gravity="center"
+                                android:button="@android:color/transparent"
+                                android:paddingLeft="5dp"
+                                android:textColor="@android:color/transparent"
+                                android:textSize="20sp" />
+                        </FrameLayout>
+                    </RelativeLayout>
+
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="120dp"
+                    android:layout_height="120dp"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginRight="15dp"
+                    android:clipToPadding="true"
+                    app:cardCornerRadius="20dp">
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+
+                        <FrameLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent">
+                            <ImageView
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:scaleType="fitXY"
+                                android:adjustViewBounds="true"
+                                android:src="@drawable/park" />
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:text="Goa"
+                                android:gravity="center"
+                                android:textColor="@android:color/white"
+                                android:textSize="20sp"/>
+                            <CheckBox
+                                android:id="@+id/pref_park"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:background="@drawable/checkboxstyle"
+                                android:text="park"
+                                android:gravity="center"
+                                android:button="@android:color/transparent"
+                                android:paddingLeft="5dp"
+                                android:textColor="@android:color/transparent"
+                                android:textSize="20sp" />
+                        </FrameLayout>
+                    </RelativeLayout>
+
+                </androidx.cardview.widget.CardView>
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="120dp"
+                    android:layout_height="120dp"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginTop="5dp"
+                    android:clipToPadding="true"
+                    app:cardCornerRadius="20dp">
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+
+                        <FrameLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent">
+                            <ImageView
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:scaleType="fitXY"
+                                android:adjustViewBounds="true"
+                                android:src="@drawable/gunung" />
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:text="Gunung"
+                                android:gravity="center"
+                                android:textColor="@android:color/white"
+                                android:textSize="20sp"/>
+
+                            <CheckBox
+                                android:id="@+id/pref_gunung"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:background="@drawable/checkboxstyle"
+                                android:text="gunung"
+                                android:gravity="center"
+                                android:button="@android:color/transparent"
+                                android:paddingLeft="5dp"
+                                android:textColor="@android:color/transparent"
+                                android:textSize="20sp" />
+                        </FrameLayout>
+                    </RelativeLayout>
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="120dp"
+                    android:layout_height="120dp"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginTop="5dp"
+                    android:clipToPadding="true"
+                    app:cardCornerRadius="20dp">
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+
+                        <FrameLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent">
+                            <ImageView
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:scaleType="fitXY"
+                                android:adjustViewBounds="true"
+                                android:src="@drawable/garden" />
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:text="Garden"
+                                android:gravity="center"
+                                android:textColor="@android:color/white"
+                                android:textSize="20sp"/>
+                            <CheckBox
+                                android:id="@+id/pref_garden"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:background="@drawable/checkboxstyle"
+                                android:text="garden"
+                                android:gravity="center"
+                                android:button="@android:color/transparent"
+                                android:paddingLeft="5dp"
+                                android:textColor="@android:color/transparent"
+                                android:textSize="20sp" />
+                        </FrameLayout>
+                    </RelativeLayout>
+
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="120dp"
+                    android:layout_height="120dp"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginRight="15dp"
+                    android:clipToPadding="true"
+                    app:cardCornerRadius="20dp">
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+
+                        <FrameLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent">
+                            <ImageView
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:scaleType="fitXY"
+                                android:adjustViewBounds="true"
+                                android:src="@drawable/sungai" />
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:text="Sungai"
+                                android:gravity="center"
+                                android:textColor="@android:color/white"
+                                android:textSize="20sp"/>
+                            <CheckBox
+                                android:id="@+id/pref_sungai"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:background="@drawable/checkboxstyle"
+                                android:text="sungai"
+                                android:gravity="center"
+                                android:button="@android:color/transparent"
+                                android:paddingLeft="5dp"
+                                android:textColor="@android:color/transparent"
+                                android:textSize="20sp" />
+                        </FrameLayout>
+                    </RelativeLayout>
+
+                </androidx.cardview.widget.CardView>
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="120dp"
+                    android:layout_height="120dp"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginTop="5dp"
+                    android:clipToPadding="true"
+                    app:cardCornerRadius="20dp">
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+
+                        <FrameLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent">
+                            <ImageView
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:scaleType="fitXY"
+                                android:adjustViewBounds="true"
+                                android:src="@drawable/monjali" />
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:text="Monumen"
+                                android:gravity="center"
+                                android:textColor="@android:color/white"
+                                android:textSize="20sp"/>
+
+                            <CheckBox
+                                android:id="@+id/pref_monumen"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:background="@drawable/checkboxstyle"
+                                android:text="monumen"
+                                android:gravity="center"
+                                android:button="@android:color/transparent"
+                                android:paddingLeft="5dp"
+                                android:textColor="@android:color/transparent"
+                                android:textSize="20sp" />
+                        </FrameLayout>
+                    </RelativeLayout>
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="120dp"
+                    android:layout_height="120dp"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginTop="5dp"
+                    android:clipToPadding="true"
+                    app:cardCornerRadius="20dp">
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+
+                        <FrameLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent">
+                            <ImageView
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:scaleType="fitXY"
+                                android:adjustViewBounds="true"
+                                android:src="@drawable/galery" />
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:text="Galery Seni"
+                                android:gravity="center"
+                                android:textColor="@android:color/white"
+                                android:textSize="20sp"/>
+                            <CheckBox
+                                android:id="@+id/pref_galery"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:background="@drawable/checkboxstyle"
+                                android:text="galery seni"
+                                android:gravity="center"
+                                android:button="@android:color/transparent"
+                                android:paddingLeft="5dp"
+                                android:textColor="@android:color/transparent"
+                                android:textSize="20sp" />
+                        </FrameLayout>
+                    </RelativeLayout>
+
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="120dp"
+                    android:layout_height="120dp"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginRight="15dp"
+                    android:clipToPadding="true"
+                    app:cardCornerRadius="20dp">
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+
+                        <FrameLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent">
+                            <ImageView
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:scaleType="fitXY"
+                                android:adjustViewBounds="true"
+                                android:src="@drawable/yogyakarta" />
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:text="Candi"
+                                android:gravity="center"
+                                android:textColor="@android:color/white"
+                                android:textSize="20sp"/>
+                            <CheckBox
+                                android:id="@+id/pref_candi"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:background="@drawable/checkboxstyle"
+                                android:text="candi"
+                                android:gravity="center"
+                                android:button="@android:color/transparent"
+                                android:paddingLeft="5dp"
+                                android:textColor="@android:color/transparent"
+                                android:textSize="20sp" />
+                        </FrameLayout>
+                    </RelativeLayout>
+
+                </androidx.cardview.widget.CardView>
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="120dp"
+                    android:layout_height="120dp"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginTop="5dp"
+                    android:clipToPadding="true"
+                    app:cardCornerRadius="20dp">
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+
+                        <FrameLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent">
+                            <ImageView
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:scaleType="fitXY"
+                                android:adjustViewBounds="true"
+                                android:src="@drawable/creative" />
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:text="Creative Art and Galery"
+                                android:gravity="center"
+                                android:textColor="@android:color/white"
+                                android:textSize="20sp"/>
+
+                            <CheckBox
+                                android:id="@+id/pref_creative"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:background="@drawable/checkboxstyle"
+                                android:text="creative art &amp; galery"
+                                android:gravity="center"
+                                android:button="@android:color/transparent"
+                                android:paddingLeft="5dp"
+                                android:textColor="@android:color/transparent"
+                                android:textSize="20sp" />
+                        </FrameLayout>
+                    </RelativeLayout>
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="120dp"
+                    android:layout_height="120dp"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginTop="5dp"
+                    android:clipToPadding="true"
+                    app:cardCornerRadius="20dp">
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+
+                        <FrameLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent">
+                            <ImageView
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:scaleType="fitXY"
+                                android:adjustViewBounds="true"
+                                android:src="@drawable/hiburan" />
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:text="Taman Hiburan"
+                                android:gravity="center"
+                                android:textColor="@android:color/white"
+                                android:textSize="20sp"/>
+                            <CheckBox
+                                android:id="@+id/pref_hiburan"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:background="@drawable/checkboxstyle"
+                                android:text="taman hiburan"
+                                android:gravity="center"
+                                android:button="@android:color/transparent"
+                                android:paddingLeft="5dp"
+                                android:textColor="@android:color/transparent"
+                                android:textSize="20sp" />
+                        </FrameLayout>
+                    </RelativeLayout>
+
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="120dp"
+                    android:layout_height="120dp"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginRight="15dp"
+                    android:clipToPadding="true"
+                    app:cardCornerRadius="20dp">
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+
+                        <FrameLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent">
+                            <ImageView
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:scaleType="fitXY"
+                                android:adjustViewBounds="true"
+                                android:src="@drawable/sains" />
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:text="Sains"
+                                android:gravity="center"
+                                android:textColor="@android:color/white"
+                                android:textSize="20sp"/>
+                            <CheckBox
+                                android:id="@+id/pref_sains"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:background="@drawable/checkboxstyle"
+                                android:text="sains"
+                                android:gravity="center"
+                                android:button="@android:color/transparent"
+                                android:paddingLeft="5dp"
+                                android:textColor="@android:color/transparent"
+                                android:textSize="20sp" />
+                        </FrameLayout>
+                    </RelativeLayout>
+
+                </androidx.cardview.widget.CardView>
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="120dp"
+                    android:layout_height="120dp"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginTop="5dp"
+                    android:clipToPadding="true"
+                    app:cardCornerRadius="20dp">
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+
+                        <FrameLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent">
+                            <ImageView
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:scaleType="fitXY"
+                                android:adjustViewBounds="true"
+                                android:src="@drawable/pasar" />
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:text="Pasar"
+                                android:gravity="center"
+                                android:textColor="@android:color/white"
+                                android:textSize="20sp"/>
+
+                            <CheckBox
+                                android:id="@+id/pref_pasar"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:background="@drawable/checkboxstyle"
+                                android:text="pasar"
+                                android:gravity="center"
+                                android:button="@android:color/transparent"
+                                android:paddingLeft="5dp"
+                                android:textColor="@android:color/transparent"
+                                android:textSize="20sp" />
+                        </FrameLayout>
+                    </RelativeLayout>
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="120dp"
+                    android:layout_height="120dp"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginTop="5dp"
+                    android:clipToPadding="true"
+                    app:cardCornerRadius="20dp">
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+
+                        <FrameLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent">
+                            <ImageView
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:scaleType="fitXY"
+                                android:adjustViewBounds="true"
+                                android:src="@drawable/desa" />
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:text="Desa Wisata"
+                                android:gravity="center"
+                                android:textColor="@android:color/white"
+                                android:textSize="20sp"/>
+
+                            <CheckBox
+                                android:id="@+id/pref_desa"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:background="@drawable/checkboxstyle"
+                                android:text="desa wisata"
+                                android:gravity="center"
+                                android:button="@android:color/transparent"
+                                android:paddingLeft="5dp"
+                                android:textColor="@android:color/transparent"
+                                android:textSize="20sp" />
+                        </FrameLayout>
+                    </RelativeLayout>
+                </androidx.cardview.widget.CardView>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dip"
+                android:layout_weight="1"
+                android:gravity="center|bottom"
+                android:orientation="vertical"
+                android:layout_marginTop="25dp">
+                <Button
+                    android:id="@+id/btn_selesai"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentBottom="true"
+                    android:layout_gravity="bottom"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginRight="20dp"
+                    android:layout_marginBottom="29dp"
+                    android:background="#1D3364"
+                    android:baselineAligned="false"
+                    android:drawableRight="@drawable/ic_check"
+                    android:paddingLeft="40dp"
+                    android:paddingRight="40dp"
+                    android:text="Simpan"
+                    android:textColor="#F7B640"/>
+
+            </LinearLayout>
+
+
+
+        </LinearLayout>
+    </ScrollView>
+
+
+</LinearLayout>

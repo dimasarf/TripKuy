@@ -5,6 +5,7 @@ import android.view.MenuItem;
 
 import com.example.tripkuy.trips.TripsFragment;
 import com.example.tripkuy.home.HomeFragment;
+import com.example.tripkuy.profile.ProfileFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import androidx.annotation.NonNull;
@@ -41,6 +42,9 @@ public class Dashboard extends AppCompatActivity {
                             break;
                         case R.id.navigation_trips:
                             selectedFragment = new TripsFragment();
+                            break;
+                        case R.id.navigation_profile:
+                            selectedFragment = new ProfileFragment();
                             break;
                     }
 

@@ -12,9 +12,9 @@
         android:title="Trips" />
 
     <item
-        android:id="@+id/navigation_dashboard"
+        android:id="@+id/navigation_profile"
         android:icon="@drawable/ic_dashboard_black_24dp"
-        android:title="Dashboard" />
+        android:title="Profile" />
 
 <!--    <item-->
 <!--        android:id="@+id/navigation_notifications"-->
