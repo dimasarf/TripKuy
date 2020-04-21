@@ -9,14 +9,14 @@
         android:layout_width="match_parent"
         android:layout_height="300dp"
         android:src="@drawable/backpakerusia"
-        android:background="#95cefc"
+        android:background="#F7B640"
         />
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
-        android:text="Berapa Usia anda?"
+        android:text="Berapa Umur Anda?"
         android:textAlignment="center"
         android:textColor="@android:color/black"
         android:textSize="30sp"

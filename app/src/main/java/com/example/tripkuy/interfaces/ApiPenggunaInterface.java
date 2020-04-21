@@ -42,6 +42,11 @@ public interface ApiPenggunaInterface {
             @Query("email") String email
     );
 
+    @GET("check_registered.php")
+    Call<String> checkRegistered(
+            @Query("email") String email
+    );
+
     @FormUrlEncoded
     @POST("update_kategori.php")
     Call<Pengguna> updateKategori(

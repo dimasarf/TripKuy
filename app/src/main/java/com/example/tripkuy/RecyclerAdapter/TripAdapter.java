@@ -70,6 +70,15 @@ public class TripAdapter extends RecyclerView.Adapter<TripAdapter.TripItemViewHo
                 getDetailRencana.execute();
             }
         });
+        holder.txtTempat.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                GetDetailRencana getDetailRencana = new GetDetailRencana(currentItem.getId(),
+                        holder.imgTempat.getContext(), currentItem.getDurasi(),
+                        currentItem.getTanggal_mulai(), currentItem.getTanggal_akhir(), origin);
+                getDetailRencana.execute();
+            }
+        });
 
     }
 
