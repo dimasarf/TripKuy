@@ -312,7 +312,6 @@
                     </androidx.cardview.widget.CardView>
 
                     <androidx.cardview.widget.CardView
-                        android:id="@+id/card_petualang"
                         android:layout_below="@+id/lbl_Kegiatan"
                         android:layout_toRightOf="@id/card_kuliner"
                         android:layout_width="100dp"
@@ -409,7 +408,6 @@
                     </androidx.cardview.widget.CardView>
 
                     <androidx.cardview.widget.CardView
-                        android:id="@+id/card_rafting"
                         android:layout_below="@+id/card_snorkeling"
                         android:layout_toRightOf="@id/card_foto"
                         android:layout_marginBottom="10dp"

@@ -1,6 +1,7 @@
 package com.example.tripkuy;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.Typeface;
 import android.net.Uri;
@@ -43,16 +44,17 @@ public class LoginActivity extends AppCompatActivity {
     int RC_SIGN_IN = 0;
     private static final String LOG_TAG = LoginActivity.class.getSimpleName();
     private Button btn_login;
-
+    String personEmail;
+    Context context;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-
+        context = this;
         //Initialize Sign in button google
         signInButton = findViewById(R.id.btn_login_google);
         signInButton.setSize(SignInButton.SIZE_STANDARD);
-        setGoogleSigninButtonText(signInButton, "Masuk Dengan Google");
+        setGoogleSigninButtonText(signInButton, "MASUK DENGAN GOOGLE");
 
         GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
                 .requestEmail()
@@ -72,9 +74,40 @@ public class LoginActivity extends AppCompatActivity {
     protected void onStart() {
         // Check for existing Google Sign In account, if the user is already signed in
         // the GoogleSignInAccount will be non-null.
-        GoogleSignInAccount account = GoogleSignIn.getLastSignedInAccount(this);
+        final GoogleSignInAccount account = GoogleSignIn.getLastSignedInAccount(this);
         if (account != null) {
-            startActivity(new Intent(LoginActivity.this, Dashboard.class));
+            apiPenggunaInterface = ApiClient.getApiClient().create(ApiPenggunaInterface.class);
+            Call<String> call = apiPenggunaInterface.checkRegistered(personEmail);
+            call.enqueue(new Callback<String>() {
+                @Override
+                public void onResponse(Call<String> call, Response<String> response) {
+                    if(response.body().equals("Sukses") ){
+                        startActivity(new Intent(LoginActivity.this, Dashboard.class));
+
+                    }
+                    else {
+                        Toast.makeText(getApplicationContext(), "Akun Belum Terdaftar", Toast.LENGTH_SHORT).show();
+                        mGoogleSignInClient.signOut()
+                                .addOnCompleteListener(LoginActivity.this, new OnCompleteListener<Void>() {
+                                    @Override
+                                    public void onComplete(@NonNull Task<Void> task) {
+                                        Intent intent = new Intent(getApplicationContext(), Pendaftaran.class);
+                                        intent.putExtra(NAMA, account.getDisplayName());
+                                        intent.putExtra(EMAIL, account.getEmail());
+                                        intent.putExtra(ID, account.getId());
+                                        startActivity(intent);
+                                    }});
+                    }
+
+                }
+
+                @Override
+                public void onFailure(Call<String> call, Throwable t) {
+
+
+                }
+            });
+
         }
         super.onStart();
     }
@@ -98,14 +131,13 @@ public class LoginActivity extends AppCompatActivity {
             GoogleSignInAccount account = completedTask.getResult(ApiException.class);
             if (account != null) {
                 final String personName = account.getDisplayName();
-                final String personEmail = account.getEmail();
+                personEmail = account.getEmail();
                 final String id = account.getId();
                 apiPenggunaInterface = ApiClient.getApiClient().create(ApiPenggunaInterface.class);
                 Call<String> call = apiPenggunaInterface.checkRegistered(personEmail);
                 call.enqueue(new Callback<String>() {
                     @Override
                     public void onResponse(Call<String> call, Response<String> response) {
-                        Log.d("testId", "KONTOL LO BABI"+ response.body());
                         if(response.body().equals("Sukses") ){
                             Intent intent = new Intent(getApplicationContext(), Dashboard.class);
                             intent.putExtra(NAMA, personName);
@@ -137,11 +169,6 @@ public class LoginActivity extends AppCompatActivity {
             // Please refer to the GoogleSignInStatusCodes class reference for more information.
 
         }
-    }
-
-    public void loginFacebook(View view) {
-        Intent intent = new Intent(this, Pendaftaran.class);
-        startActivity(intent);
     }
 
     private void signIn() {

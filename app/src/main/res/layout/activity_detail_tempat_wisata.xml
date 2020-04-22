@@ -20,7 +20,7 @@
                 android:layout_height="250dp"
                 android:adjustViewBounds="true"
                 android:scaleType="fitXY"
-                android:src="@drawable/yogyakarta" />
+                />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -214,21 +214,21 @@
                             <ImageView
                                 android:layout_width="match_parent"
                                 android:layout_height="300dp"
-                                android:src="@drawable/prambanan_wallpaper"
+
                                 android:scaleType="fitXY"
                                 android:adjustViewBounds="true"
                                 android:layout_marginBottom="1dp"/>
                             <ImageView
                                 android:layout_width="match_parent"
                                 android:layout_height="300dp"
-                                android:src="@drawable/prambanan_wallpaper_2"
+
                                 android:scaleType="fitXY"
                                 android:adjustViewBounds="true"
                                 android:layout_marginBottom="1dp"/>
                             <ImageView
                                 android:layout_width="match_parent"
                                 android:layout_height="300dp"
-                                android:src="@drawable/prambanan_wallpaper_3"
+
                                 android:scaleType="fitXY"
                                 android:adjustViewBounds="true"
                                 android:layout_marginBottom="1dp"/>

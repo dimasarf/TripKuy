@@ -100,7 +100,6 @@
 
                     </androidx.cardview.widget.CardView>
                     <androidx.cardview.widget.CardView
-                        android:id="@+id/card_goa"
                         android:layout_toRightOf="@id/card_berenang"
                         android:layout_width="100dp"
                         android:layout_height="40dp"
@@ -193,7 +192,6 @@
 
                     </androidx.cardview.widget.CardView>
                     <androidx.cardview.widget.CardView
-                        android:id="@+id/card_kebun"
                         android:layout_below="@+id/card_mendaki"
                         android:layout_toRightOf="@id/card_kemah"
                         android:layout_marginBottom="10dp"
@@ -286,7 +284,6 @@
 
                     </androidx.cardview.widget.CardView>
                     <androidx.cardview.widget.CardView
-                        android:id="@+id/card_perahu"
                         android:layout_below="@+id/card_jogging"
                         android:layout_toRightOf="@id/card_mancing"
                         android:layout_marginBottom="10dp"
@@ -302,7 +299,6 @@
                             android:layout_width="match_parent"
                             android:layout_height="match_parent">
                             <CheckBox
-                                android:id="@+id/perahu"
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
                                 android:background="@drawable/checkboxstyle_2"
@@ -379,7 +375,6 @@
 
                     </androidx.cardview.widget.CardView>
                     <androidx.cardview.widget.CardView
-                        android:id="@+id/card_outsport"
                         android:layout_below="@+id/card_berburu"
                         android:layout_toRightOf="@id/card_keliling"
                         android:layout_marginBottom="10dp"
@@ -441,7 +436,6 @@
 
                     </androidx.cardview.widget.CardView>
                     <androidx.cardview.widget.CardView
-                        android:id="@+id/card_trekking"
                         android:layout_below="@+id/card_main"
                         android:layout_toRightOf="@id/card_rekreasi"
                         android:layout_marginBottom="10dp"
@@ -472,7 +466,6 @@
 
                     </androidx.cardview.widget.CardView>
                     <androidx.cardview.widget.CardView
-                        android:id="@+id/card_seni"
                         android:layout_below="@+id/card_main"
                         android:layout_toRightOf="@id/card_keliling"
                         android:layout_marginBottom="10dp"
@@ -565,7 +558,6 @@
 
                     </androidx.cardview.widget.CardView>
                     <androidx.cardview.widget.CardView
-                        android:id="@+id/card_berendam"
                         android:layout_below="@+id/card_rekreasi"
                         android:layout_toRightOf="@id/card_sejarah"
                         android:layout_marginBottom="10dp"
@@ -658,7 +650,6 @@
 
                     </androidx.cardview.widget.CardView>
                     <androidx.cardview.widget.CardView
-                        android:id="@+id/card_santai"
                         android:layout_below="@+id/card_keindahan"
                         android:layout_toRightOf="@id/card_makanminum"
                         android:layout_marginBottom="10dp"
@@ -690,7 +681,6 @@
                     </androidx.cardview.widget.CardView>
 
                     <androidx.cardview.widget.CardView
-                        android:id="@+id/card_sandi"
                         android:layout_below="@+id/card_foto"
                         android:layout_marginBottom="10dp"
                         android:layout_marginLeft="5dp"

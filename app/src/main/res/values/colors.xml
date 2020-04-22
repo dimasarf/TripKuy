@@ -5,14 +5,5 @@
     <color name="colorAccent">#F7B640</color>
 
     //COPAS
-    <color name="colorPrimaryText">#212121</color>
-    <color name="colorSecondaryText">#727272</color>
-    <color name="colorIcon">#FFFFFF</color>
-    <color name="textButton">#FFFFFF</color>
-    <color name="divider">#efebe9</color>
 
-    <color name="newItinerary">#00bcd4</color>
-    <color name="onGoingItinerary">#43a047</color>
-    <color name="finishedItinerary">#f44336</color>
-    <color name="weatherForecast">#fbc02d</color>
 </resources>

@@ -53,18 +53,18 @@
         android:text="Masuk dengan Google"
         android:textColor="#DB4437" />
 
-    <Button
-        android:id="@+id/btn_login_facebook"
-        android:onClick="loginFacebook"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="15dp"
-        android:layout_marginRight="15dp"
-        android:layout_marginTop="20dp"
-        android:background="@android:color/white"
-        android:drawableLeft="@drawable/loginfbcustom"
-        android:text="Masuk dengan Facebook"
-        android:textColor="#3b5998" />
+<!--    <Button-->
+<!--        android:id="@+id/btn_login_facebook"-->
+<!--        android:onClick="loginFacebook"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_marginLeft="15dp"-->
+<!--        android:layout_marginRight="15dp"-->
+<!--        android:layout_marginTop="20dp"-->
+<!--        android:background="@android:color/white"-->
+<!--        android:drawableLeft="@drawable/loginfbcustom"-->
+<!--        android:text="Masuk dengan Facebook"-->
+<!--        android:textColor="#3b5998" />-->
 
 
 </LinearLayout>
