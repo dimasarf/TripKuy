@@ -72,34 +72,7 @@ public class TestPOST extends AppCompatActivity {
 
                     @Override
                     protected Void doInBackground(Void... params) {
-                        apiPenggunaInterface = ApiClient.getApiClient().create(ApiPenggunaInterface.class);
-                        Call<Pengguna> call = apiPenggunaInterface.savePengguna("Anak Kontol", 23, "kontol_bau@gmail.com", "LAKI", "kontol");
 
-                        call.enqueue(new Callback<Pengguna>() {
-                            @Override
-                            public void onResponse(Call<Pengguna> call, Response<Pengguna> response) {
-                                progressDialog.dismiss();
-                                if(response.isSuccessful() && response.body() != null){
-                                    Boolean success = response.body().getSuccess();
-                                    if(success){
-                                        Toast.makeText(TestPOST.this,
-                                                response.body().getMessage(),Toast.LENGTH_SHORT).show();
-                                    }
-                                    else {
-                                        Toast.makeText(TestPOST.this,response.body().getMessage(),
-                                                Toast.LENGTH_SHORT).show();
-                                    }
-                                }
-                            }
-
-                            @Override
-                            public void onFailure(Call<Pengguna> call, Throwable t) {
-                                progressDialog.dismiss();
-                                Toast.makeText(TestPOST.this, t.getLocalizedMessage(),
-                                        Toast.LENGTH_SHORT).show();
-                            }
-
-                        });
                         return null;
                     }
                 }

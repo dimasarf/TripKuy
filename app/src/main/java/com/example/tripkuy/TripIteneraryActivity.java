@@ -171,7 +171,7 @@ public class TripIteneraryActivity extends FragmentActivity implements OnMapRead
                         latLngList = PolyUtil.decode(points);
 
 
-                        Log.d("KONTOLLL", latLngList.get(0).longitude+"tolol");
+
                         for (LatLng latLng : latLngList){
                             Log.d("POLY", latLng.latitude + " " +latLng.longitude);
                         }

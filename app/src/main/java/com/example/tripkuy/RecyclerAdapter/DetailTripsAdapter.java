@@ -102,7 +102,7 @@ public class DetailTripsAdapter extends RecyclerView.Adapter<DetailTripsAdapter.
                 "&inputtype=textquery&fields=photos,formatted_address,name,opening_hours,rating&locationbias=circle:2000@47.6918452,-122.2226413&" +
                 "key=AIzaSyA02Yz09lw6kg_WTc-IqFD2kPP4txoxqVc";
         final String[] photoReference = {""};
-        String reference = "KONToL";
+
         JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {

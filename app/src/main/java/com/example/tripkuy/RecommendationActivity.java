@@ -140,7 +140,6 @@ public class RecommendationActivity extends AppCompatActivity implements TempatW
                         Toast.makeText(getApplicationContext(), "Terjadi kesalahan", Toast.LENGTH_SHORT);
                     }
                     Log.d("Response", "ISI PESAN : " + response.message());
-                    Log.d("Response", "KONTOL STATUS : " + response.code());
                 }
                 response.errorBody();
                 Log.d("Response", String.valueOf(response.body()));
