@@ -3,9 +3,11 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_margin="15dp"
     android:clipToPadding="true"
-    app:cardCornerRadius="20dp">
+    android:layout_marginLeft="10dp"
+    android:layout_marginRight="5dp"
+    android:layout_marginBottom="5dp"
+    >
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -15,7 +17,7 @@
         <ImageView
             android:id="@+id/trip_image"
             android:layout_width="110dp"
-            android:layout_height="120dp"
+            android:layout_height="110dp"
             android:layout_marginTop="20dp"
             android:layout_marginLeft="10dp"
             android:scaleType="fitXY"
@@ -29,7 +31,7 @@
             android:layout_height="wrap_content"
             android:layout_toRightOf="@+id/trip_image"
             android:layout_marginLeft="20dp"
-            android:layout_marginTop="15dp"
+            android:layout_marginTop="17dp"
             android:text="Lombok, Nusa Tenggara Barat"
             android:textColor="@android:color/black"
             android:textSize="20sp" />
@@ -44,7 +46,7 @@
             android:layout_marginTop="10dp"
             android:layout_marginBottom="20dp"
             android:drawableLeft="@drawable/ic_date"
-            android:drawablePadding="20dp"
+            android:drawablePadding="10dp"
             android:text="20 Maret 2020"
             android:textSize="16sp" />
 

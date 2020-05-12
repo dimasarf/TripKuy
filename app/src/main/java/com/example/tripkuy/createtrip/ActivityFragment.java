@@ -60,7 +60,6 @@ public class ActivityFragment extends Fragment {
     private RadioButton radioButton;
 
     MoveFragmentListener movementListener;
-    FragmentGenderListener genderListener;
     Pengguna pengguna;
     private double penginapanLat, penginapanLong;
     private String penginapan;
@@ -204,5 +203,11 @@ public class ActivityFragment extends Fragment {
         checkBoxKegiatan.add((CheckBox) root.findViewById(R.id.makanminum));
         checkBoxKegiatan.add((CheckBox) root.findViewById(R.id.santai));
         checkBoxKegiatan.add((CheckBox) root.findViewById(R.id.sandi));
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        System.gc();
     }
 }

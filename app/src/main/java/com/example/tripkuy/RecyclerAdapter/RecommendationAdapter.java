@@ -1,6 +1,7 @@
 package com.example.tripkuy.RecyclerAdapter;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.util.Log;
 import android.util.TypedValue;
 import android.view.LayoutInflater;
@@ -35,6 +36,7 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.Console;
 import java.lang.reflect.Field;
 import java.util.ArrayList;
 
@@ -104,10 +106,13 @@ public class RecommendationAdapter extends RecyclerView.Adapter<RecommendationAd
         if(position == recommendationItems.size() - 1){
             holder.imgTempat.setImageResource(currentItem.getImage());
             holder.txtJarak.setText("");
+            holder.txtTempat.setBackgroundColor(Color.TRANSPARENT);
+            holder.txtJarak.setBackgroundColor(Color.TRANSPARENT);
             holder.txtTempat.setText("");
             holder.checkTempat.setText("");
             holder.txtJarak.setCompoundDrawablesWithIntrinsicBounds(0, 0, 0, 0);
-
+            Log.d("SELECTTT22", "TEMPAT "+
+                    recommendationItems.get(position).getName()+" "+recommendationItems.get(position).getLatitude()+" "+recommendationItems.get(position).getLongitude());
             holder.checkTempat.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
@@ -131,8 +136,14 @@ public class RecommendationAdapter extends RecyclerView.Adapter<RecommendationAd
             holder.txtJarak.setText(round(currentItem.getSimilarity(), 2) * 100+"%");
             holder.txtTempat.setText(currentItem.getName());
             holder.checkTempat.setText(currentItem.getName());
-            if(recommendationItems.get(position).isSelected())
+            Log.d("SELECTTT", "TEMPAT "+
+                    recommendationItems.get(position).getName()+" "+recommendationItems.get(position).isSelected());
+            if(recommendationItems.get(position).isSelected()){
+                Log.d("SELECTTT", "TEMPAT "+
+                        recommendationItems.get(position).getName()+" "+recommendationItems.get(position).getLatitude()+" "+recommendationItems.get(position).getLongitude());
                 holder.checkTempat.setChecked(true);
+            }
+
         }
 
 
@@ -203,8 +214,9 @@ public class RecommendationAdapter extends RecyclerView.Adapter<RecommendationAd
 
     @Override
     public void onDialogListener(TempatWisata tempatWisata) {
+        Log.d("TEMPATKONTOL", "TEST "+tempatWisata.getNama());
         recommendationItems.add(new RecommendationItem(tempatWisata.getId(), 0, tempatWisata.getNama(),0, "", tempatWisata.getLatitude(), tempatWisata.getLongitude()));
-
+        notifyDataSetChanged();
 
     }
 

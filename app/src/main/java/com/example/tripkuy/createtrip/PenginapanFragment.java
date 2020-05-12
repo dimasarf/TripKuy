@@ -15,6 +15,7 @@ import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.Toast;
 
 import androidx.annotation.RequiresApi;
 import androidx.fragment.app.Fragment;
@@ -36,6 +37,8 @@ import com.google.android.libraries.places.widget.listener.PlaceSelectionListene
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.Arrays;
 import java.util.Calendar;
 import java.util.Date;
@@ -47,7 +50,7 @@ public class PenginapanFragment extends Fragment {
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String TAG = "TGLAWAL";
     double penginapanLat, penginapanLong;
-    String penginapan;
+    String penginapan = "";
     EditText tgl_mulai, tgl_akhir;
     PenginapanListener penginapanListener;
 
@@ -55,9 +58,7 @@ public class PenginapanFragment extends Fragment {
     private OnFragmentInteractionListener mListener;
     Button btnNext;
     MoveFragmentListener movementListener;
-
-
-
+    private Date tgl_min;
 
 
     public PenginapanFragment() {
@@ -81,21 +82,28 @@ public class PenginapanFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View root = inflater.inflate(R.layout.fragment_penginapan, container, false);
+        final SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
         btnNext = root.findViewById(R.id.btn_next);
         btnNext.setOnClickListener(new View.OnClickListener() {
             private long durasi;
 
             @Override
             public void onClick(View view) {
-                SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
+
                 try {
                     Date dateAwal = formatter.parse(tgl_mulai.getText().toString());
                     Date dateAkhir = formatter.parse(tgl_akhir.getText().toString());
                     long diffInMillies = Math.abs(dateAkhir.getTime() - dateAwal.getTime());
                     this.durasi = TimeUnit.DAYS.convert(diffInMillies, TimeUnit.MILLISECONDS);
-                    penginapanListener.onPenginapanListener(penginapanLat, penginapanLong, penginapan,
-                            tgl_mulai.getText().toString(), tgl_akhir.getText().toString(), durasi);
-                    movementListener.move(1);
+                    if(penginapan != ""){
+                        penginapanListener.onPenginapanListener(penginapanLat, penginapanLong, penginapan,
+                                tgl_mulai.getText().toString(), tgl_akhir.getText().toString(), durasi);
+                        movementListener.move(1);
+                    }
+                    else {
+                        Toast.makeText(getContext(), "Isi penginapan kamu!", Toast.LENGTH_SHORT).show();
+                    }
+
                 } catch (ParseException e) {
                     e.printStackTrace();
                 }
@@ -113,6 +121,20 @@ public class PenginapanFragment extends Fragment {
         tgl_akhir.setShowSoftInputOnFocus(false);
         tgl_akhir.setInputType(InputType.TYPE_NULL);
         tgl_akhir.setFocusable(false);
+        Date dtawal = new Date();
+        Date dtAkhir;
+        Calendar c = Calendar.getInstance();
+        c.setTime(dtawal);
+        c.add(Calendar.DATE, 5);
+        dtAkhir = c.getTime();
+
+        SimpleDateFormat sdf = new SimpleDateFormat("EEE d MMM yyyy HH:mm:ss Z");
+        sdf.applyPattern("dd/MM/yyyy");
+        String dtawal_txt = sdf.format(dtawal);
+        String dtAkhirl_txt = sdf.format(dtAkhir);
+
+        tgl_mulai.setText(dtawal_txt);
+        tgl_akhir.setText(dtAkhirl_txt);
 
         tgl_mulai.setOnClickListener(new View.OnClickListener() {
             @RequiresApi(api = Build.VERSION_CODES.O)
@@ -138,6 +160,12 @@ public class PenginapanFragment extends Fragment {
             @RequiresApi(api = Build.VERSION_CODES.O)
             @Override
             public void onClick(View view) {
+                try {
+                    tgl_min = formatter.parse(tgl_mulai.getText().toString());
+
+                } catch (ParseException e) {
+                    e.printStackTrace();
+                }
                 Calendar cal = Calendar.getInstance();
                 int year = cal.get(Calendar.YEAR);
                 int month = cal.get(Calendar.MONTH);
@@ -149,6 +177,7 @@ public class PenginapanFragment extends Fragment {
                         tgl_akhir.setText(i2 + "/" + (i1+1) + "/" + i);
                     }
                 }, day, month, year);
+                dpd.getDatePicker().setMinDate(tgl_min.getTime());
                 dpd.updateDate(year, month, day);
                 dpd.show();
             }
@@ -211,9 +240,18 @@ public class PenginapanFragment extends Fragment {
     public void onDetach() {
         super.onDetach();
         mListener = null;
+        penginapanListener = null;
+        movementListener = null;
     }
 
-
+    @Override
+    public void onDestroy() {
+        btnNext = null;
+        tgl_akhir = null;
+        tgl_mulai = null;
+        super.onDestroy();
+        System.gc();
+    }
 
     public interface OnFragmentInteractionListener {
         // TODO: Update argument type and name

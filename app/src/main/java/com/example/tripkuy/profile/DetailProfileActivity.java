@@ -39,4 +39,13 @@ public class DetailProfileActivity extends AppCompatActivity {
         mNama.setText(account.getDisplayName());
         mEmail.setText(account.getEmail());
     }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        mNama = null;
+        mEmail = null;
+        System.gc();
+    }
 }
+

@@ -2,11 +2,13 @@ package com.example.tripkuy.registration;
 
 import android.content.Context;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
@@ -25,11 +27,11 @@ public class UsiaFragment extends Fragment {
     private static final String ARG_SECTION_NUMBER = "section_number";
     MoveFragmentListener movementListener;
     AgeListener ageListener;
-
+    private static final String TAG = "UsiaFragment";
     private PageViewModel pageViewModel;
     Button btnNext;
     EditText txtUsia;
-
+    View root;
     public static UsiaFragment newInstance(int index) {
         UsiaFragment fragment = new UsiaFragment();
         Bundle bundle = new Bundle();
@@ -65,17 +67,39 @@ public class UsiaFragment extends Fragment {
     public View onCreateView(
             @NonNull LayoutInflater inflater, ViewGroup container,
             Bundle savedInstanceState) {
-        View root = inflater.inflate(R.layout.fragment_usia, container, false);
+        root = inflater.inflate(R.layout.fragment_usia, container, false);
         btnNext = root.findViewById(R.id.btn_next);
         txtUsia = root.findViewById(R.id.txt_usia);
         btnNext.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                int usia = Integer.parseInt(txtUsia.getText().toString());
-                ageListener.ageListener(usia);
-                movementListener.move(1);
+                if(txtUsia.getText().toString().matches("")){
+                    Toast.makeText(getContext(), "Isi usia kamu!", Toast.LENGTH_SHORT).show();
+                }
+                else{
+                    int usia = Integer.parseInt(txtUsia.getText().toString());
+                    ageListener.ageListener(usia);
+                    movementListener.move(1);
+                }
+
             }
         });
         return root;
+    }
+
+    @Override
+    public void onDetach() {
+        super.onDetach();
+        movementListener = null;
+    }
+
+    @Override
+    public void onDestroyView() {
+        txtUsia = null;
+        btnNext = null;
+        root = null;
+        super.onDestroyView();
+
+        Log.d(TAG, "Destroyed");
     }
 }

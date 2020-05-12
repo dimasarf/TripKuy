@@ -75,4 +75,9 @@ public class CreateTripActivity extends AppCompatActivity implements MoveFragmen
     public void onPengunjungListener(String pengunjung) {
         this.pengungjung = pengunjung;
     }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+    }
 }

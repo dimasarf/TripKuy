@@ -3,6 +3,8 @@ package com.example.tripkuy.models;
 import android.os.Parcel;
 import android.os.Parcelable;
 
+import androidx.annotation.NonNull;
+
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
@@ -99,5 +101,11 @@ public class TempatWisata implements Parcelable {
 
     public double getSimilarity() {
         return similarity;
+    }
+
+    @NonNull
+    @Override
+    public String toString() {
+        return this.nama;
     }
 }

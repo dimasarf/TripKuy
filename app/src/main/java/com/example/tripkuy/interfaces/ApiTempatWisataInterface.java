@@ -20,4 +20,8 @@ public interface ApiTempatWisataInterface {
             @Field("durasi") long durasi,
             @Field("email") String email
     );
+
+    @GET("locations.php")
+    Call<List<TempatWisata>> get_locations();
+
 }

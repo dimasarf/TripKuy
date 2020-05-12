@@ -30,17 +30,18 @@ public class AddPengguna extends AsyncTask<Void, Void, Void> {
         progressDialog = new ProgressDialog(ctx);
     }
 
+    public AddPengguna(Pengguna pengguna) {
+        this.pengguna = pengguna;
+    }
+
     @Override
     protected void onPreExecute() {
-        progressDialog.setMessage("Please wait...");
-        progressDialog.show();
+
     }
 
     @Override
     protected void onPostExecute(Void s) {
-        if (progressDialog.isShowing()) {
-            progressDialog.dismiss();
-        }
+
     }
 
     @Override

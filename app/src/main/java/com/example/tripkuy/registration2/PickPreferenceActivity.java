@@ -1,4 +1,4 @@
-package com.example.tripkuy.profile;
+package com.example.tripkuy.registration2;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
@@ -8,39 +8,31 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.ImageView;
-import android.widget.TabHost;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.tripkuy.Dashboard;
+import com.example.tripkuy.BackgroundWorker.AddPengguna;
 import com.example.tripkuy.R;
-import com.example.tripkuy.config.ApiClient;
-import com.example.tripkuy.interfaces.ApiPenggunaInterface;
-import com.example.tripkuy.interfaces.KategoriPenggunaListener;
 import com.example.tripkuy.models.Pengguna;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
+import com.google.android.gms.auth.api.signin.GoogleSignInClient;
+import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 import com.squareup.picasso.Picasso;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
-
-public class EditKategoriActivity extends AppCompatActivity implements KategoriPenggunaListener {
-    ApiPenggunaInterface apiPenggunaInterface;
-    private TextView mKategoriPengguna;
+public class PickPreferenceActivity extends AppCompatActivity {
+    private TextView txtUsia;
+    private Button btnPrev,btn_selesai;
+    private  String usia, jenis_kelamin, name, email;
     List<CheckBox> items = new ArrayList<CheckBox>();
-    KategoriPenggunaListener listener;
-    Button mBtn_selesai;
-    private ProgressDialog dialog;
     String kategori = "";
+    AddPengguna addPengguna;
     ImageView waduk, bukit, telaga, zoo, museum, kebun, gurun, pemandian,
             makam, waterboom, airterjun, goa, lembah, pantai, taman, gunung, garden, sungai, monumen,
             galeri, candi, creative, hiburan, sains, pasar, desa;
@@ -68,73 +60,38 @@ public class EditKategoriActivity extends AppCompatActivity implements KategoriP
     private CheckBox pref_hiburan;
     private CheckBox pref_pasar;
     private CheckBox pref_desa;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_edit_category);
-        listener = this;
-        mKategoriPengguna = findViewById(R.id.kategori_pengguna);
-        mBtn_selesai = findViewById(R.id.btn_selesai);
+        setContentView(R.layout.activity_preference);
+        Intent intent = getIntent();
+        usia = intent.getStringExtra(GenderActivity.TAG_USIA);
+        jenis_kelamin = intent.getStringExtra(GenderActivity.TAG_KELAMIN);
+        GoogleSignInAccount account = GoogleSignIn.getLastSignedInAccount(this);
+        name = account.getDisplayName();
+        email = account.getEmail();
+        txtUsia = findViewById(R.id.txt_usia);
+        btnPrev = findViewById(R.id.btn_next);
+        btn_selesai = findViewById(R.id.btn_selesai);
         buildCheckBoxes();
         buildImage();
-        buildListCheckBoxes();
-        final GoogleSignInAccount account = GoogleSignIn.getLastSignedInAccount(this);
-        apiPenggunaInterface = ApiClient.getApiClient().create(ApiPenggunaInterface.class);
-        Call<String> call = apiPenggunaInterface.getKategori(account.getEmail());
-        dialog = new ProgressDialog(this);
-        dialog.setMessage("Tunggu sebentar");
-        dialog.show();
-        call.enqueue(new Callback<String>() {
-            @Override
-            public void onResponse(Call<String> call, Response<String> response) {
-                listener.kategoriPenggunaListener(response.body());
-                if (dialog.isShowing()) {
-                    dialog.dismiss();
-                }
-            }
+    }
 
-            @Override
-            public void onFailure(Call<String> call, Throwable t) {
+    public void onSelesaiClick(View view){
+        Pengguna pengguna = new Pengguna();
+        pengguna.setNama(name);
+        pengguna.setEmail(email);
+        pengguna.setUsia(Integer.parseInt(usia));
+        pengguna.setGender(jenis_kelamin);
+        pengguna.setPreferensi(kategori);
+        addPengguna = new AddPengguna(this,pengguna);
+        addPengguna.execute();
+    }
 
-            }
-        });
-
-        mBtn_selesai.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                dialog.setMessage("Tunggu sebentar");
-                dialog.show();
-
-                mKategoriPengguna.setText(kategori);
-                Call<Pengguna> call = apiPenggunaInterface.updateKategori(account.getEmail(), kategori);
-                call.enqueue(new Callback<Pengguna>() {
-                    @Override
-                    public void onResponse(Call<Pengguna> call, Response<Pengguna> response) {
-                        if(response.isSuccessful() && response.body() != null){
-                            Boolean success = response.body().getSuccess();
-                            if (dialog.isShowing()) {
-                                dialog.dismiss();
-                            }
-                            if(success){
-                                Toast.makeText(getApplicationContext(),
-                                        "Perubahan kategori berhasil disimpan!", Toast.LENGTH_SHORT).show();
-                            }
-                            else {
-                                Toast.makeText(getApplicationContext(),response.body().getMessage(),
-                                        Toast.LENGTH_SHORT).show();
-                            }
-                        }
-                    }
-
-                    @Override
-                    public void onFailure(Call<Pengguna> call, Throwable t) {
-
-                    }
-                });
-            }
-
-        });
-
+    public void onPrevClick(View view){
+        Intent intent = new Intent(this, GenderActivity.class);
+        startActivity(intent);
     }
 
     public void checkBoxOnclick(View view){
@@ -308,45 +265,7 @@ public class EditKategoriActivity extends AppCompatActivity implements KategoriP
                 kategori += ","+text;
         }
 
-        Toast.makeText(this, kategori, Toast.LENGTH_SHORT).show();
-    }
 
-    public void buildListCheckBoxes(){
-        items.add((CheckBox)findViewById(R.id.pref_airterjun));
-        items.add((CheckBox)findViewById(R.id.pref_bukit));
-        items.add((CheckBox)findViewById(R.id.pref_goa));
-        items.add((CheckBox)findViewById(R.id.pref_gurun));
-        items.add((CheckBox)findViewById(R.id.pref_kebun));
-        items.add((CheckBox)findViewById(R.id.pref_makam));
-        items.add((CheckBox)findViewById(R.id.pref_museum));
-        items.add((CheckBox)findViewById(R.id.pref_telaga));
-        items.add((CheckBox)findViewById(R.id.pref_waduk));
-        items.add((CheckBox)findViewById(R.id.pref_waterboom));
-        items.add((CheckBox)findViewById(R.id.pref_pemandian));
-        items.add((CheckBox)findViewById(R.id.pref_zoo));
-        items.add((CheckBox)findViewById(R.id.pref_lembah));
-        items.add((CheckBox)findViewById(R.id.pref_pantai));
-        items.add((CheckBox)findViewById(R.id.pref_park));
-        items.add((CheckBox)findViewById(R.id.pref_gunung));
-        items.add((CheckBox)findViewById(R.id.pref_garden));
-        items.add((CheckBox)findViewById(R.id.pref_sungai));
-        items.add((CheckBox)findViewById(R.id.pref_monumen));
-        items.add((CheckBox)findViewById(R.id.pref_galery));
-        items.add((CheckBox)findViewById(R.id.pref_candi));
-        items.add((CheckBox)findViewById(R.id.pref_creative));
-        items.add((CheckBox)findViewById(R.id.pref_hiburan));
-        items.add((CheckBox)findViewById(R.id.pref_sains));
-        items.add((CheckBox)findViewById(R.id.pref_pasar));
-        items.add((CheckBox)findViewById(R.id.pref_desa));
-    }
-
-    public void getSelectedKategori(){
-        String[] kategoris = kategori.split(",");
-        for (CheckBox item:items) {
-            Log.d("selected", "kategori "+item.getText().toString());
-            if(Arrays.asList(kategoris).contains(item.getText().toString()))
-                item.setChecked(true);
-        }
     }
 
     public void buildCheckBoxes(){
@@ -379,16 +298,10 @@ public class EditKategoriActivity extends AppCompatActivity implements KategoriP
     }
 
     @Override
-    public void kategoriPenggunaListener(String kategori) {
-        this.kategori = kategori;
-        mKategoriPengguna.setText(this.kategori);
-        getSelectedKategori();
-    }
-
-    @Override
     protected void onDestroy() {
-        super.onDestroy();
 
+        items.clear();
+        super.onDestroy();
     }
 
     public void buildImage(){
@@ -455,3 +368,37 @@ public class EditKategoriActivity extends AppCompatActivity implements KategoriP
         Picasso.get().load("https://www.yogyes.com/en/yogyakarta-tourism-object/other/kampung-edukasi-watu-lumbung/3.jpg").into(desa);
     }
 }
+//        Glide.with(this).load("https://www.jejakpiknik.com/wp-content/uploads/2017/08/waduk-sermo-630x380.jpg").into(waduk);
+//        Glide.with(this).load("https://www.alodiatour.com/wp-content/uploads/2018/05/foto-bukit-bintang-jogja.jpg").into(bukit);
+//        Glide.with(this).load("https://explorewisata.com/wp-content/uploads/2018/09/blue-lagoon-jogja.jpg").into(telaga);
+//
+//        Glide.with(this).load("https://www.alodiatour.com/wp-content/uploads/2018/11/rute-kebun-binatang-gembira-loka.jpg").into(zoo);
+//        Glide.with(this).load("https://dwiwarna.web.ugm.ac.id/wp-content/uploads/sites/19095/2019/01/Objek-Wisata-De-Mata-Trick-Eye-Museum-Jogja-1024x754.jpg").into(museum);
+//        Glide.with(this).load("https://www.alodiatour.com/wp-content/uploads/2018/04/harga-tiket-kebun-buah-mangunan.jpg").into(kebun);
+//
+//        Glide.with(this).load("https://jogjaonstage.com/wp-content/uploads/2018/11/wisatagumukpasirparangkusumo.jpg").into(gurun);
+//        Glide.with(this).load("https://www.yogyes.com/en/yogyakarta-tourism-object/nature-and-outdoor/pemandian-tirta-budi/1.jpg").into(pemandian);
+//        Glide.with(this).load("https://www.yogyes.com/en/yogyakarta-tourism-object/pilgrimage-sites/makam-raja-raja-imogiri/1.jpg").into(makam);
+//
+//        Glide.with(this).load("https://eksotisjogja.com/wp-content/uploads/2016/08/Jogja-Bay-Waterpark-Terbesai.png").into(waterboom);
+//        Glide.with(this).load("https://upload.wikimedia.org/wikipedia/commons/e/e1/Kedungpedut.jpg").into(airterjun);
+//        Glide.with(this).load("https://visitingjogja.com/wp-content/uploads/2017/11/kalisuci.jpg").into(goa);
+//
+//        Glide.with(this).load("https://i1.wp.com/www.njogja.co.id/wp-content/uploads/2015/06/goa_seplawan3-e1434011221583.jpg").into(lembah);
+//        Glide.with(this).load("https://www.wowkeren.com/display/images/photo/2019/07/20/00265080.jpg").into(pantai);
+//        Glide.with(this).load("https://www.nativeindonesia.com/wp-content/uploads/2020/03/Alun-Alun-Kidul.jpg").into(taman);
+//
+//        Glide.with(this).load("https://www.alodiatour.com/wp-content/uploads/2018/04/wisata-Gunung-Api-Purba-Nglanggeran.jpg").into(gunung);
+//        Glide.with(this).load("https://www.hargatiket.net/wp-content/uploads/2018/11/Harga-Tiket-Taman-Pelangi-Jogja.jpg").into(garden);
+//        Glide.with(this).load("https://antarejatour.com/wp-content/uploads/2019/05/Taman-Sungai-Mudal-Kulon-Progo-sumber-ig-satriarakasiwi.jpg").into(sungai);
+//
+//        Glide.with(this).load("https://rentalmobiljogja.id/wp-content/uploads/2017/04/monumen-jogja-kembali-02-1080x810.jpg").into(monumen);
+//        Glide.with(this).load("https://2.bp.blogspot.com/-yltbT0mQfIM/WTT0_WWLO1I/AAAAAAAAbvw/yHfQ0gTFlk4qiAF-PUKNqN5yyQXe3LYYQCLcB/s1600/garotan2.jpg").into(galeri);
+//        Glide.with(this).load("https://i0.wp.com/blog.reddoorz.com/wp-content/uploads/2018/04/prambanan-2010-2-of-2.jpg?resize=750%2C534&ssl=1").into(candi);
+//
+//        Glide.with(this).load("https://media-cdn.tripadvisor.com/media/photo-s/11/52/54/6b/20171120-214712-largejpg.jpg").into(creative);
+//        Glide.with(this).load("https://tempatwisataseru.com/wp-content/uploads/2020/01/Kendaraan-Hias-di-Alun-alun-Wonosari-e1579477678313.jpg").into(hiburan);
+//        Glide.with(this).load("alodiatour.com/wp-content/uploads/2018/11/lokasi-taman.jpg").into(sains);
+//
+//        Glide.with(this).load("https://merahputih.com/media/1b/a4/58/1ba458fdd5ed4f179c5838cf08944cf7.jpg").into(pasar);
+//        Glide.with(this).load("https://www.yogyes.com/en/yogyakarta-tourism-object/other/kampung-edukasi-watu-lumbung/3.jpg").into(desa);

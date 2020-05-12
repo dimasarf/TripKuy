@@ -12,7 +12,7 @@
         android:layout_width="match_parent"
         android:layout_height="300dp"
         android:src="@drawable/backpackerlogin_2"
-        android:background="#95cefc"/>
+        android:background="#F7B640"/>
 
 
     <LinearLayout

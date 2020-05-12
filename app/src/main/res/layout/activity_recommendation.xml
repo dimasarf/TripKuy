@@ -7,7 +7,7 @@
     android:orientation="vertical"
     tools:context=".RecommendationActivity">
 
-    <ScrollView
+    <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
@@ -165,6 +165,7 @@
                 android:id="@+id/recycler_recomendation"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:overScrollMode="never"
                 android:layout_marginLeft="18dp"
                 android:layout_marginRight="18dp"
                 android:layout_marginTop="15dp"
@@ -201,6 +202,6 @@
                 android:textSize="20sp" />
 
         </LinearLayout>
-    </ScrollView>
+    </androidx.core.widget.NestedScrollView>
 
 </LinearLayout>

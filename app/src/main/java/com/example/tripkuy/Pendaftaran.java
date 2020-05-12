@@ -21,6 +21,7 @@ import com.google.android.material.tabs.TabLayout;
 public class Pendaftaran extends AppCompatActivity implements MoveFragmentListener, AgeListener, FragmentGenderListener {
     ViewPager viewPager;
     Pengguna pengguna;
+    TabLayout tabs;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -36,7 +37,7 @@ public class Pendaftaran extends AppCompatActivity implements MoveFragmentListen
         pengguna.setNama(nama);
         pengguna.setEmail(email);
 
-        TabLayout tabs = findViewById(R.id.tabs);
+        tabs = findViewById(R.id.tabs);
         tabs.setVisibility(View.GONE);
         tabs.setupWithViewPager(viewPager);
         
@@ -62,5 +63,12 @@ public class Pendaftaran extends AppCompatActivity implements MoveFragmentListen
     @Override
     public void onFragmentGenderListener(String gender) {
         pengguna.setGender(gender);
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        tabs = null;
+        viewPager = null;
     }
 }

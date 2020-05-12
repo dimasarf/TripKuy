@@ -2,10 +2,10 @@
 <androidx.cardview.widget.CardView
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_width="170dp"
-    android:layout_height="150dp"
+    android:layout_width="150dp"
+    android:layout_height="130dp"
     android:layout_marginBottom="5dp"
-
+    android:layout_marginLeft="5dp"
     app:cardCornerRadius="20dp">
 
     <RelativeLayout
@@ -39,10 +39,12 @@
 
                 <TextView
                     android:id="@+id/txt_recomended_tempat"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="10dp"
+                    android:paddingLeft="10dp"
                     android:layout_marginTop="65dp"
+                    android:gravity="center|bottom"
+                    android:background="#801D3364"
                     android:text="Pantai Parangtritis"
                     android:textColor="@android:color/white"
                     android:textSize="16sp" />
@@ -50,12 +52,12 @@
 
                 <TextView
                     android:id="@+id/txt_recomended_jarak"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_below="@id/txt_recomended_tempat"
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginTop="10dp"
+                    android:paddingLeft="10dp"
                     android:drawableLeft="@drawable/ic_location"
+                    android:background="#801D3364"
                     android:drawablePadding="10dp"
                     android:text="5.0 KM"
                     android:textColor="@android:color/white"/>

@@ -45,20 +45,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content">
                         <RadioButton
-                            android:id="@+id/keluarga"
-                            android:layout_width="match_parent"
-                            android:layout_height="40dp"
-                            android:background="@drawable/circleradiobutton2"
-                            android:text="Keluarga dengan orangtua"
-                            android:layout_marginLeft="50dp"
-                            android:layout_marginRight="50dp"
-                            android:gravity="center"
-                            android:button="@android:color/transparent"
-                            android:paddingLeft="5dp"
-                            android:textColor="#F7B640"
-                            android:textSize="15sp" />
-                        <RadioButton
-                            android:id="@+id/teman"
+                            android:id="@+id/anak"
                             android:layout_toRightOf="@+id/keluarga"
                             android:layout_width="match_parent"
                             android:layout_height="40dp"
@@ -66,7 +53,21 @@
                             android:layout_marginTop="5dp"
                             android:layout_marginLeft="50dp"
                             android:layout_marginRight="50dp"
-                            android:text="Teman"
+                            android:text="Keluarga dengan anak"
+                            android:gravity="center"
+                            android:button="@android:color/transparent"
+                            android:paddingLeft="5dp"
+                            android:textColor="#F7B640"
+                            android:textSize="15sp" />
+                        <RadioButton
+                            android:id="@+id/keluarga"
+                            android:layout_width="match_parent"
+                            android:layout_height="40dp"
+                            android:background="@drawable/circleradiobutton2"
+                            android:text="Keluarga dengan orangtua"
+                            android:layout_marginTop="5dp"
+                            android:layout_marginLeft="50dp"
+                            android:layout_marginRight="50dp"
                             android:gravity="center"
                             android:button="@android:color/transparent"
                             android:paddingLeft="5dp"
@@ -102,7 +103,7 @@
                             android:textColor="#F7B640"
                             android:textSize="15sp" />
                         <RadioButton
-                            android:id="@+id/anak"
+                            android:id="@+id/teman"
                             android:layout_toRightOf="@+id/keluarga"
                             android:layout_width="match_parent"
                             android:layout_height="40dp"
@@ -110,12 +111,13 @@
                             android:layout_marginTop="5dp"
                             android:layout_marginLeft="50dp"
                             android:layout_marginRight="50dp"
-                            android:text="Keluarga dengan anak"
+                            android:text="Teman"
                             android:gravity="center"
                             android:button="@android:color/transparent"
                             android:paddingLeft="5dp"
                             android:textColor="#F7B640"
                             android:textSize="15sp" />
+
 
 
 

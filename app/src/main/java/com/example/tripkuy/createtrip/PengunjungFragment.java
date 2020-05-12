@@ -130,9 +130,15 @@ public class PengunjungFragment extends Fragment {
     public void onDetach() {
         super.onDetach();
         mListener = null;
+        movementListener  = null;
+        pengunjungListener  = null;
     }
 
-
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        System.gc();
+    }
 
     public interface OnFragmentInteractionListener {
         // TODO: Update argument type and name

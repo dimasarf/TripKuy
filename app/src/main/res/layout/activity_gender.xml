@@ -1,27 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:orientation="vertical" android:layout_width="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
     android:layout_height="match_parent"
-    >
+    android:orientation="vertical"
+    tools:context=".registration2.GenderActivity">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <ImageView
+                android:layout_width="210dp"
+                android:layout_height="190dp"
+                android:src="@drawable/gender_male"
+                android:background="#1D3364"
+                />
 
-<!--    <LinearLayout-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:orientation="horizontal">-->
-<!--        <ImageView-->
-<!--            android:layout_width="210dp"-->
-<!--            android:layout_height="180dp"-->
-<!--            android:src="@drawable/gender_male"-->
-<!--            android:background="#1D3364"-->
-<!--            />-->
-
-<!--        <ImageView-->
-<!--            android:layout_width="202dp"-->
-<!--            android:layout_height="match_parent"-->
-<!--            android:background="#F7B640"-->
-<!--            android:src="@drawable/gender_female" />-->
-<!--    </LinearLayout>-->
+            <ImageView
+                android:layout_width="202dp"
+                android:layout_height="190dp"
+                android:background="#F7B640"
+                android:src="@drawable/gender_female" />
+        </LinearLayout>
 
 
     <TextView
@@ -51,7 +52,7 @@
         <RadioButton
             android:id="@+id/radio_laki"
             android:layout_width="match_parent"
-            android:layout_height="45dp"
+            android:layout_height="35dp"
             android:layout_marginTop="15dp"
             android:layout_marginRight="20dp"
             android:layout_marginLeft="20dp"
@@ -63,7 +64,7 @@
         <RadioButton
             android:id="@+id/radio_perempuan"
             android:layout_width="match_parent"
-            android:layout_height="45dp"
+            android:layout_height="35dp"
             android:layout_marginTop="10dp"
             android:layout_marginRight="20dp"
             android:layout_marginLeft="20dp"
@@ -89,6 +90,7 @@
             android:layout_marginLeft="20dp"
             android:layout_marginRight="20dp"
             android:background="@android:color/white"
+            android:onClick="onPrevClick"
             android:text="Sebelumnya"
             android:textColor="#F7B640"
 
@@ -99,6 +101,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
+            android:onClick="onNextClick"
             android:layout_gravity="bottom"
             android:layout_marginLeft="20dp"
             android:layout_marginTop="5dp"
@@ -112,6 +115,4 @@
             android:textColor="#F7B640"/>
 
     </LinearLayout>
-
-
 </LinearLayout>

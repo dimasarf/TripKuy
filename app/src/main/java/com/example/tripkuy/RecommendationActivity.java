@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -69,6 +70,8 @@ public class RecommendationActivity extends AppCompatActivity implements TempatW
     private String personEmail;
     private ProgressDialog dialog;
     Context context;
+    private AddRencana addRencana;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -107,50 +110,55 @@ public class RecommendationActivity extends AppCompatActivity implements TempatW
     }
 
     public void getDetailDestination(View view) throws ParseException {
-
-        final Intent intent = new Intent(this, TripSummaryActivity.class);
-        apiServiceInterface = ApiServiceClient.getApiClient().create(ApiServiceInterface.class);
-        Call<Response> call = apiServiceInterface.process(generatePlan());
-        dialog.setMessage("Tunggu sebentar");
-        dialog.show();
-        context = this;
-        call.enqueue(new Callback<Response>() {
-            @Override
-            public void onResponse(Call<Response> call, retrofit2.Response<Response> response) {
-                if(response.isSuccessful()){
-                    Log.d("Response", response.message());
-                    Response data = response.body();
-                    intent.putExtra(TGLAWAL, mTanggalMulai.getText().toString());
-                    intent.putExtra(TGLAKHIR, mTanggalAkhir.getText().toString());
-                    intent.putExtra(EMAIL, personEmail);
-                    intent.putExtra(ORIGIN, penginapan);
-                    intent.putExtra(ORIGINLAT, penginapanLat);
-                    intent.putExtra(ORIGINLONG, penginapanLong);
-                    intent.putParcelableArrayListExtra(SELECTEDTEMPATWISATA, selectedTempatWisatas);
-                    TripSummaryActivity.response = data;
-                    AddRencana addRencana = new AddRencana(context,data.data ,personEmail, intent, penginapan, penginapanLat, penginapanLong);
-                    addRencana.execute();
-                    if (dialog.isShowing()) {
-                        dialog.dismiss();
+        if(selectedTempatWisatas.size() >= durasi){
+            final Intent intent = new Intent(this, TripSummaryActivity.class);
+            apiServiceInterface = ApiServiceClient.getApiClient().create(ApiServiceInterface.class);
+            Call<Response> call = apiServiceInterface.process(generatePlan());
+            dialog.setMessage("Tunggu sebentar");
+            dialog.show();
+            context = this;
+            call.enqueue(new Callback<Response>() {
+                @Override
+                public void onResponse(Call<Response> call, retrofit2.Response<Response> response) {
+                    if(response.isSuccessful()){
+                        Log.d("Responsee", response.message());
+                        Response data = response.body();
+                        intent.putExtra(TGLAWAL, mTanggalMulai.getText().toString());
+                        intent.putExtra(TGLAKHIR, mTanggalAkhir.getText().toString());
+                        intent.putExtra(EMAIL, personEmail);
+                        intent.putExtra(ORIGIN, penginapan);
+                        intent.putExtra(ORIGINLAT, penginapanLat);
+                        intent.putExtra(ORIGINLONG, penginapanLong);
+                        intent.putParcelableArrayListExtra(SELECTEDTEMPATWISATA, selectedTempatWisatas);
+                        TripSummaryActivity.response = data;
+                        addRencana = new AddRencana(context,data.data ,personEmail, intent, penginapan, penginapanLat, penginapanLong);
+                        addRencana.execute();
+                        if (dialog.isShowing()) {
+                            dialog.dismiss();
+                        }
                     }
-                }
-                else {
-                    if (dialog.isShowing()) {
-                        dialog.dismiss();
-                        Toast.makeText(getApplicationContext(), "Terjadi kesalahan", Toast.LENGTH_SHORT);
+                    else {
+                        if (dialog.isShowing()) {
+                            dialog.dismiss();
+                            Toast.makeText(getApplicationContext(), "Terjadi kesalahan", Toast.LENGTH_SHORT);
+                        }
+                        Log.d("Response", "ISI PESAN : " + response.message());
                     }
-                    Log.d("Response", "ISI PESAN : " + response.message());
+                    response.errorBody();
+                    Log.d("Response", String.valueOf(response.body()));
+
                 }
-                response.errorBody();
-                Log.d("Response", String.valueOf(response.body()));
 
-            }
+                @Override
+                public void onFailure(Call<Response> call, Throwable t) {
+                    Log.d("Response Error", t.getMessage());
+                }
+            });
+        }
+        else {
+            Toast.makeText(this, "Pilihan tempat wisata masih kurang!", Toast.LENGTH_SHORT).show();
+        }
 
-            @Override
-            public void onFailure(Call<Response> call, Throwable t) {
-                Log.d("Response Error", t.getMessage());
-            }
-        });
 
 
     }
@@ -167,7 +175,7 @@ public class RecommendationActivity extends AppCompatActivity implements TempatW
         int resId2 = getResId("ic_add_white_24dp", R.drawable.class);
         recommendationItems.add(new RecommendationItem("2", resId2, "", 0.00, "", "", ""));
         mRecyclerView = findViewById(R.id.recycler_recomendation);
-        mRecyclerView.setHasFixedSize(true);
+
         mLayoutManager = new GridLayoutManager(this,2);
         mAdapter = new RecommendationAdapter(recommendationItems, this);
 
@@ -227,12 +235,18 @@ public class RecommendationActivity extends AppCompatActivity implements TempatW
         int posisi = recommendationItems.size() -1 ;
         recommendationItems.remove(posisi);
         mAdapter.notifyItemRemoved(posisi);
-        Log.d("tolol", "size "+selectedTempatWisatas.size());
+        Log.d("tololll", "size "+selectedTempatWisatas.size());
         recommendationItems.add(new RecommendationItem("2",
                 0, tempatWisata.getNama(), 0.00, "", tempatWisata.getLatitude(), tempatWisata.getLongitude()));
         int resId2 = getResId("ic_add_white_24dp", R.drawable.class);
         recommendationItems.add(new RecommendationItem("2", resId2, "", 0.00, "", "", ""));
-        mAdapter.notifyDataSetChanged();
-        Log.d("kontoolll", "test");
+        mAdapter.notifyItemChanged(posisi);
+    }
+
+    @Override
+    protected void onDestroy() {
+
+        super.onDestroy();
+        System.gc();
     }
 }

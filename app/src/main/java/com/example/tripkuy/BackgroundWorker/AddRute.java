@@ -34,13 +34,14 @@ public class AddRute extends AsyncTask<Void, Void, Void> {
     @Override
     protected Void doInBackground(Void... voids) {
         apiRencanaInterface = ApiClient.getApiClient().create(ApiRencanaInterface.class);
-        for (RoutesItem item: data) {
+        for (final RoutesItem item: data) {
             Call<Rencana> call = apiRencanaInterface.saveRute(idDetailRencana, item.destination.name,
                     item.tripDistance, item.tripDuration, item.destination.latLong.lat, item.destination.latLong.longg);
             call.enqueue(new Callback<Rencana>() {
                 @Override
                 public void onResponse(Call<Rencana> call, Response<Rencana> response) {
                     if(response.isSuccessful() && response.body() != null){
+                        Log.d("rutee","koordinat "+item.destination.latLong.lat +" "+ item.destination.latLong.longg);
                         Boolean success = response.body().getSuccess();
                         if(success){
                             Log.d("Berhasil!!", "pesan "+response.body().getMessage() );

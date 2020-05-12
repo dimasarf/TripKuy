@@ -168,5 +168,10 @@ public class TripSummaryFragment extends Fragment implements OnMapReadyCallback 
         }
     }
 
-
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        map = null;
+        System.gc();
+    }
 }

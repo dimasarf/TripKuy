@@ -77,4 +77,12 @@ public class ProfileFragment extends Fragment {
         });
         return root;
     }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        mProfil = null;
+        mKategori = null;
+        System.gc();
+    }
 }

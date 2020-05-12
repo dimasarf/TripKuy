@@ -16,34 +16,34 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
-            <FrameLayout
-                android:layout_width="match_parent"
-                android:layout_height="300dp">
+<!--            <FrameLayout-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="300dp">-->
 
-                <ImageView
-                    android:layout_width="match_parent"
-                    android:layout_height="300dp"
-                    android:scaleType="fitXY"
-                    android:src="@drawable/bg_home_2" />
+<!--                <ImageView-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="300dp"-->
+<!--                    android:scaleType="fitXY"-->
+<!--                    android:src="@drawable/bg_home_2" />-->
 
-                <EditText
-                    android:id="@+id/txt_usia"
-                    android:layout_width="match_parent"
-                    android:layout_height="50dp"
-                    android:layout_marginLeft="20dp"
-                    android:layout_marginTop="15dp"
-                    android:layout_marginRight="20dp"
-                    android:background="@drawable/rounded_edittext_no_border"
-                    android:drawableRight="@drawable/search_icon"
-                    android:ellipsize="start"
-                    android:hint="Cari tujuan liburan kamu!"
-                    android:inputType="number"
-                    android:paddingLeft="20dp"
-                    android:paddingRight="20dp"
+<!--                <EditText-->
+<!--                    android:id="@+id/txt_usia"-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="50dp"-->
+<!--                    android:layout_marginLeft="20dp"-->
+<!--                    android:layout_marginTop="15dp"-->
+<!--                    android:layout_marginRight="20dp"-->
+<!--                    android:background="@drawable/rounded_edittext_no_border"-->
+<!--                    android:drawableRight="@drawable/search_icon"-->
+<!--                    android:ellipsize="start"-->
+<!--                    android:hint="Cari tujuan liburan kamu!"-->
+<!--                    android:inputType="number"-->
+<!--                    android:paddingLeft="20dp"-->
+<!--                    android:paddingRight="20dp"-->
 
-                    android:singleLine="true"
-                    android:textColor="#00FFFFFF" />
-            </FrameLayout>
+<!--                    android:singleLine="true"-->
+<!--                    android:textColor="#00FFFFFF" />-->
+<!--            </FrameLayout>-->
 
 
 

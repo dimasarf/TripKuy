@@ -56,7 +56,7 @@ public class PickDestinationFragment extends Fragment {
     private String mParam1;
     private String mParam2;
     Pengguna pengguna;
-
+    AddPengguna addPengguna;
     private OnFragmentInteractionListener mListener;
 
 
@@ -100,7 +100,7 @@ public class PickDestinationFragment extends Fragment {
 
                 }
                 pengguna.setPreferensi(preferensi);
-                AddPengguna addPengguna = new AddPengguna(getActivity(), pengguna);
+                addPengguna = new AddPengguna(getActivity(), pengguna);
                 addPengguna.execute();
 
             }
@@ -137,6 +137,7 @@ public class PickDestinationFragment extends Fragment {
     public void onDetach() {
         super.onDetach();
         mListener = null;
+        listener = null;
     }
 
     public interface OnFragmentInteractionListener {
@@ -171,5 +172,14 @@ public class PickDestinationFragment extends Fragment {
         items.add((CheckBox)rootView.findViewById(R.id.pref_sains));
         items.add((CheckBox)rootView.findViewById(R.id.pref_pasar));
         items.add((CheckBox)rootView.findViewById(R.id.pref_desa));
+    }
+
+    @Override
+    public void onDestroy() {
+        addPengguna.cancel(true);
+        items.clear();
+        System.gc();
+        super.onDestroy();
+
     }
 }

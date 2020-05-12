@@ -19,6 +19,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.example.tripkuy.config.ApiClient;
 import com.example.tripkuy.interfaces.ApiPenggunaInterface;
 import com.example.tripkuy.models.Pengguna;
+import com.example.tripkuy.registration2.UsiaActivity;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
@@ -46,6 +47,9 @@ public class LoginActivity extends AppCompatActivity {
     private Button btn_login;
     String personEmail;
     Context context;
+
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -91,7 +95,7 @@ public class LoginActivity extends AppCompatActivity {
                                 .addOnCompleteListener(LoginActivity.this, new OnCompleteListener<Void>() {
                                     @Override
                                     public void onComplete(@NonNull Task<Void> task) {
-                                        Intent intent = new Intent(getApplicationContext(), Pendaftaran.class);
+                                        Intent intent = new Intent(getApplicationContext(), UsiaActivity.class);
                                         intent.putExtra(NAMA, account.getDisplayName());
                                         intent.putExtra(EMAIL, account.getEmail());
                                         intent.putExtra(ID, account.getId());
@@ -146,7 +150,7 @@ public class LoginActivity extends AppCompatActivity {
                             startActivity(intent);
                         }
                         else {
-                            Intent intent = new Intent(getApplicationContext(), Pendaftaran.class);
+                            Intent intent = new Intent(getApplicationContext(), UsiaActivity.class);
                             intent.putExtra(NAMA, personName);
                             intent.putExtra(EMAIL, personEmail);
                             intent.putExtra(ID, id);
